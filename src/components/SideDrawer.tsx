@@ -1,0 +1,162 @@
+// ============================================
+// CLUB 90 — Side Drawer (Menú Hamburguesa)
+// ============================================
+
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAppStore } from '../stores/appStore';
+import { useAuth } from '../context/AuthContext';
+import { isSupabaseConfigured } from '../lib/supabase';
+
+const NAV_ITEMS = [
+  { icon: 'home', label: 'Inicio', path: '/' },
+  { icon: 'confirmation_number', label: 'Mis Pronósticos', path: '/bets' },
+  { icon: 'leaderboard', label: 'Ranking', path: '/leaderboard' },
+  { icon: 'person', label: 'Mi Perfil', path: '/profile' },
+];
+
+const ACTION_ITEMS = [
+  { icon: 'redeem', label: 'Recompensas', action: 'rewards' },
+  { icon: 'menu_book', label: 'Reglas del Juego', action: 'rules' },
+  { icon: 'emoji_events', label: 'Premios', action: 'prizes' },
+];
+
+export default function SideDrawer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const drawerOpen = useAppStore((s) => s.drawerOpen);
+  const closeDrawer = useAppStore((s) => s.closeDrawer);
+  const openRewardsModal = useAppStore((s) => s.openRewardsModal);
+  const openRulesModal = useAppStore((s) => s.openRulesModal);
+  const openPrizesModal = useAppStore((s) => s.openPrizesModal);
+  const openTopUpModal = useAppStore((s) => s.openTopUpModal);
+  const demoBalance = useAppStore((s) => s.balance);
+  const demoUserName = useAppStore((s) => s.userName);
+  const demoTier = useAppStore((s) => s.tier);
+
+  // Use real data when available
+  const { profile } = useAuth();
+  const live = isSupabaseConfigured && !!profile?.id && profile.id !== 'demo-user-001';
+  const balance = live ? profile!.clCoins : demoBalance;
+  const userName = live ? (profile!.name || 'Jugador') : demoUserName;
+  const tier = live ? (profile?.accountTier || 'GUEST') : demoTier;
+
+  if (!drawerOpen) return null;
+
+  function handleNavigation(path: string) {
+    closeDrawer();
+    navigate(path);
+  }
+
+  function handleAction(action: string) {
+    closeDrawer();
+    if (action === 'rewards') openRewardsModal();
+    else if (action === 'rules') openRulesModal();
+    else if (action === 'prizes') openPrizesModal();
+  }
+
+  function handleTopUp() {
+    closeDrawer();
+    openTopUpModal();
+  }
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-black/60 z-[80] backdrop-blur-sm" onClick={closeDrawer} />
+
+      {/* Drawer */}
+      <div className="fixed left-0 top-0 bottom-0 w-72 bg-[#0f212e] z-[85] shadow-2xl animate-[slideRight_0.25s_ease-out] overflow-y-auto">
+        {/* Header */}
+        <div className="bg-[#1a2c39] p-5 pb-6 border-b border-[#253744]">
+          <div className="flex justify-between items-start mb-4">
+            <h2 className="text-xl font-black text-white uppercase tracking-tighter italic">Club 90</h2>
+            <button onClick={closeDrawer} className="text-[#c1c6d5] hover:text-white transition-colors">
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-12 h-12 bg-[#253744] rounded-full flex items-center justify-center border-2 border-[#1475e1]">
+              <span className="text-lg font-black text-[#d2e5f7]">{userName.charAt(0)}</span>
+            </div>
+            <div>
+              <p className="text-white font-bold text-sm">{userName}</p>
+              <div className="flex items-center gap-1">
+                <span className="material-symbols-outlined text-[#aac7ff] text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+                <span className="text-[#aac7ff] text-[10px] font-bold uppercase tracking-wider">{tier}</span>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#0f212e] rounded-lg p-3 flex justify-between items-center">
+            <div>
+              <p className="text-[9px] text-[#c1c6d5] font-bold uppercase tracking-widest">Balance</p>
+              <p className="text-[#00e601] font-black text-lg tabular-nums">{balance.toLocaleString()} 🪙</p>
+            </div>
+            <button
+              onClick={handleTopUp}
+              className="bg-[#00e601] text-[#013a00] px-4 py-2 rounded-lg font-black text-xs uppercase tracking-wider active:scale-95"
+            >
+              + Recargar
+            </button>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <nav className="p-3 space-y-1">
+          <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#c1c6d5] px-3 mb-2">Navegación</p>
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.path}
+              onClick={() => handleNavigation(item.path)}
+              className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-[0.98] ${
+                location.pathname === item.path
+                  ? 'bg-[#1475e1]/15 text-[#aac7ff]'
+                  : 'text-[#d2e5f7] hover:bg-[#1a2c39]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: location.pathname === item.path ? "'FILL' 1" : undefined }}>{item.icon}</span>
+              {item.label}
+            </button>
+          ))}
+        </nav>
+
+        <div className="mx-3 h-px bg-[#253744]" />
+
+        {/* Actions */}
+        <div className="p-3 space-y-1">
+          <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#c1c6d5] px-3 mb-2">Club 90</p>
+          {ACTION_ITEMS.map((item) => (
+            <button
+              key={item.action}
+              onClick={() => handleAction(item.action)}
+              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#d2e5f7] hover:bg-[#1a2c39] transition-all active:scale-[0.98]"
+            >
+              <span className="material-symbols-outlined text-lg">{item.icon}</span>
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="mx-3 h-px bg-[#253744]" />
+
+        {/* Admin */}
+        <div className="p-3 space-y-1">
+          <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#ffb4ab] px-3 mb-2">Admin</p>
+          <button
+            onClick={() => { closeDrawer(); navigate('/admin/teams'); }}
+            className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#d2e5f7] hover:bg-[#1a2c39] transition-all active:scale-[0.98]"
+          >
+            <span className="material-symbols-outlined text-lg">shield_person</span>
+            Equipos & Nóminas
+          </button>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-auto p-4 border-t border-[#253744]">
+          <p className="text-[#c1c6d5] text-[9px] text-center opacity-50">
+            Club 90 © 2026 — Juego de Fantasía
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}

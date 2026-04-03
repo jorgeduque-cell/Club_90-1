@@ -1,0 +1,228 @@
+// ============================================
+// CLUB 90+1 — Prisma Schema
+// Sports Prediction & Entertainment Platform
+// ============================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── ENUMS ──────────────────────────────────
+
+enum Role {
+  PLAYER
+  ADMIN
+}
+
+enum AccountTier {
+  GUEST
+  PREMIUM
+}
+
+enum MatchStatus {
+  OPEN
+  CLOSED
+  FINISHED
+}
+
+enum MatchResult {
+  HOME_WIN
+  DRAW
+  AWAY_WIN
+  PENDING
+}
+
+enum PredictionOutcome {
+  HOME_WIN
+  DRAW
+  AWAY_WIN
+}
+
+enum TicketStatus {
+  PENDING
+  HIT
+  MISSED
+}
+
+enum TransactionType {
+  PREMIUM_PASS
+  LIFESAVER_TOPUP
+  REWARD_REDEMPTION
+  BET_PLACED
+  WINNINGS_PAID
+  STORE_REDEMPTION
+}
+
+enum TransactionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum RedemptionStatus {
+  PENDING
+  CLAIMED
+}
+
+// ─── MODELS ─────────────────────────────────
+
+// 1. DOMINIO DEPORTIVO REAL
+model RealTeam {
+  id      String @id @default(cuid())
+  name    String
+  logoUrl String?
+  points  Int    @default(0)
+  played  Int    @default(0)
+  won     Int    @default(0)
+  drawn   Int    @default(0)
+  lost    Int    @default(0)
+
+  players     RealPlayer[]
+  homeMatches MatchMarket[] @relation("HomeTeamMatches")
+  awayMatches MatchMarket[] @relation("AwayTeamMatches")
+  users       User[]
+
+  @@map("real_teams")
+}
+
+model RealPlayer {
+  id          String  @id @default(cuid())
+  name        String
+  realTeamId  String
+  goals       Int     @default(0)
+  yellowCards Int     @default(0)
+  isSuspended Boolean @default(false)
+
+  realTeam RealTeam @relation(fields: [realTeamId], references: [id], onDelete: Cascade)
+
+  @@index([realTeamId])
+  @@map("real_players")
+}
+
+// 2. DOMINIO DE USUARIOS Y ECONOMÍA
+model User {
+  id               String      @id @default(cuid())
+  phone            String      @unique
+  name             String
+  clCoins          Float       @default(0)
+  role             Role        @default(PLAYER)
+  accountTier      AccountTier @default(GUEST)
+  isBankrupt       Boolean     @default(false)
+  realTeamId       String?
+  currentStreak    Int         @default(0)
+  storedLifeSavers Int         @default(0)
+  createdAt        DateTime    @default(now())
+
+  // Relaciones
+  realTeam          RealTeam?          @relation(fields: [realTeamId], references: [id], onDelete: SetNull)
+  transactions      Transaction[]
+  predictionTickets PredictionTicket[]
+  redemptionTickets RedemptionTicket[]
+
+  @@map("users")
+}
+
+model Transaction {
+  id          String            @id @default(cuid())
+  userId      String
+  amountCOP   Float
+  coinsAdded  Float
+  type        TransactionType
+  referenceId String?           @unique
+  status      TransactionStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, type])
+  @@map("transactions")
+}
+
+// 3. DOMINIO DE PRONÓSTICOS VIP
+model MatchMarket {
+  id             String      @id @default(cuid())
+  realTeamHomeId String
+  realTeamAwayId String
+  multiplierHome Float
+  multiplierDraw Float
+  multiplierAway Float
+  startTime      DateTime
+  status         MatchStatus @default(OPEN)
+  result         MatchResult @default(PENDING)
+  createdAt      DateTime    @default(now())
+
+  // Relaciones
+  homeTeam    RealTeam     @relation("HomeTeamMatches", fields: [realTeamHomeId], references: [id])
+  awayTeam    RealTeam     @relation("AwayTeamMatches", fields: [realTeamAwayId], references: [id])
+  ticketItems TicketItem[]
+
+  @@map("match_markets")
+}
+
+model PredictionTicket {
+  id              String       @id @default(cuid())
+  userId          String
+  totalAmount     Float
+  potentialReturn Float
+  status          TicketStatus @default(PENDING)
+  createdAt       DateTime     @default(now())
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ticketItems TicketItem[]
+
+  @@index([userId])
+  @@index([userId, status])
+  @@map("prediction_tickets")
+}
+
+model TicketItem {
+  id                 String            @id @default(cuid())
+  predictionTicketId String
+  matchMarketId      String
+  selectedOutcome    PredictionOutcome
+  lockedMultiplier   Float
+
+  predictionTicket PredictionTicket @relation(fields: [predictionTicketId], references: [id], onDelete: Cascade)
+  matchMarket      MatchMarket      @relation(fields: [matchMarketId], references: [id], onDelete: Cascade)
+
+  @@index([predictionTicketId])
+  @@index([matchMarketId])
+  @@map("ticket_items")
+}
+
+// 4. DOMINIO DE RETENCIÓN Y PREMIOS INMEDIATOS (KIOSCO)
+model StoreItem {
+  id          String  @id @default(cuid())
+  name        String
+  costInCoins Float
+  sponsorName String?
+  iconUrl     String?
+  isActive    Boolean @default(true)
+
+  redemptionTickets RedemptionTicket[]
+
+  @@map("store_items")
+}
+
+model RedemptionTicket {
+  id           String           @id @default(cuid())
+  userId       String
+  storeItemId  String
+  qrCodeString String           @unique
+  status       RedemptionStatus @default(PENDING)
+  createdAt    DateTime         @default(now())
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storeItem StoreItem @relation(fields: [storeItemId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([storeItemId])
+  @@map("redemption_tickets")
+}
