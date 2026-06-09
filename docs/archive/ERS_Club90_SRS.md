@@ -1,3 +1,9 @@
+> ⛔ **OBSOLETO — NO USAR COMO FUENTE DE VERDAD.**
+> La fuente de verdad del proyecto es **`PLAN_MUNDIAL.md`** (raíz del repo).
+> Este SRS describe el modelo VIEJO (pari-mutuel de pozos, recarga por WhatsApp +
+> GPT-4 Vision, vocabulario de "apuesta/apostador") que el PLAN_MUNDIAL §0 corta
+> explícitamente. Se conserva solo como referencia histórica.
+
 # 📋 ERS — Software Requirements Specification (SRS)
 # **CLUB 90 — Plataforma de Pronósticos Deportivos Pari-Mutuel**
 

@@ -57,7 +57,7 @@ export interface SupaTransaction {
   userId: string;
   amountCOP: number;
   coinsAdded: number;
-  type: 'PREMIUM_PASS' | 'LIFESAVER_TOPUP' | 'REWARD_REDEMPTION' | 'BET_PLACED' | 'WINNINGS_PAID' | 'STORE_REDEMPTION';
+  type: 'PREMIUM_PASS' | 'LIFESAVER_TOPUP' | 'REWARD_REDEMPTION' | 'BET_PLACED' | 'WINNINGS_PAID' | 'STORE_REDEMPTION' | 'COINS_EARNED';
   referenceId: string | null;
   status: string;
   createdAt: string;

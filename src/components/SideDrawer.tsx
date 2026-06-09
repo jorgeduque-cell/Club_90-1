@@ -28,7 +28,7 @@ export default function SideDrawer() {
   const openRewardsModal = useAppStore((s) => s.openRewardsModal);
   const openRulesModal = useAppStore((s) => s.openRulesModal);
   const openPrizesModal = useAppStore((s) => s.openPrizesModal);
-  const openTopUpModal = useAppStore((s) => s.openTopUpModal);
+  const openRedeemModal = useAppStore((s) => s.openRedeemModal);
   const demoBalance = useAppStore((s) => s.balance);
   const demoUserName = useAppStore((s) => s.userName);
   const demoTier = useAppStore((s) => s.tier);
@@ -54,9 +54,9 @@ export default function SideDrawer() {
     else if (action === 'prizes') openPrizesModal();
   }
 
-  function handleTopUp() {
+  function handleRedeem() {
     closeDrawer();
-    openTopUpModal();
+    openRedeemModal();
   }
 
   return (
@@ -92,10 +92,10 @@ export default function SideDrawer() {
               <p className="text-[#00e601] font-black text-lg tabular-nums">{balance.toLocaleString()} 🪙</p>
             </div>
             <button
-              onClick={handleTopUp}
+              onClick={handleRedeem}
               className="bg-[#00e601] text-[#013a00] px-4 py-2 rounded-lg font-black text-xs uppercase tracking-wider active:scale-95"
             >
-              + Recargar
+              Canjear
             </button>
           </div>
         </div>
@@ -117,6 +117,17 @@ export default function SideDrawer() {
               {item.label}
             </button>
           ))}
+          {(profile?.role === 'CASHIER' || profile?.role === 'ADMIN') && (
+            <button
+              onClick={() => handleNavigation('/cashier')}
+              className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-[0.98] ${
+                location.pathname === '/cashier' ? 'bg-[#1475e1]/15 text-[#aac7ff]' : 'text-[#d2e5f7] hover:bg-[#1a2c39]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-lg">point_of_sale</span>
+              Caja
+            </button>
+          )}
         </nav>
 
         <div className="mx-3 h-px bg-[#253744]" />

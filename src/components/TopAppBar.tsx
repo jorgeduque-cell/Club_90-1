@@ -14,7 +14,7 @@ interface TopAppBarProps {
 
 export default function TopAppBar({ title, showBack = false }: TopAppBarProps) {
   const demoBalance = useAppStore((s) => s.balance);
-  const openTopUpModal = useAppStore((s) => s.openTopUpModal);
+  const openRedeemModal = useAppStore((s) => s.openRedeemModal);
   const openDrawer = useAppStore((s) => s.openDrawer);
   const live = useIsLive();
   const { profile } = useAuth();
@@ -56,9 +56,9 @@ export default function TopAppBar({ title, showBack = false }: TopAppBarProps) {
           <span className="text-[10px] text-[#b1bad3] font-bold">CL</span>
         </button>
         <button
-          onClick={openTopUpModal}
+          onClick={openRedeemModal}
           className="bg-[#00e601] text-[#013a00] rounded-r-full px-2.5 py-1.5 flex items-center justify-center hover:bg-[#33ff33] transition-colors active:scale-95"
-          aria-label="Recargar CL Points"
+          aria-label="Canjear código"
         >
           <span className="material-symbols-outlined text-lg font-bold" style={{ fontVariationSettings: "'FILL' 1, 'wght' 700" }}>
             add

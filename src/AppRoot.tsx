@@ -13,11 +13,12 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import StorePage from './pages/StorePage';
 import AdminTeamsPage from './pages/AdminTeamsPage';
+import CashierPage from './pages/CashierPage';
 
 import TopAppBar from './components/TopAppBar';
 import BottomNavBar from './components/BottomNavBar';
 import BetSlip from './components/BetSlip';
-import TopUpModal from './components/TopUpModal';
+import RedeemCodeModal from './components/RedeemCodeModal';
 import ToastContainer from './components/ToastContainer';
 import SideDrawer from './components/SideDrawer';
 import RewardsModal from './components/RewardsModal';
@@ -55,7 +56,7 @@ function AppLayout({ children, showBack = false, title }: { children: React.Reac
 
       {/* Global Overlays */}
       <BetSlip />
-      <TopUpModal />
+      <RedeemCodeModal />
       <SideDrawer />
       <RewardsModal />
       <RulesModal />
@@ -110,6 +111,13 @@ function AppRoot() {
       <Route path="/admin/teams" element={
         <ProtectedRoute>
           <AppLayout showBack title="Admin — Equipos"><AdminTeamsPage /></AppLayout>
+        </ProtectedRoute>
+      } />
+
+      {/* Cajero */}
+      <Route path="/cashier" element={
+        <ProtectedRoute>
+          <AppLayout showBack title="Caja"><CashierPage /></AppLayout>
         </ProtectedRoute>
       } />
 

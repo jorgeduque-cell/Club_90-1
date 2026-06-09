@@ -14,7 +14,7 @@ export default function ProfilePage() {
   const xpToNext = useAppStore((s) => s.xpToNext);
   const demoTransactions = useAppStore((s) => s.transactions);
   const demoPredictions = useAppStore((s) => s.predictions);
-  const openTopUpModal = useAppStore((s) => s.openTopUpModal);
+  const openRedeemModal = useAppStore((s) => s.openRedeemModal);
   const openRewardsModal = useAppStore((s) => s.openRewardsModal);
   const openRulesModal = useAppStore((s) => s.openRulesModal);
   const openPrizesModal = useAppStore((s) => s.openPrizesModal);
@@ -139,13 +139,13 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Recharge Button (Lifesaver) */}
+        {/* Canjear código de consumo */}
         <button
-          onClick={openTopUpModal}
+          onClick={openRedeemModal}
           className="w-full bg-[#00e601] text-[#013a00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.25)] mb-4"
         >
-          <span className="material-symbols-outlined text-lg">medical_services</span>
-          + 5.000 CL COINS (Vida Extra)
+          <span className="material-symbols-outlined text-lg">confirmation_number</span>
+          Canjear código de consumo
         </button>
 
         {/* Progress Bar — only show in demo mode */}

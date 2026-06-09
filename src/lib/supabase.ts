@@ -30,6 +30,6 @@ export interface UserProfile {
   isBankrupt: boolean;
   storedLifeSavers: number;
   currentStreak: number;
-  role: 'PLAYER' | 'ADMIN';
+  role: 'PLAYER' | 'ADMIN' | 'CASHIER';
   createdAt?: string;
 }

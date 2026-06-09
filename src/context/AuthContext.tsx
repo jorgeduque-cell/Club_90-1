@@ -62,13 +62,26 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [error, setError] = useState<string | null>(null);
 
   // ── Load profile via RPC (bypasses RLS with SECURITY DEFINER) ──
-  const loadProfile = useCallback(async (_userId: string) => {
+  const loadProfile = useCallback(async (userId: string) => {
     try {
       const { data, error: fetchError } = await supabase.rpc('get_my_profile');
 
       if (fetchError) throw fetchError;
       if (!data) throw new Error('Profile not found');
-      setProfile(data as UserProfile);
+      let prof = data as UserProfile;
+
+      // Fallback: si get_my_profile no incluye role, traerlo directo de users.
+      // Necesario para el gating de Caja (CASHIER) y Admin.
+      if (prof && (prof as { role?: string }).role == null) {
+        const { data: roleRow } = await supabase
+          .from('users')
+          .select('role')
+          .eq('id', userId)
+          .single();
+        if (roleRow?.role) prof = { ...prof, role: roleRow.role };
+      }
+
+      setProfile(prof);
     } catch (err) {
       console.error('Error loading profile:', err);
       setProfile(null);

@@ -7,7 +7,7 @@
 
 import { create } from 'zustand';
 
-// ─── Business Constants (CONTEXTO_CLUB90 §6) ─
+// ─── Business Constants (PLAN_MUNDIAL §1) ─
 
 export const MAX_STAKE = 2_000;
 export const MAX_MULTIPLIER_CAP = 5.00;
@@ -247,6 +247,11 @@ interface AppStore {
   topUpModalOpen: boolean;
   openTopUpModal: () => void;
   closeTopUpModal: () => void;
+
+  // ─ Redeem Code Modal (canje de código de cajero) ─
+  redeemModalOpen: boolean;
+  openRedeemModal: () => void;
+  closeRedeemModal: () => void;
 
   // ─ Side Drawer ─
   drawerOpen: boolean;
@@ -536,6 +541,11 @@ export const useAppStore = create<AppStore>((set, get) => ({
   topUpModalOpen: false,
   openTopUpModal: () => set({ topUpModalOpen: true }),
   closeTopUpModal: () => set({ topUpModalOpen: false }),
+
+  // ─ Redeem Code (canje de código de cajero) ─
+  redeemModalOpen: false,
+  openRedeemModal: () => set({ redeemModalOpen: true }),
+  closeRedeemModal: () => set({ redeemModalOpen: false }),
 
   topUp: (method) => {
     const state = get();
