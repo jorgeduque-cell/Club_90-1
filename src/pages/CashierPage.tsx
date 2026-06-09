@@ -60,7 +60,12 @@ export default function CashierPage() {
   useEffect(() => {
     if (!active) return;
     const tick = () => {
-      const remaining = Math.max(0, Math.round((new Date(active.expiresAt).getTime() - Date.now()) / 1000));
+      // El servidor devuelve expiresAt en UTC naive (sin zona horaria);
+      // lo forzamos a UTC para que el navegador no lo lea como hora local.
+      const raw = active.expiresAt;
+      const hasTz = /[zZ]|[+-]\d{2}:?\d{2}$/.test(raw);
+      const iso = raw.replace(' ', 'T') + (hasTz ? '' : 'Z');
+      const remaining = Math.max(0, Math.round((new Date(iso).getTime() - Date.now()) / 1000));
       setSecondsLeft(remaining);
       if (remaining === 0) { setActive(null); loadRecent(); }
     };
