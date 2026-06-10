@@ -71,9 +71,9 @@ export default function PrizesModal() {
     <>
       <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeModal} />
       <div className="fixed inset-x-0 bottom-0 z-[95] max-h-[85vh] overflow-y-auto">
-        <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
+        <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
           <div className="p-5 space-y-5">
             {/* Header */}
@@ -98,7 +98,7 @@ export default function PrizesModal() {
                 {SEASON_PRIZES.map((prize) => (
                   <div
                     key={prize.rank}
-                    className="bg-[#1c1610] rounded-xl p-4 flex items-center gap-4 border-l-4"
+                    className="bg-[#1f1e1c] rounded-xl p-4 flex items-center gap-4 border-l-4"
                     style={{ borderColor: prize.color }}
                   >
                     <div
@@ -126,7 +126,7 @@ export default function PrizesModal() {
               </h4>
               <div className="grid grid-cols-2 gap-2">
                 {WEEKLY_PRIZES.map((prize) => (
-                  <div key={prize.title} className="bg-[#1c1610] rounded-xl p-3.5">
+                  <div key={prize.title} className="bg-[#1f1e1c] rounded-xl p-3.5">
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center mb-2"
                       style={{ backgroundColor: `${prize.color}15` }}
@@ -144,7 +144,7 @@ export default function PrizesModal() {
             </div>
 
             {/* Legal Note */}
-            <div className="bg-[#1c1610] rounded-lg p-3 flex items-start gap-2">
+            <div className="bg-[#1f1e1c] rounded-lg p-3 flex items-start gap-2">
               <span className="material-symbols-outlined text-[#c2b391] text-sm mt-0.5">info</span>
               <p className="text-[#c2b391] text-[9px] leading-relaxed">
                 Los premios son financiados con las inscripciones al torneo. Las 🪙 PyP Coins son moneda virtual

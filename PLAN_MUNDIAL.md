@@ -54,6 +54,22 @@ línea es innegociable: es lo que separa el proyecto de una operación ilegal.
 **Liability viva** (métrica clave del dashboard del dueño):
 `COINS en circulación × valor de redención × COGS de premios`. Mostrarla en tiempo real.
 
+### Programa de estatus mensual (por consumo real, no por juego)
+Se calcula client-side sumando `amountCOP` de las transacciones `COINS_EARNED` del mes
+calendario (cada una nace de un código de cajero = venta real). Reinicia el día 1.
+Implementado en `src/lib/status.ts`; se muestra grande en el Perfil.
+
+| Nivel | Consumo mensual mínimo | Color |
+|---|---|---|
+| BRONCE | $0 | #cd7f32 |
+| PLATA | $150.000 | #c0c0c0 |
+| DORADO | $400.000 | #e5b85c |
+| LEYENDA PyP | $800.000 | #d72a22 |
+
+> Umbrales ajustables con el dueño. v1 es solo reconocimiento visual (estatus en el
+> perfil); los beneficios por nivel (descuentos, salta-fila, etc.) se definen con
+> Pachanga en Semana 2-3.
+
 ### Catálogo del kiosco (precios en COINS; sesgar lo alcanzable hacia COGS bajo)
 - Shot 1.200 · Cerveza 1.500 · Cóctel 2.500 · Salta-fila VIP 3.000 (COGS $0)
 - Balde 6.000 · Media botella 12.000 · Botella 20.000 · Mesa VIP próxima visita 30.000

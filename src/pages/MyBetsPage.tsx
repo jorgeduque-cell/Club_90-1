@@ -66,9 +66,9 @@ export default function MyBetsPage() {
   }), [bets]);
 
   return (
-    <main className="pb-24 min-h-screen bg-[#140f0a]">
+    <main className="pb-24 min-h-screen bg-[#181817]">
       {/* Stats Summary */}
-      <div className="bg-[#1c1610] px-4 py-4">
+      <div className="bg-[#1f1e1c] px-4 py-4">
         <div className="grid grid-cols-3 gap-3">
           <div className="text-center">
             <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
@@ -86,7 +86,7 @@ export default function MyBetsPage() {
       </div>
 
       {/* Filter Bar */}
-      <div className="sticky top-16 z-40 bg-[#140f0a]/95 backdrop-blur-md px-4 py-3">
+      <div className="sticky top-16 z-40 bg-[#181817]/95 backdrop-blur-md px-4 py-3">
         <div className="flex gap-2 overflow-x-auto scrollbar-hide">
           {FILTERS.map((f) => {
             const count = f === 'All' ? bets.length : bets.filter((b) => b.status === f.toUpperCase()).length;
@@ -97,13 +97,13 @@ export default function MyBetsPage() {
                 className={`px-4 py-2 rounded-lg font-bold text-xs whitespace-nowrap transition-all active:scale-95 flex items-center gap-1.5 ${
                   predictionFilter === f
                     ? 'bg-[#d72a22] text-white'
-                    : 'bg-[#2e2418] text-[#c2b391] hover:bg-[#261d12]'
+                    : 'bg-[#2e2c29] text-[#c2b391] hover:bg-[#262422]'
                 }`}
               >
                 {f === 'All' ? 'Todas' : f === 'Pending' ? 'Pendientes' : f === 'Won' ? 'Ganadas' : 'Perdidas'}
                 {count > 0 && (
                   <span className={`text-[8px] font-black rounded-full w-4 h-4 flex items-center justify-center ${
-                    predictionFilter === f ? 'bg-white/20' : 'bg-[#4a3f2c]'
+                    predictionFilter === f ? 'bg-white/20' : 'bg-[#4c4843]'
                   }`}>
                     {count}
                   </span>
@@ -117,14 +117,14 @@ export default function MyBetsPage() {
       {/* Empty State */}
       {bets.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 px-8">
-          <span className="material-symbols-outlined text-5xl text-[#4a3f2c] mb-4">receipt_long</span>
+          <span className="material-symbols-outlined text-5xl text-[#4c4843] mb-4">receipt_long</span>
           <h3 className="text-white font-bold text-lg mb-2">Sin pronósticos aún</h3>
           <p className="text-[#c2b391] text-sm text-center mb-6">
             ¡Selecciona un partido y haz tu primer pronóstico para empezar!
           </p>
           <button
             onClick={() => navigate('/')}
-            className="bg-[#e5b85c] text-[#2a1c00] px-8 py-3 rounded-xl font-black uppercase text-sm tracking-wider active:scale-95 transition-all"
+            className="bg-[#d72a22] text-white px-8 py-3 rounded-xl font-black uppercase text-sm tracking-wider active:scale-95 transition-all"
           >
             Ver Partidos
           </button>
@@ -133,7 +133,7 @@ export default function MyBetsPage() {
 
       {filtered.length === 0 && bets.length > 0 && (
         <div className="flex flex-col items-center justify-center py-16 px-8">
-          <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-3">filter_list</span>
+          <span className="material-symbols-outlined text-3xl text-[#4c4843] mb-3">filter_list</span>
           <p className="text-[#c2b391] text-sm">No hay pronósticos con este filtro</p>
         </div>
       )}
@@ -143,7 +143,7 @@ export default function MyBetsPage() {
         {filtered.map((bet) => (
           <div
             key={bet.id}
-            className={`bg-[#1c1610] rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${
+            className={`bg-[#1f1e1c] rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${
               bet.status === 'LOST' ? 'opacity-70' : ''
             }`}
           >
@@ -176,7 +176,7 @@ export default function MyBetsPage() {
               </div>
 
               {/* Prediction */}
-              <div className="bg-[#140f0a] rounded-lg px-3 py-2 flex items-center justify-between">
+              <div className="bg-[#181817] rounded-lg px-3 py-2 flex items-center justify-between">
                 <span className="text-[#f0d9a8] text-xs font-bold">{bet.predictionLabel}</span>
                 <span className="text-white font-black tabular-nums">@ {bet.multiplier.toFixed(2)}</span>
               </div>
@@ -205,7 +205,7 @@ export default function MyBetsPage() {
             </div>
 
             {/* Footer */}
-            <div className="bg-[#2e2418]/30 px-4 py-2.5 flex justify-between items-center">
+            <div className="bg-[#2e2c29]/30 px-4 py-2.5 flex justify-between items-center">
               <span className="text-[10px] text-[#c2b391] flex items-center gap-1">
                 <span className="material-symbols-outlined text-xs">confirmation_number</span>
                 {bet.id.slice(0, 12)}

@@ -65,17 +65,21 @@ export default function SideDrawer() {
       <div className="fixed inset-0 bg-black/60 z-[80] backdrop-blur-sm" onClick={closeDrawer} />
 
       {/* Drawer */}
-      <div className="fixed left-0 top-0 bottom-0 w-72 bg-[#140f0a] z-[85] shadow-2xl animate-[slideRight_0.25s_ease-out] overflow-y-auto">
+      <div className="fixed left-0 top-0 bottom-0 w-72 bg-[#181817] z-[85] shadow-2xl animate-[slideRight_0.25s_ease-out] overflow-y-auto">
         {/* Header */}
-        <div className="bg-[#1c1610] p-5 pb-6 border-b border-[#2e2418]">
+        <div className="bg-[#1f1e1c] p-5 pb-6 border-b border-[#2e2c29]">
           <div className="flex justify-between items-start mb-4">
-            <h2 className="text-xl font-black text-white uppercase tracking-tighter italic">Club PyP</h2>
+            <img
+              src="/logo_completo_sin_fondo.png"
+              alt="Club PyP — Pachanga y Pochola"
+              className="h-14 object-contain select-none"
+            />
             <button onClick={closeDrawer} className="text-[#c2b391] hover:text-white transition-colors">
               <span className="material-symbols-outlined">close</span>
             </button>
           </div>
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 bg-[#2e2418] rounded-full flex items-center justify-center border-2 border-[#d72a22]">
+            <div className="w-12 h-12 bg-[#2e2c29] rounded-full flex items-center justify-center border-2 border-[#d72a22]">
               <span className="text-lg font-black text-[#efe6d2]">{userName.charAt(0)}</span>
             </div>
             <div>
@@ -86,14 +90,14 @@ export default function SideDrawer() {
               </div>
             </div>
           </div>
-          <div className="bg-[#140f0a] rounded-lg p-3 flex justify-between items-center">
+          <div className="bg-[#181817] rounded-lg p-3 flex justify-between items-center">
             <div>
               <p className="text-[9px] text-[#c2b391] font-bold uppercase tracking-widest">Balance</p>
               <p className="text-[#e5b85c] font-black text-lg tabular-nums">{balance.toLocaleString()} 🪙</p>
             </div>
             <button
               onClick={handleRedeem}
-              className="bg-[#e5b85c] text-[#2a1c00] px-4 py-2 rounded-lg font-black text-xs uppercase tracking-wider active:scale-95"
+              className="bg-[#d72a22] text-white px-4 py-2 rounded-lg font-black text-xs uppercase tracking-wider active:scale-95"
             >
               Canjear
             </button>
@@ -110,7 +114,7 @@ export default function SideDrawer() {
               className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-[0.98] ${
                 location.pathname === item.path
                   ? 'bg-[#d72a22]/15 text-[#f0d9a8]'
-                  : 'text-[#efe6d2] hover:bg-[#1c1610]'
+                  : 'text-[#efe6d2] hover:bg-[#1f1e1c]'
               }`}
             >
               <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: location.pathname === item.path ? "'FILL' 1" : undefined }}>{item.icon}</span>
@@ -121,7 +125,7 @@ export default function SideDrawer() {
             <button
               onClick={() => handleNavigation('/cashier')}
               className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-[0.98] ${
-                location.pathname === '/cashier' ? 'bg-[#d72a22]/15 text-[#f0d9a8]' : 'text-[#efe6d2] hover:bg-[#1c1610]'
+                location.pathname === '/cashier' ? 'bg-[#d72a22]/15 text-[#f0d9a8]' : 'text-[#efe6d2] hover:bg-[#1f1e1c]'
               }`}
             >
               <span className="material-symbols-outlined text-lg">point_of_sale</span>
@@ -130,7 +134,7 @@ export default function SideDrawer() {
           )}
         </nav>
 
-        <div className="mx-3 h-px bg-[#2e2418]" />
+        <div className="mx-3 h-px bg-[#2e2c29]" />
 
         {/* Actions */}
         <div className="p-3 space-y-1">
@@ -139,7 +143,7 @@ export default function SideDrawer() {
             <button
               key={item.action}
               onClick={() => handleAction(item.action)}
-              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#efe6d2] hover:bg-[#1c1610] transition-all active:scale-[0.98]"
+              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#efe6d2] hover:bg-[#1f1e1c] transition-all active:scale-[0.98]"
             >
               <span className="material-symbols-outlined text-lg">{item.icon}</span>
               {item.label}
@@ -147,14 +151,14 @@ export default function SideDrawer() {
           ))}
         </div>
 
-        <div className="mx-3 h-px bg-[#2e2418]" />
+        <div className="mx-3 h-px bg-[#2e2c29]" />
 
         {/* Admin */}
         <div className="p-3 space-y-1">
           <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#ffb4ab] px-3 mb-2">Admin</p>
           <button
             onClick={() => { closeDrawer(); navigate('/admin/teams'); }}
-            className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#efe6d2] hover:bg-[#1c1610] transition-all active:scale-[0.98]"
+            className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold text-[#efe6d2] hover:bg-[#1f1e1c] transition-all active:scale-[0.98]"
           >
             <span className="material-symbols-outlined text-lg">shield_person</span>
             Equipos & Nóminas
@@ -162,7 +166,7 @@ export default function SideDrawer() {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto p-4 border-t border-[#2e2418]">
+        <div className="mt-auto p-4 border-t border-[#2e2c29]">
           <p className="text-[#c2b391] text-[9px] text-center opacity-50">
             Club PyP © 2026 — Juego de Fantasía
           </p>

@@ -69,7 +69,7 @@ export default function MatchDetailPage() {
   if (!match) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
-        <span className="material-symbols-outlined text-5xl text-[#4a3f2c] mb-4">error_outline</span>
+        <span className="material-symbols-outlined text-5xl text-[#4c4843] mb-4">error_outline</span>
         <h2 className="text-white font-bold text-lg mb-2">Partido no encontrado</h2>
         <p className="text-[#c2b391] text-sm text-center mb-6">Este partido no existe o fue eliminado</p>
         <button onClick={() => navigate('/')} className="bg-[#d72a22] text-white px-6 py-3 rounded-lg font-bold text-sm">
@@ -105,11 +105,11 @@ export default function MatchDetailPage() {
     <div className="pb-24">
       <main className="max-w-lg mx-auto p-4 space-y-4">
         {/* Scoreboard Hero */}
-        <section className="bg-[#1c1610] rounded-xl overflow-hidden relative">
+        <section className="bg-[#1f1e1c] rounded-xl overflow-hidden relative">
           <div className="absolute inset-0 opacity-10 pointer-events-none dot-pattern" />
           <div className="relative p-6 flex flex-col items-center">
             {/* Status Badge */}
-            <div className="flex items-center gap-2 bg-[#2e2418] px-3 py-1 rounded-full mb-6">
+            <div className="flex items-center gap-2 bg-[#2e2c29] px-3 py-1 rounded-full mb-6">
               {match.isLive ? (
                 <>
                   <span className="w-2 h-2 bg-[#f2d27a] rounded-full live-pulse" />
@@ -131,7 +131,7 @@ export default function MatchDetailPage() {
             <div className="flex justify-between items-center w-full">
               {/* Home Team */}
               <div className="flex flex-col items-center flex-1">
-                <div className="w-20 h-20 bg-[#2e2418] rounded-full flex items-center justify-center mb-3 shadow-xl border border-[#4a3f2c]/10">
+                <div className="w-20 h-20 bg-[#2e2c29] rounded-full flex items-center justify-center mb-3 shadow-xl border border-[#4c4843]/10">
                   <span className="text-2xl font-black italic text-[#efe6d2]">{match.homeInitials}</span>
                 </div>
                 <span className="text-[#efe6d2] font-bold text-center leading-tight text-sm">{match.homeTeam}</span>
@@ -153,13 +153,13 @@ export default function MatchDetailPage() {
                     )}
                   </>
                 ) : (
-                  <span className="text-3xl font-black text-[#4a3f2c]">VS</span>
+                  <span className="text-3xl font-black text-[#4c4843]">VS</span>
                 )}
               </div>
 
               {/* Away Team */}
               <div className="flex flex-col items-center flex-1">
-                <div className="w-20 h-20 bg-[#2e2418] rounded-full flex items-center justify-center mb-3 shadow-xl border border-[#4a3f2c]/10">
+                <div className="w-20 h-20 bg-[#2e2c29] rounded-full flex items-center justify-center mb-3 shadow-xl border border-[#4c4843]/10">
                   <span className="text-2xl font-black italic text-[#efe6d2]">{match.awayInitials}</span>
                 </div>
                 <span className="text-[#efe6d2] font-bold text-center leading-tight text-sm">{match.awayTeam}</span>
@@ -184,7 +184,7 @@ export default function MatchDetailPage() {
                   className={`flex flex-col items-center py-4 px-2 rounded-xl transition-all active:scale-95 ${
                     isSelected
                       ? 'bg-[#d72a22]/20 border-2 border-[#d72a22] shadow-[0_0_15px_rgba(20,117,225,0.25)]'
-                      : 'bg-[#3a2d1c] border border-transparent hover:bg-[#4a3d28]'
+                      : 'bg-[#393633] border border-transparent hover:bg-[#4a4641]'
                   }`}
                 >
                   <span className="text-[10px] text-[#c2b391] font-bold mb-1 truncate w-full text-center">{sublabel}</span>
@@ -198,7 +198,7 @@ export default function MatchDetailPage() {
 
         {/* Closed/Finished state */}
         {match.status !== 'OPEN' && (
-          <div className="bg-[#2e2418]/50 rounded-xl p-4 text-center">
+          <div className="bg-[#2e2c29]/50 rounded-xl p-4 text-center">
             <span className="material-symbols-outlined text-2xl text-[#c2b391] mb-2">lock</span>
             <p className="text-[#c2b391] text-sm font-bold">
               {match.status === 'FINISHED' ? 'Este partido ya fue liquidado' : 'Los pronósticos están cerrados'}
@@ -208,14 +208,14 @@ export default function MatchDetailPage() {
 
         {/* My Predictions on this match */}
         {matchPredictions.length > 0 && (
-          <section className="bg-[#140f0a] rounded-xl p-4">
+          <section className="bg-[#181817] rounded-xl p-4">
             <div className="flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-[#f0d9a8] text-sm">confirmation_number</span>
               <h3 className="text-xs font-black uppercase tracking-widest text-[#f0d9a8]">Mis Pronósticos en este partido</h3>
             </div>
             <div className="space-y-2">
               {matchPredictions.map((pred) => (
-                <div key={pred.id} className="flex justify-between items-center bg-[#1c1610] rounded-lg p-3">
+                <div key={pred.id} className="flex justify-between items-center bg-[#1f1e1c] rounded-lg p-3">
                   <div>
                     <p className="text-white text-xs font-bold">{pred.predictionLabel}</p>
                     <p className="text-[#c2b391] text-[10px]">{pred.amount.toLocaleString()} PyP @ {pred.multiplier.toFixed(2)}</p>
@@ -232,14 +232,14 @@ export default function MatchDetailPage() {
         )}
 
         {/* Tab Navigation */}
-        <nav className="flex bg-[#140f0a] rounded-xl p-1 gap-1">
+        <nav className="flex bg-[#181817] rounded-xl p-1 gap-1">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab.toLowerCase().replace(' ', '-'))}
               className={`flex-1 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors rounded-lg ${
                 activeTab === tab.toLowerCase().replace(' ', '-')
-                  ? 'text-white bg-[#1c1610]'
+                  ? 'text-white bg-[#1f1e1c]'
                   : 'text-[#c2b391] hover:text-white'
               }`}
             >
@@ -250,7 +250,7 @@ export default function MatchDetailPage() {
 
         {/* Stats Section */}
         {activeTab === 'stats' && match.stats && (
-          <section className="bg-[#1c1610] rounded-xl p-5 space-y-5">
+          <section className="bg-[#1f1e1c] rounded-xl p-5 space-y-5">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-xs font-black uppercase tracking-widest text-[#f0d9a8]">Estadísticas del Partido</h3>
               <span className="material-symbols-outlined text-[#c2b391] text-sm">analytics</span>
@@ -274,7 +274,7 @@ export default function MatchDetailPage() {
                     <span>{label}</span>
                     <span className="text-white font-black tabular-nums">{isPct ? `${away}%` : away}</span>
                   </div>
-                  <div className="flex h-1.5 rounded-full overflow-hidden bg-[#2e2418] gap-0.5">
+                  <div className="flex h-1.5 rounded-full overflow-hidden bg-[#2e2c29] gap-0.5">
                     <div className="h-full bg-[#e5b85c] rounded-full transition-all duration-500" style={{ width: `${homeWidth}%` }} />
                     <div className="h-full bg-[#d72a22] rounded-full transition-all duration-500" style={{ width: `${awayWidth}%` }} />
                   </div>
@@ -285,15 +285,15 @@ export default function MatchDetailPage() {
         )}
 
         {activeTab === 'stats' && !match.stats && (
-          <div className="bg-[#1c1610] rounded-xl p-8 text-center">
-            <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-2">analytics</span>
+          <div className="bg-[#1f1e1c] rounded-xl p-8 text-center">
+            <span className="material-symbols-outlined text-3xl text-[#4c4843] mb-2">analytics</span>
             <p className="text-[#c2b391] text-sm">Las estadísticas estarán disponibles cuando el partido comience</p>
           </div>
         )}
 
         {/* H2H Section */}
         {activeTab === 'h2h' && (
-          <section className="bg-[#1c1610] rounded-xl p-5">
+          <section className="bg-[#1f1e1c] rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs font-black uppercase tracking-widest text-[#f0d9a8]">Head to Head</h3>
               <span className="text-[10px] font-bold text-[#c2b391] uppercase">Últimos 3</span>
@@ -307,13 +307,13 @@ export default function MatchDetailPage() {
                 const homeResult = h.homeGoals > h.awayGoals ? 'WIN' : h.homeGoals < h.awayGoals ? 'LOSS' : 'DRAW';
                 const awayResult = h.awayGoals > h.homeGoals ? 'WIN' : h.awayGoals < h.homeGoals ? 'LOSS' : 'DRAW';
                 return (
-                  <div key={i} className="flex items-center bg-[#140f0a] rounded-lg p-3 gap-4">
+                  <div key={i} className="flex items-center bg-[#181817] rounded-lg p-3 gap-4">
                     <span className="text-xs font-bold text-[#c2b391] w-24">{h.date}</span>
                     <div className="flex-1 flex justify-center items-center gap-3">
                       <span className={`text-[10px] font-black ${homeResult === 'WIN' ? 'text-[#f2d27a]' : homeResult === 'LOSS' ? 'text-[#ffb4ab]' : 'text-[#c2b391]'}`}>
                         {match.homeInitials}
                       </span>
-                      <span className="bg-[#2e2418] px-3 py-1 rounded text-sm font-black text-white tabular-nums">
+                      <span className="bg-[#2e2c29] px-3 py-1 rounded text-sm font-black text-white tabular-nums">
                         {h.homeGoals} - {h.awayGoals}
                       </span>
                       <span className={`text-[10px] font-black ${awayResult === 'WIN' ? 'text-[#f2d27a]' : awayResult === 'LOSS' ? 'text-[#ffb4ab]' : 'text-[#c2b391]'}`}>
@@ -329,7 +329,7 @@ export default function MatchDetailPage() {
 
         {/* Pool Info Section */}
         {activeTab === 'pool-info' && totalPool > 0 && (
-          <section className="bg-[#1c1610] rounded-xl p-5 space-y-5">
+          <section className="bg-[#1f1e1c] rounded-xl p-5 space-y-5">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-xs font-black uppercase tracking-widest text-[#f0d9a8]">Distribución del Fondo</h3>
               <span className="text-[#e5b85c] font-black text-sm tabular-nums">{totalPool.toLocaleString()} PyP</span>
@@ -345,7 +345,7 @@ export default function MatchDetailPage() {
                   <span className="text-[#c2b391] text-xs font-bold">{label}</span>
                   <span className="text-white font-black text-xs tabular-nums">{pool.toLocaleString()} PyP ({((pool / totalPool) * 100).toFixed(1)}%)</span>
                 </div>
-                <div className="h-3 w-full bg-[#2e2418] rounded-full overflow-hidden">
+                <div className="h-3 w-full bg-[#2e2c29] rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-700"
                     style={{ width: `${(pool / totalPool) * 100}%`, backgroundColor: color }}
@@ -354,7 +354,7 @@ export default function MatchDetailPage() {
               </div>
             ))}
 
-            <div className="bg-[#140f0a] rounded-lg p-3 flex items-start gap-3 mt-2">
+            <div className="bg-[#181817] rounded-lg p-3 flex items-start gap-3 mt-2">
               <span className="material-symbols-outlined text-[#f0d9a8] text-sm mt-0.5">info</span>
               <p className="text-[#c2b391] text-[10px] leading-relaxed">
                 En el modelo Pari-Mutuel, los multiplicadores finales dependen del total pronosticado en cada resultado.
@@ -365,8 +365,8 @@ export default function MatchDetailPage() {
         )}
 
         {activeTab === 'pool-info' && totalPool === 0 && (
-          <div className="bg-[#1c1610] rounded-xl p-8 text-center">
-            <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-2">account_balance</span>
+          <div className="bg-[#1f1e1c] rounded-xl p-8 text-center">
+            <span className="material-symbols-outlined text-3xl text-[#4c4843] mb-2">account_balance</span>
             <p className="text-[#c2b391] text-sm">Los multiplicadores actuales son fijos. La modalidad Pari-Mutuel no está activa en este partido.</p>
           </div>
         )}

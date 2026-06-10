@@ -16,9 +16,9 @@ export default function RulesModal() {
     <>
       <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeModal} />
       <div className="fixed inset-x-0 bottom-0 z-[95] max-h-[85vh] overflow-y-auto">
-        <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
+        <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
           <div className="p-5 space-y-5">
             {/* Header */}
@@ -35,7 +35,7 @@ export default function RulesModal() {
             </div>
 
             {/* Section 1: Qué es Club PyP */}
-            <div className="bg-[#1c1610] rounded-xl p-4 space-y-2">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[#e5b85c]">sports_soccer</span>
                 <h4 className="text-white font-black text-sm uppercase">¿Qué es Club PyP?</h4>
@@ -48,7 +48,7 @@ export default function RulesModal() {
             </div>
 
             {/* Section 2: Cómo Pronosticar */}
-            <div className="bg-[#1c1610] rounded-xl p-4 space-y-3">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[#f0d9a8]">sports_esports</span>
                 <h4 className="text-white font-black text-sm uppercase">Cómo Pronosticar</h4>
@@ -71,7 +71,7 @@ export default function RulesModal() {
             </div>
 
             {/* Section 3: Límites */}
-            <div className="bg-[#1c1610] rounded-xl p-4 space-y-3">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[#ffb4ab]">gavel</span>
                 <h4 className="text-white font-black text-sm uppercase">Reglas de Economía</h4>
@@ -103,7 +103,7 @@ export default function RulesModal() {
                     color: '#ffc107',
                   },
                 ].map((rule) => (
-                  <div key={rule.title} className="flex items-start gap-3 bg-[#140f0a] rounded-lg p-3">
+                  <div key={rule.title} className="flex items-start gap-3 bg-[#181817] rounded-lg p-3">
                     <span className="material-symbols-outlined text-lg mt-0.5" style={{ color: rule.color }}>{rule.icon}</span>
                     <div>
                       <p className="text-white text-xs font-bold">{rule.title}</p>
@@ -115,7 +115,7 @@ export default function RulesModal() {
             </div>
 
             {/* Section 4: Ranking */}
-            <div className="bg-[#1c1610] rounded-xl p-4 space-y-2">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[#ffd700]">emoji_events</span>
                 <h4 className="text-white font-black text-sm uppercase">El Ranking</h4>
@@ -128,7 +128,7 @@ export default function RulesModal() {
             </div>
 
             {/* Section 5: Cómo ganar PyP Coins */}
-            <div className="bg-[#1c1610] rounded-xl p-4 space-y-2">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[#e5b85c]">local_bar</span>
                 <h4 className="text-white font-black text-sm uppercase">¿Cómo ganas 🪙?</h4>

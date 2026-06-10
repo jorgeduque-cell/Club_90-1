@@ -92,22 +92,22 @@ export default function LeaderboardPage() {
           <p className="text-[#c2b391] text-sm font-medium">Compite en la cima del Club PyP</p>
         </div>
 
-        <div className="flex bg-[#1c1610] rounded-xl p-1 shadow-inner relative">
+        <div className="flex bg-[#1f1e1c] rounded-xl p-1 shadow-inner relative">
           <button 
             onClick={() => setActiveTab('SEMANAL')}
-            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'SEMANAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7a6a4d] hover:text-white'}`}
+            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'SEMANAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7d776e] hover:text-white'}`}
           >
             Semanal 🔥
           </button>
           <button 
             onClick={() => setActiveTab('GLOBAL')}
-            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'GLOBAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7a6a4d] hover:text-white'}`}
+            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'GLOBAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7d776e] hover:text-white'}`}
           >
             Global 🌎
           </button>
           
           <div 
-            className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#e5b85c] rounded-lg transition-transform duration-300 ease-in-out shadow-[0_0_10px_rgba(0,230,1,0.5)]"
+            className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#e5b85c] rounded-lg transition-transform duration-300 ease-in-out shadow-[0_0_10px_rgba(215,42,34,0.5)]"
             style={{ 
               transform: activeTab === 'SEMANAL' ? 'translateX(0)' : 'translateX(calc(100% + 4px))'
             }}
@@ -126,15 +126,15 @@ export default function LeaderboardPage() {
       {/* Profiler Propio */}
       <div className="mb-8 relative group">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-[#e5b85c] to-[#ffd700] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000" />
-        <div className="relative bg-[#1c1610] rounded-xl p-5 flex items-center justify-between border border-[#e5b85c]/20 shadow-xl">
+        <div className="relative bg-[#1f1e1c] rounded-xl p-5 flex items-center justify-between border border-[#e5b85c]/20 shadow-xl">
           <div className="flex items-center gap-4">
             <div className="flex flex-col items-center">
               <span className="text-[10px] font-bold text-[#e5b85c] uppercase tracking-widest">Posición</span>
               <span className="text-3xl font-black text-white italic tracking-tighter tabular-nums">#{myRank}</span>
             </div>
-            <div className="h-10 w-px bg-[#4a3f2c]/20 mx-1" />
+            <div className="h-10 w-px bg-[#4c4843]/20 mx-1" />
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full border-2 border-[#e5b85c] bg-[#2e2418] flex items-center justify-center text-lg font-black">
+              <div className="w-12 h-12 rounded-full border-2 border-[#e5b85c] bg-[#2e2c29] flex items-center justify-center text-lg font-black">
                 {userName.charAt(0).toUpperCase()}
               </div>
               <div className="flex flex-col">
@@ -161,8 +161,8 @@ export default function LeaderboardPage() {
               onClick={() => openPlayerProfile(player.name)}
               className={`flex flex-col items-center relative active:scale-95 transition-transform ${
                 isFirst
-                  ? 'bg-[#1c1610] p-4 rounded-xl pb-6 border-t border-[#e5b85c]/30 shadow-2xl'
-                  : 'bg-[#140f0a] p-3 rounded-xl pb-5'
+                  ? 'bg-[#1f1e1c] p-4 rounded-xl pb-6 border-t border-[#e5b85c]/30 shadow-2xl'
+                  : 'bg-[#181817] p-3 rounded-xl pb-5'
               }`}
             >
               <div
@@ -196,22 +196,22 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Leaderboard List */}
-      <div className="bg-[#140f0a] rounded-xl overflow-hidden mb-8 shadow-inner">
-        <div className="px-4 py-3 bg-[#1c1610]/80 flex justify-between text-[10px] font-black uppercase tracking-[0.15em] text-[#c2b391] border-b border-[#2e2418]">
+      <div className="bg-[#181817] rounded-xl overflow-hidden mb-8 shadow-inner">
+        <div className="px-4 py-3 bg-[#1f1e1c]/80 flex justify-between text-[10px] font-black uppercase tracking-[0.15em] text-[#c2b391] border-b border-[#2e2c29]">
           <span>Rank & Jugador</span>
           <span>{activeTab === 'SEMANAL' ? '🔥 Racha' : '🪙 PyP Coins'}</span>
         </div>
-        <div className="divide-y divide-[#4a3f2c]/20">
+        <div className="divide-y divide-[#4c4843]/20">
           {list.map((player) => (
             <button
               key={player.rank}
               onClick={() => openPlayerProfile(player.name)}
-              className="w-full flex items-center justify-between p-4 hover:bg-[#1c1610] transition-colors"
+              className="w-full flex items-center justify-between p-4 hover:bg-[#1f1e1c] transition-colors"
             >
               <div className="flex items-center gap-4">
-                <span className="w-6 text-[#7a6a4d] font-black italic tracking-tighter text-sm tabular-nums">#{player.rank}</span>
+                <span className="w-6 text-[#7d776e] font-black italic tracking-tighter text-sm tabular-nums">#{player.rank}</span>
                 <div className="flex items-center gap-3">
-                  <img alt={player.name} className="w-9 h-9 rounded-lg object-cover bg-[#120d08]" src={player.avatar} />
+                  <img alt={player.name} className="w-9 h-9 rounded-lg object-cover bg-[#171716]" src={player.avatar} />
                   <span className="text-white font-bold text-sm">{player.name}</span>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function LeaderboardPage() {
             </button>
           ))}
           {list.length === 0 && (
-            <div className="text-center p-6 text-[#7a6a4d] text-xs font-bold uppercase tracking-wider">
+            <div className="text-center p-6 text-[#7d776e] text-xs font-bold uppercase tracking-wider">
               No hay más jugadores activos.
             </div>
           )}
@@ -265,15 +265,15 @@ export default function LeaderboardPage() {
       {/* Profiler Modal */}
       {selectedPlayer && (
         <>
-          <div className="fixed inset-0 bg-[#120d08]/90 z-[90] backdrop-blur-md" onClick={closePlayerProfile} />
+          <div className="fixed inset-0 bg-[#171716]/90 z-[90] backdrop-blur-md" onClick={closePlayerProfile} />
           <div className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-[95] max-w-sm mx-auto">
-            <div className="bg-gradient-to-b from-[#1c1610] to-[#120d08] rounded-3xl p-6 shadow-2xl border border-[rgba(255,255,255,0.05)]">
-              <button onClick={closePlayerProfile} className="absolute top-4 right-4 text-[#7a6a4d] hover:text-white bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
+            <div className="bg-gradient-to-b from-[#1f1e1c] to-[#171716] rounded-3xl p-6 shadow-2xl border border-[rgba(255,255,255,0.05)]">
+              <button onClick={closePlayerProfile} className="absolute top-4 right-4 text-[#7d776e] hover:text-white bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
                 <span className="material-symbols-outlined text-sm">close</span>
               </button>
 
               <div className="flex flex-col items-center text-center mt-2">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#e5b85c] mb-4 shadow-[0_0_20px_rgba(0,230,1,0.2)]">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#e5b85c] mb-4 shadow-[0_0_20px_rgba(215,42,34,0.2)]">
                   <img alt={selectedPlayer.name} className="w-full h-full object-cover" src={selectedPlayer.avatar} />
                 </div>
                 <h3 className="text-white font-black text-2xl uppercase tracking-tighter mb-1">{selectedPlayer.name}</h3>
@@ -289,14 +289,14 @@ export default function LeaderboardPage() {
                 )}
 
                 <div className="w-full grid grid-cols-2 gap-3 mt-6">
-                  <div className="bg-[#140f0a] rounded-xl p-3 text-center border border-[#1c1610]">
-                    <p className="text-[9px] text-[#7a6a4d] font-black uppercase tracking-widest mb-1">Caja Fuerte</p>
+                  <div className="bg-[#181817] rounded-xl p-3 text-center border border-[#1f1e1c]">
+                    <p className="text-[9px] text-[#7d776e] font-black uppercase tracking-widest mb-1">Caja Fuerte</p>
                     <p className={`font-black text-xl tabular-nums ${selectedPlayer.isBankrupt ? 'text-[#d72a22]' : 'text-[#e5b85c]'}`}>
                       {selectedPlayer.points.toLocaleString()}
                     </p>
                   </div>
-                  <div className="bg-[#140f0a] rounded-xl p-3 text-center border border-[#1c1610]">
-                    <p className="text-[9px] text-[#7a6a4d] font-black uppercase tracking-widest mb-1">Racha Actual</p>
+                  <div className="bg-[#181817] rounded-xl p-3 text-center border border-[#1f1e1c]">
+                    <p className="text-[9px] text-[#7d776e] font-black uppercase tracking-widest mb-1">Racha Actual</p>
                     <p className="text-[#ffd700] font-black text-xl tabular-nums">🔥 {selectedPlayer.streak || 0}</p>
                   </div>
                 </div>

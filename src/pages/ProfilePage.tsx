@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useAppStore, Transaction } from '../stores/appStore';
 import { useIsLive, useMyTickets, useTransactions } from '../hooks/useSupabaseData';
+import { useMonthlyStatus } from '../lib/status';
 
 export default function ProfilePage() {
   const { signOut, profile } = useAuth();
@@ -25,6 +26,7 @@ export default function ProfilePage() {
   const live = useIsLive();
   const { tickets: supaTickets } = useMyTickets();
   const { transactions: supaTxns } = useTransactions();
+  const status = useMonthlyStatus();
 
   const balance = live && profile ? profile.clCoins : demoBalance;
   const userName = live && profile ? (profile.name || 'Jugador') : demoUserName;
@@ -118,31 +120,38 @@ export default function ProfilePage() {
   return (
     <main className="pt-4 pb-24 px-4 max-w-md mx-auto space-y-4">
       {/* Balance Hero */}
-      <section className="bg-[#1c1610] rounded-xl p-5 relative overflow-hidden">
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#f2d27a]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="bg-[#1f1e1c] rounded-xl p-5 relative overflow-hidden">
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#d72a22]/10 rounded-full blur-3xl pointer-events-none" />
+        <img
+          src="/logo_dorado_sin_fondo.png"
+          alt=""
+          aria-hidden
+          className="absolute -right-4 -bottom-6 h-44 opacity-10 pointer-events-none select-none"
+        />
         <div className="flex justify-between items-start mb-6">
           <div>
             <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest mb-1">Total Balance</p>
             <h2 className="text-[#e5b85c] text-4xl font-extrabold tracking-tighter neon-glow tabular-nums">
               {balance.toLocaleString()}{' '}
-              <span className="text-lg">🪙</span>
+              <span className="text-lg text-[#c2b391] font-black uppercase">PyP Coins</span>
             </h2>
             <p className="text-[#c2b391] text-[11px] mt-1 font-medium">{userName}</p>
           </div>
-          <div className={`${live ? 'bg-[#e5b85c]/20 text-[#f2d27a] border-[#f2d27a]/20' : 'bg-[#d72a22]/20 text-[#f0d9a8] border-[#f0d9a8]/20'} border px-3 py-1 rounded-full flex items-center gap-1.5`}>
+          <div
+            className="border px-3 py-1 rounded-full flex items-center gap-1.5"
+            style={{ backgroundColor: `${status.tier.color}22`, borderColor: `${status.tier.color}44`, color: status.tier.color }}
+          >
             <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
-              {live ? 'verified' : 'workspace_premium'}
+              {status.tier.icon}
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider">
-              {live && profile ? profile.accountTier : tier}
-            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider">{status.tier.name}</span>
           </div>
         </div>
 
         {/* Canjear código de consumo */}
         <button
           onClick={openRedeemModal}
-          className="w-full bg-[#e5b85c] text-[#2a1c00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.25)] mb-4"
+          className="w-full bg-[#d72a22] text-white py-3.5 rounded-xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(215,42,34,0.25)] mb-4"
         >
           <span className="material-symbols-outlined text-lg">confirmation_number</span>
           Canjear código de consumo
@@ -155,7 +164,7 @@ export default function ProfilePage() {
               <span className="text-[#c2b391]">Progreso a Platinum</span>
               <span className="text-white tabular-nums">{xp.toLocaleString()} / {xpToNext.toLocaleString()} XP</span>
             </div>
-            <div className="h-2.5 w-full bg-[#2e2418] rounded-full overflow-hidden">
+            <div className="h-2.5 w-full bg-[#2e2c29] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[#d72a22] to-[#f0d9a8] rounded-full transition-all duration-700 relative"
                 style={{ width: `${xpPercent}%` }}
@@ -168,17 +177,53 @@ export default function ProfilePage() {
         )}
       </section>
 
+      {/* Estatus del Mes — programa de lealtad por consumo */}
+      <section className="bg-gradient-to-br from-[#1f1e1c] to-[#262422] rounded-xl p-5 relative overflow-hidden border" style={{ borderColor: `${status.tier.color}33` }}>
+        <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `${status.tier.color}1a` }} />
+        <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest mb-2">Tu estatus del mes</p>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="material-symbols-outlined text-4xl" style={{ color: status.tier.color, fontVariationSettings: "'FILL' 1" }}>
+            {status.tier.icon}
+          </span>
+          <h3 className="text-4xl font-black uppercase tracking-tighter" style={{ color: status.tier.color }}>
+            {status.tier.name}
+          </h3>
+        </div>
+        {status.next ? (
+          <div className="space-y-2">
+            <div className="flex justify-between items-end text-[10px] font-bold uppercase tracking-wider">
+              <span className="text-[#c2b391]">Consumo del mes: ${status.monthlyCOP.toLocaleString('es-CO')}</span>
+              <span className="text-white tabular-nums">{status.progress}%</span>
+            </div>
+            <div className="h-2.5 w-full bg-[#2e2c29] rounded-full overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-700"
+                style={{ width: `${status.progress}%`, background: `linear-gradient(to right, ${status.tier.color}, ${status.next.color})` }}
+              />
+            </div>
+            <p className="text-[#c2b391] text-[10px] italic">
+              Te faltan ${Math.max(0, status.next.minCOP - status.monthlyCOP).toLocaleString('es-CO')} en consumo para ser{' '}
+              <span className="font-bold" style={{ color: status.next.color }}>{status.next.name}</span>
+            </p>
+          </div>
+        ) : (
+          <p className="text-[#c2b391] text-[10px] italic">
+            Nivel máximo del club. Consumo del mes: ${status.monthlyCOP.toLocaleString('es-CO')} 👑
+          </p>
+        )}
+      </section>
+
       {/* Quick Stats */}
       <section className="grid grid-cols-3 gap-2">
-        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+        <div className="bg-[#1f1e1c] rounded-xl p-3 text-center">
           <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
           <p className="text-white font-black text-xl tabular-nums">{totalBets}</p>
         </div>
-        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+        <div className="bg-[#1f1e1c] rounded-xl p-3 text-center">
           <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Ganadas</p>
           <p className="text-[#f2d27a] font-black text-xl tabular-nums">{wonBets}</p>
         </div>
-        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+        <div className="bg-[#1f1e1c] rounded-xl p-3 text-center">
           <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Win Rate</p>
           <p className="text-[#f0d9a8] font-black text-xl tabular-nums">{winRate}%</p>
         </div>
@@ -188,7 +233,7 @@ export default function ProfilePage() {
       <section className="grid grid-cols-1 gap-2">
         <button
           onClick={openRewardsModal}
-          className="bg-[#1c1610] text-[#efe6d2] h-16 rounded-xl flex items-center justify-between px-4 hover:bg-[#2e2418] transition-all active:scale-[0.98] group border border-[#2e2418]"
+          className="bg-[#1f1e1c] text-[#efe6d2] h-16 rounded-xl flex items-center justify-between px-4 hover:bg-[#2e2c29] transition-all active:scale-[0.98] group border border-[#2e2c29]"
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#e5b85c]/10 flex items-center justify-center">
@@ -199,20 +244,20 @@ export default function ProfilePage() {
               <p className="text-[9px] text-[#c2b391] font-bold">Reclama tus premios de esta jornada</p>
             </div>
           </div>
-          <span className="material-symbols-outlined text-[#4a3f2c] group-hover:text-[#c2b391] transition-colors">chevron_right</span>
+          <span className="material-symbols-outlined text-[#4c4843] group-hover:text-[#c2b391] transition-colors">chevron_right</span>
         </button>
 
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={openRulesModal}
-            className="bg-[#1c1610] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2418] transition-colors active:scale-[0.98] border border-[#2e2418]"
+            className="bg-[#1f1e1c] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2c29] transition-colors active:scale-[0.98] border border-[#2e2c29]"
           >
             <span className="material-symbols-outlined text-[#f0d9a8]">menu_book</span>
             <span className="font-bold uppercase tracking-widest text-[10px]">Reglas</span>
           </button>
           <button
             onClick={openPrizesModal}
-            className="bg-[#1c1610] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2418] transition-colors active:scale-[0.98] border border-[#2e2418]"
+            className="bg-[#1f1e1c] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2c29] transition-colors active:scale-[0.98] border border-[#2e2c29]"
           >
             <span className="material-symbols-outlined text-[#ffd700]">emoji_events</span>
             <span className="font-bold uppercase tracking-widest text-[10px]">Premios</span>
@@ -228,17 +273,17 @@ export default function ProfilePage() {
         </div>
 
         {transactions.length === 0 ? (
-          <div className="bg-[#140f0a] rounded-xl p-8 text-center">
-            <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-2">receipt_long</span>
+          <div className="bg-[#181817] rounded-xl p-8 text-center">
+            <span className="material-symbols-outlined text-3xl text-[#4c4843] mb-2">receipt_long</span>
             <p className="text-[#c2b391] text-sm">Sin transacciones aún</p>
           </div>
         ) : (
-          <div className="bg-[#140f0a] rounded-xl overflow-hidden">
+          <div className="bg-[#181817] rounded-xl overflow-hidden">
             {transactions.slice(0, 15).map((tx) => (
               <button
                 key={tx.id}
                 onClick={() => openTransactionDetail(tx.id)}
-                className="w-full flex items-center justify-between p-4 border-b border-[#4a3f2c]/15 last:border-0 hover:bg-[#1c1610] transition-colors active:bg-[#2e2418] text-left"
+                className="w-full flex items-center justify-between p-4 border-b border-[#4c4843]/15 last:border-0 hover:bg-[#1f1e1c] transition-colors active:bg-[#2e2c29] text-left"
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
@@ -255,7 +300,7 @@ export default function ProfilePage() {
                   <p className={`font-extrabold text-sm tabular-nums ${tx.type === 'credit' ? 'text-[#f2d27a]' : 'text-white'}`}>
                     {tx.amountLabel}
                   </p>
-                  <span className="material-symbols-outlined text-[#4a3f2c] text-sm">chevron_right</span>
+                  <span className="material-symbols-outlined text-[#4c4843] text-sm">chevron_right</span>
                 </div>
               </button>
             ))}
@@ -266,7 +311,7 @@ export default function ProfilePage() {
       {/* Promo Card */}
       <button
         onClick={openPrizesModal}
-        className="w-full relative bg-[#1c1610] rounded-xl p-4 border-l-4 border-[#d72a22] overflow-hidden text-left hover:bg-[#2e2418] transition-colors active:scale-[0.99] group"
+        className="w-full relative bg-[#1f1e1c] rounded-xl p-4 border-l-4 border-[#d72a22] overflow-hidden text-left hover:bg-[#2e2c29] transition-colors active:scale-[0.99] group"
       >
         <div className="relative z-10 flex gap-4 items-center">
           <div className="flex-1">
@@ -295,9 +340,9 @@ export default function ProfilePage() {
         <>
           <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeTransactionDetail} />
           <div className="fixed inset-x-0 bottom-0 z-[95]">
-            <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
+            <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
               <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+                <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
               </div>
               <div className="p-5 space-y-5">
                 {/* Header */}
@@ -333,7 +378,7 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Details Grid */}
-                <div className="bg-[#1c1610] rounded-xl divide-y divide-[#4a3f2c]/15">
+                <div className="bg-[#1f1e1c] rounded-xl divide-y divide-[#4c4843]/15">
                   <div className="flex justify-between items-center p-4">
                     <span className="text-[#c2b391] text-xs font-bold">Tipo</span>
                     <div className="flex items-center gap-2">
@@ -365,7 +410,7 @@ export default function ProfilePage() {
 
                 {/* Category-specific info */}
                 {activeTx.category === 'prediction_submit' && (
-                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                  <div className="bg-[#1f1e1c] rounded-xl p-4 flex items-start gap-3">
                     <span className="material-symbols-outlined text-[#f0d9a8] mt-0.5">info</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Pronóstico en curso</p>
@@ -376,7 +421,7 @@ export default function ProfilePage() {
                   </div>
                 )}
                 {activeTx.category === 'topup' && (
-                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                  <div className="bg-[#1f1e1c] rounded-xl p-4 flex items-start gap-3">
                     <span className="material-symbols-outlined text-[#e5b85c] mt-0.5">verified</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Recarga verificada</p>
@@ -387,7 +432,7 @@ export default function ProfilePage() {
                   </div>
                 )}
                 {activeTx.category === 'bonus' && (
-                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                  <div className="bg-[#1f1e1c] rounded-xl p-4 flex items-start gap-3">
                     <span className="material-symbols-outlined text-[#ffc107] mt-0.5">celebration</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Bonificación otorgada</p>
@@ -398,7 +443,7 @@ export default function ProfilePage() {
                   </div>
                 )}
                 {activeTx.category === 'early_return' && (
-                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                  <div className="bg-[#1f1e1c] rounded-xl p-4 flex items-start gap-3">
                     <span className="material-symbols-outlined text-[#d72a22] mt-0.5">account_balance_wallet</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Retiro Anticipado procesado</p>

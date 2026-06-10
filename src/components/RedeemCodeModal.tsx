@@ -77,10 +77,10 @@ export default function RedeemCodeModal() {
 
       {/* Modal */}
       <div className="fixed inset-x-0 bottom-0 z-[75] max-h-[90vh] overflow-y-auto">
-        <div className="bg-[#140f0a] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2418]">
+        <div className="bg-[#181817] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2c29]">
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
 
           <div className="p-5 space-y-5">
@@ -109,13 +109,13 @@ export default function RedeemCodeModal() {
                   <p className="text-[#e5b85c] text-4xl font-black tabular-nums">+{success.coins.toLocaleString()} 🪙</p>
                   <p className="text-[#c2b391] text-xs font-bold mt-1">PyP Coins acreditadas</p>
                 </div>
-                <div className="bg-[#1c1610] rounded-xl p-4 flex justify-between items-center">
+                <div className="bg-[#1f1e1c] rounded-xl p-4 flex justify-between items-center">
                   <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Nuevo balance</span>
                   <span className="text-white font-black text-lg tabular-nums">{success.balance.toLocaleString()} 🪙</span>
                 </div>
                 <button
                   onClick={handleClose}
-                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all"
+                  className="w-full bg-[#d72a22] text-white py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all"
                 >
                   Listo
                 </button>
@@ -123,7 +123,7 @@ export default function RedeemCodeModal() {
             ) : (
               /* ── Entrada de código ── */
               <div className="space-y-4">
-                <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-xl p-5 border border-[#d72a22]/20 text-center space-y-3">
+                <div className="bg-gradient-to-br from-[#1f1e1c] to-[#2e2c29] rounded-xl p-5 border border-[#d72a22]/20 text-center space-y-3">
                   <span className="material-symbols-outlined text-[#f0d9a8] text-3xl">confirmation_number</span>
                   <p className="text-[#efe6d2] text-xs leading-relaxed">
                     Pídele al cajero el código de 6 dígitos por tu consumo y digítalo aquí.
@@ -139,7 +139,7 @@ export default function RedeemCodeModal() {
                   onChange={(e) => { setCode(e.target.value.replace(/\D/g, '').slice(0, 6)); setError(null); }}
                   onKeyDown={(e) => { if (e.key === 'Enter') handleRedeem(); }}
                   placeholder="000000"
-                  className="w-full bg-[#1c1610] border border-[#2e2418] rounded-xl py-4 text-center text-white text-3xl font-black tracking-[0.4em] tabular-nums placeholder:text-[#4a3f2c] focus:outline-none focus:border-[#d72a22]"
+                  className="w-full bg-[#1f1e1c] border border-[#2e2c29] rounded-xl py-4 text-center text-white text-3xl font-black tracking-[0.4em] tabular-nums placeholder:text-[#4c4843] focus:outline-none focus:border-[#d72a22]"
                 />
 
                 {error && (
@@ -151,7 +151,7 @@ export default function RedeemCodeModal() {
                 <button
                   onClick={handleRedeem}
                   disabled={loading || code.length !== 6}
-                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+                  className="w-full bg-[#d72a22] text-white py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(215,42,34,0.3)] transition-all"
                 >
                   {loading ? 'Canjeando…' : 'Canjear PyP Coins'}
                 </button>

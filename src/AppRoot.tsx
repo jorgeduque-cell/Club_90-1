@@ -32,7 +32,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#0b0805]">
+      <div className="flex items-center justify-center min-h-screen bg-[#131312]">
         <div className="spinner" />
       </div>
     );
@@ -49,7 +49,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function AppLayout({ children, showBack = false, title }: { children: React.ReactNode; showBack?: boolean; title?: string }) {
   return (
-    <div className="bg-[#0b0805] min-h-screen flex flex-col">
+    <div className="bg-[#131312] min-h-screen flex flex-col">
       <TopAppBar showBack={showBack} title={title} />
       <main className="flex-1">{children}</main>
       <BottomNavBar />

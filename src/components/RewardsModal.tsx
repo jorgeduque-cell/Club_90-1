@@ -60,9 +60,9 @@ export default function RewardsModal() {
     <>
       <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeModal} />
       <div className="fixed inset-x-0 bottom-0 z-[95] max-h-[85vh] overflow-y-auto">
-        <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
+        <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
           <div className="p-5 space-y-5">
             <div className="flex justify-between items-center">
@@ -78,7 +78,7 @@ export default function RewardsModal() {
             </div>
 
             {/* Info Banner */}
-            <div className="bg-[#1c1610] rounded-xl p-4 border-l-4 border-[#e5b85c]">
+            <div className="bg-[#1f1e1c] rounded-xl p-4 border-l-4 border-[#e5b85c]">
               <p className="text-[#efe6d2] text-xs font-bold leading-relaxed">
                 ¡No importa cómo vayas en la general! Gana premios reales cada fin de semana cumpliendo los retos.
               </p>
@@ -89,14 +89,14 @@ export default function RewardsModal() {
               {WEEKLY_REWARDS.map((reward) => (
                 <div
                   key={reward.id}
-                  className={`bg-[#1c1610] rounded-xl p-4 transition-all ${
+                  className={`bg-[#1f1e1c] rounded-xl p-4 transition-all ${
                     reward.status === 'upcoming' ? 'opacity-60' : ''
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3 flex-1">
                       <div className={`w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center ${
-                        reward.status === 'active' ? 'bg-[#e5b85c]/10 text-[#e5b85c]' : 'bg-[#2e2418] text-[#c2b391]'
+                        reward.status === 'active' ? 'bg-[#e5b85c]/10 text-[#e5b85c]' : 'bg-[#2e2c29] text-[#c2b391]'
                       }`}>
                         <span className="material-symbols-outlined">{reward.icon}</span>
                       </div>
@@ -118,13 +118,13 @@ export default function RewardsModal() {
                     {reward.status === 'active' && (
                       <button
                         onClick={() => handleClaim(reward.title)}
-                        className="bg-[#2e2418] text-[#f0d9a8] px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider hover:bg-[#3a2d1c] active:scale-95 flex-shrink-0"
+                        className="bg-[#2e2c29] text-[#f0d9a8] px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider hover:bg-[#393633] active:scale-95 flex-shrink-0"
                       >
                         Reclamar
                       </button>
                     )}
                     {reward.status === 'upcoming' && (
-                      <span className="text-[9px] font-bold text-[#c2b391] bg-[#2e2418] px-2 py-1 rounded uppercase flex-shrink-0">
+                      <span className="text-[9px] font-bold text-[#c2b391] bg-[#2e2c29] px-2 py-1 rounded uppercase flex-shrink-0">
                         Próximo
                       </span>
                     )}

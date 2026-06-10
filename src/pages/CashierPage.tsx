@@ -135,7 +135,7 @@ export default function CashierPage() {
 
       {active ? (
         /* ── Código activo ── */
-        <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-2xl p-6 border border-[#e5b85c]/30 text-center space-y-4">
+        <div className="bg-gradient-to-br from-[#1f1e1c] to-[#2e2c29] rounded-2xl p-6 border border-[#e5b85c]/30 text-center space-y-4">
           <p className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em]">Código para el cliente</p>
           <p className="text-[#e5b85c] text-5xl font-black tracking-[0.2em] tabular-nums">{active.code}</p>
           <div className="flex justify-center gap-6 text-sm">
@@ -150,7 +150,7 @@ export default function CashierPage() {
           </div>
           <button
             onClick={() => setActive(null)}
-            className="w-full bg-[#e5b85c] text-[#2a1c00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] transition-all"
+            className="w-full bg-[#d72a22] text-white py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] transition-all"
           >
             Emitir otro código
           </button>
@@ -169,12 +169,12 @@ export default function CashierPage() {
                 onChange={(e) => { setAmount(e.target.value); setError(null); }}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleGenerate(); }}
                 placeholder="0"
-                className="w-full bg-[#1c1610] border border-[#2e2418] rounded-xl py-4 pl-9 pr-4 text-white text-2xl font-black tabular-nums placeholder:text-[#4a3f2c] focus:outline-none focus:border-[#d72a22]"
+                className="w-full bg-[#1f1e1c] border border-[#2e2c29] rounded-xl py-4 pl-9 pr-4 text-white text-2xl font-black tabular-nums placeholder:text-[#4c4843] focus:outline-none focus:border-[#d72a22]"
               />
             </div>
           </div>
 
-          <div className="bg-[#1c1610] rounded-xl p-4 flex justify-between items-center">
+          <div className="bg-[#1f1e1c] rounded-xl p-4 flex justify-between items-center">
             <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">El cliente recibe</span>
             <span className="text-[#e5b85c] font-black text-xl tabular-nums">{coinsPreview.toLocaleString()} 🪙</span>
           </div>
@@ -188,7 +188,7 @@ export default function CashierPage() {
           <button
             onClick={handleGenerate}
             disabled={generating || coinsPreview < 1}
-            className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+            className="w-full bg-[#d72a22] text-white py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(215,42,34,0.3)] transition-all"
           >
             {generating ? 'Generando…' : 'Generar código'}
           </button>
@@ -200,7 +200,7 @@ export default function CashierPage() {
         <div className="space-y-2">
           <p className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em] px-1">Últimos códigos</p>
           {recent.map((c) => (
-            <div key={c.id} className="bg-[#1c1610] rounded-lg p-3 flex items-center justify-between">
+            <div key={c.id} className="bg-[#1f1e1c] rounded-lg p-3 flex items-center justify-between">
               <span className="text-[#efe6d2] font-black tabular-nums tracking-widest">{c.code}</span>
               <span className="text-[#c2b391] text-xs tabular-nums">{c.coinsValue.toLocaleString()} 🪙</span>
               <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full ${

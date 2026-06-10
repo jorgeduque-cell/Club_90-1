@@ -203,7 +203,7 @@ export default function AdminTeamsPage() {
         </div>
         <button
           onClick={openAddTeam}
-          className="bg-[#e5b85c] text-[#2a1c00] px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95 shadow-[0_4px_12px_rgba(0,230,1,0.25)]"
+          className="bg-[#d72a22] text-white px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95 shadow-[0_4px_12px_rgba(215,42,34,0.25)]"
         >
           <span className="material-symbols-outlined text-base">add</span>
           Nuevo Equipo
@@ -220,19 +220,19 @@ export default function AdminTeamsPage() {
               <div className="spinner" />
             </div>
           ) : teams.length === 0 ? (
-            <div className="bg-[#1c1610] rounded-xl p-8 text-center">
-              <span className="material-symbols-outlined text-4xl text-[#4a3f2c] mb-3 block">groups</span>
+            <div className="bg-[#1f1e1c] rounded-xl p-8 text-center">
+              <span className="material-symbols-outlined text-4xl text-[#4c4843] mb-3 block">groups</span>
               <p className="text-[#c2b391] text-sm font-bold mb-1">Sin equipos registrados</p>
               <p className="text-[#c2b391] text-[10px]">Crea el primer equipo con el botón de arriba</p>
             </div>
           ) : (
-            <div className="bg-[#140f0a] rounded-xl overflow-hidden">
+            <div className="bg-[#181817] rounded-xl overflow-hidden">
               {teams.map((team) => (
                 <button
                   key={team.id}
                   onClick={() => handleSelectTeam(team.id)}
-                  className={`w-full flex items-center justify-between p-4 border-b border-[#4a3f2c]/10 last:border-0 hover:bg-[#1c1610] transition-colors active:bg-[#2e2418] text-left ${
-                    selectedTeam?.id === team.id ? 'bg-[#1c1610] border-l-4 border-l-[#e5b85c]' : ''
+                  className={`w-full flex items-center justify-between p-4 border-b border-[#4c4843]/10 last:border-0 hover:bg-[#1f1e1c] transition-colors active:bg-[#2e2c29] text-left ${
+                    selectedTeam?.id === team.id ? 'bg-[#1f1e1c] border-l-4 border-l-[#e5b85c]' : ''
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -260,7 +260,7 @@ export default function AdminTeamsPage() {
                     >
                       <span className="material-symbols-outlined text-lg">delete</span>
                     </button>
-                    <span className="material-symbols-outlined text-[#4a3f2c] text-sm">chevron_right</span>
+                    <span className="material-symbols-outlined text-[#4c4843] text-sm">chevron_right</span>
                   </div>
                 </button>
               ))}
@@ -295,19 +295,19 @@ export default function AdminTeamsPage() {
               </div>
 
               {selectedTeam.players.length === 0 ? (
-                <div className="bg-[#1c1610] rounded-xl p-8 text-center">
-                  <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-2 block">person_off</span>
+                <div className="bg-[#1f1e1c] rounded-xl p-8 text-center">
+                  <span className="material-symbols-outlined text-3xl text-[#4c4843] mb-2 block">person_off</span>
                   <p className="text-[#c2b391] text-sm">Sin jugadores en la nómina</p>
                 </div>
               ) : (
-                <div className="bg-[#140f0a] rounded-xl overflow-hidden">
+                <div className="bg-[#181817] rounded-xl overflow-hidden">
                   {selectedTeam.players.map((player) => (
                     <div
                       key={player.id}
-                      className="flex items-center justify-between p-3.5 border-b border-[#4a3f2c]/10 last:border-0 hover:bg-[#1c1610] transition-colors"
+                      className="flex items-center justify-between p-3.5 border-b border-[#4c4843]/10 last:border-0 hover:bg-[#1f1e1c] transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full overflow-hidden bg-[#2e2418] flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-full overflow-hidden bg-[#2e2c29] flex items-center justify-center flex-shrink-0">
                           {player.photo_url ? (
                             <img src={player.photo_url} alt={player.name} className="w-full h-full object-cover" />
                           ) : (
@@ -346,8 +346,8 @@ export default function AdminTeamsPage() {
               )}
             </>
           ) : (
-            <div className="bg-[#1c1610] rounded-xl p-10 text-center">
-              <span className="material-symbols-outlined text-4xl text-[#4a3f2c] mb-3 block">touch_app</span>
+            <div className="bg-[#1f1e1c] rounded-xl p-10 text-center">
+              <span className="material-symbols-outlined text-4xl text-[#4c4843] mb-3 block">touch_app</span>
               <p className="text-[#c2b391] text-sm font-bold">Selecciona un equipo</p>
               <p className="text-[#c2b391] text-[10px] mt-1">Haz clic en un equipo para ver su nómina</p>
             </div>
@@ -362,8 +362,8 @@ export default function AdminTeamsPage() {
         <>
           <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={() => setModal({ type: 'none' })} />
           <div className="fixed inset-x-0 bottom-0 z-[95]">
-            <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
-              <div className="flex justify-center pt-3 pb-1"><div className="w-10 h-1 bg-[#4a3f2c] rounded-full" /></div>
+            <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
+              <div className="flex justify-center pt-3 pb-1"><div className="w-10 h-1 bg-[#4c4843] rounded-full" /></div>
               <div className="p-5 space-y-4">
                 <div className="flex justify-between items-center">
                   <h3 className="text-white font-black text-lg uppercase tracking-tight">
@@ -378,7 +378,7 @@ export default function AdminTeamsPage() {
                   <div>
                     <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">Nombre del Equipo *</label>
                     <input
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                       placeholder="Ej: Los Troncos FC"
                       value={teamForm.name}
                       onChange={(e) => setTeamForm({ ...teamForm, name: e.target.value })}
@@ -388,7 +388,7 @@ export default function AdminTeamsPage() {
                     <div>
                       <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">Abreviatura *</label>
                       <input
-                        className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none uppercase"
+                        className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none uppercase"
                         placeholder="Ej: LT"
                         maxLength={3}
                         value={teamForm.short_name}
@@ -405,7 +405,7 @@ export default function AdminTeamsPage() {
                           onChange={(e) => setTeamForm({ ...teamForm, color: e.target.value })}
                         />
                         <input
-                          className="flex-1 bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-mono text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                          className="flex-1 bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-mono text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                           value={teamForm.color}
                           onChange={(e) => setTeamForm({ ...teamForm, color: e.target.value })}
                         />
@@ -415,7 +415,7 @@ export default function AdminTeamsPage() {
                   <div>
                     <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">Liga</label>
                     <select
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                       value={teamForm.league}
                       onChange={(e) => setTeamForm({ ...teamForm, league: e.target.value })}
                     >
@@ -428,7 +428,7 @@ export default function AdminTeamsPage() {
                   <div>
                     <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">URL del Escudo (opcional)</label>
                     <input
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                       placeholder="https://..."
                       value={teamForm.logo_url || ''}
                       onChange={(e) => setTeamForm({ ...teamForm, logo_url: e.target.value })}
@@ -439,7 +439,7 @@ export default function AdminTeamsPage() {
                 <button
                   onClick={handleSaveTeam}
                   disabled={saving}
-                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-50"
+                  className="w-full bg-[#d72a22] text-white py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-50"
                 >
                   {saving ? 'Guardando...' : modal.type === 'addTeam' ? 'Crear Equipo' : 'Guardar Cambios'}
                 </button>
@@ -454,8 +454,8 @@ export default function AdminTeamsPage() {
         <>
           <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={() => setModal({ type: 'none' })} />
           <div className="fixed inset-x-0 bottom-0 z-[95]">
-            <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
-              <div className="flex justify-center pt-3 pb-1"><div className="w-10 h-1 bg-[#4a3f2c] rounded-full" /></div>
+            <div className="bg-[#181817] rounded-t-2xl shadow-2xl border-t border-[#2e2c29]">
+              <div className="flex justify-center pt-3 pb-1"><div className="w-10 h-1 bg-[#4c4843] rounded-full" /></div>
               <div className="p-5 space-y-4">
                 <div className="flex justify-between items-center">
                   <h3 className="text-white font-black text-lg uppercase tracking-tight">
@@ -470,7 +470,7 @@ export default function AdminTeamsPage() {
                   <div>
                     <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">Nombre Completo *</label>
                     <input
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                       placeholder="Ej: Juan Pérez"
                       value={playerForm.name}
                       onChange={(e) => setPlayerForm({ ...playerForm, name: e.target.value })}
@@ -480,7 +480,7 @@ export default function AdminTeamsPage() {
                     <div>
                       <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">Edad</label>
                       <input
-                        className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                        className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                         placeholder="Ej: 25"
                         type="number"
                         min="15"
@@ -493,7 +493,7 @@ export default function AdminTeamsPage() {
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
                           type="checkbox"
-                          className="w-5 h-5 rounded bg-[#1c1610] border-[#4a3f2c] text-[#e5b85c] focus:ring-[#e5b85c]/40 cursor-pointer"
+                          className="w-5 h-5 rounded bg-[#1f1e1c] border-[#4c4843] text-[#e5b85c] focus:ring-[#e5b85c]/40 cursor-pointer"
                           checked={playerForm.is_captain || false}
                           onChange={(e) => setPlayerForm({ ...playerForm, is_captain: e.target.checked })}
                         />
@@ -504,7 +504,7 @@ export default function AdminTeamsPage() {
                   <div>
                     <label className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest block mb-1">URL de Foto (opcional)</label>
                     <input
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-xl py-3 px-4 text-white text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-xl py-3 px-4 text-white text-sm focus:ring-1 focus:ring-[#d72a22]/40 outline-none"
                       placeholder="https://..."
                       value={playerForm.photo_url || ''}
                       onChange={(e) => setPlayerForm({ ...playerForm, photo_url: e.target.value })}
@@ -530,7 +530,7 @@ export default function AdminTeamsPage() {
         <>
           <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={() => setModal({ type: 'none' })} />
           <div className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-[95] max-w-sm mx-auto">
-            <div className="bg-[#1c1610] rounded-2xl p-6 shadow-2xl border border-[#2e2418] text-center space-y-4">
+            <div className="bg-[#1f1e1c] rounded-2xl p-6 shadow-2xl border border-[#2e2c29] text-center space-y-4">
               <div className="w-16 h-16 bg-[#ffb4ab]/10 rounded-full flex items-center justify-center mx-auto">
                 <span className="material-symbols-outlined text-[#ffb4ab] text-3xl">warning</span>
               </div>
@@ -542,7 +542,7 @@ export default function AdminTeamsPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setModal({ type: 'none' })}
-                  className="flex-1 bg-[#2e2418] text-[#c2b391] py-3 rounded-xl font-bold text-sm active:scale-95"
+                  className="flex-1 bg-[#2e2c29] text-[#c2b391] py-3 rounded-xl font-bold text-sm active:scale-95"
                 >
                   Cancelar
                 </button>

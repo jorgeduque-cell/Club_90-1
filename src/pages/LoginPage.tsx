@@ -103,7 +103,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0805] flex flex-col items-center justify-center px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#131312] flex flex-col items-center justify-center px-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#d72a22]/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[#e5b85c]/5 blur-[100px] rounded-full pointer-events-none" />
@@ -111,8 +111,8 @@ export default function LoginPage() {
       {/* Logo */}
       <div className="relative z-10 text-center mb-10">
         {logoOk ? (
-          <img src="/logo.png" alt="Club PyP" onError={() => setLogoOk(false)}
-               className="h-24 mx-auto object-contain mb-1" />
+          <img src="/logo_completo_sin_fondo.png" alt="Club PyP — Pachanga y Pochola" onError={() => setLogoOk(false)}
+               className="h-32 mx-auto object-contain mb-1" />
         ) : (
           <h1 className="text-5xl font-black text-[#e5b85c] uppercase tracking-tighter italic">
             CLUB PyP
@@ -125,12 +125,12 @@ export default function LoginPage() {
 
       {/* Tab Switcher */}
       <div className="relative z-10 w-full max-w-sm mb-6">
-        <div className="flex bg-[#1c1610] rounded-lg p-1">
+        <div className="flex bg-[#1f1e1c] rounded-lg p-1">
           <button
             onClick={() => switchMode('login')}
             className={`flex-1 py-2.5 rounded-md text-xs font-black uppercase tracking-widest transition-all ${
               mode === 'login'
-                ? 'bg-[#e5b85c] text-[#2a1c00] shadow-md'
+                ? 'bg-[#d72a22] text-white shadow-md'
                 : 'text-[#c2b391] hover:text-white'
             }`}
           >
@@ -163,7 +163,7 @@ export default function LoginPage() {
               value={phone}
               onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
               placeholder="300 123 4567"
-              className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 pl-12 pr-4 text-white font-bold text-lg focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
+              className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-lg py-3.5 pl-12 pr-4 text-white font-bold text-lg focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
             />
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function LoginPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Ej: Juan, La Máquina, El Preciso..."
               maxLength={30}
-              className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
+              className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-lg py-3.5 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
             />
           </div>
         )}
@@ -197,7 +197,7 @@ export default function LoginPage() {
             placeholder="••••"
             maxLength={20}
             onKeyDown={(e) => e.key === 'Enter' && (mode === 'login' ? handleLogin() : handleRegister())}
-            className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 px-4 text-white font-black text-2xl text-center tracking-[0.5em] focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
+            className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-lg py-3.5 px-4 text-white font-black text-2xl text-center tracking-[0.5em] focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
           />
           <p className="text-[#c2b391] text-[10px] text-center">
             {mode === 'register' ? 'Mínimo 4 caracteres. No lo olvides.' : 'El PIN que creaste al registrarte'}
@@ -210,7 +210,7 @@ export default function LoginPage() {
           disabled={loading}
           className={`w-full font-black text-sm py-4 rounded-lg uppercase tracking-widest active:scale-[0.98] transition-all disabled:opacity-50 shadow-lg ${
             mode === 'login'
-              ? 'bg-[#e5b85c] text-[#140f0a] shadow-[0_4px_16px_rgba(0,230,1,0.3)]'
+              ? 'bg-[#e5b85c] text-[#181817] shadow-[0_4px_16px_rgba(215,42,34,0.3)]'
               : 'bg-[#d72a22] text-white shadow-[0_4px_16px_rgba(20,117,225,0.3)]'
           }`}
         >
@@ -235,13 +235,13 @@ export default function LoginPage() {
         {import.meta.env.DEV && (
           <>
             <div className="flex items-center gap-4 py-2">
-              <div className="flex-1 h-px bg-[#4a3f2c]/30" />
+              <div className="flex-1 h-px bg-[#4c4843]/30" />
               <span className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest">o</span>
-              <div className="flex-1 h-px bg-[#4a3f2c]/30" />
+              <div className="flex-1 h-px bg-[#4c4843]/30" />
             </div>
             <button
               onClick={() => enterDemoMode()}
-              className="w-full bg-[#2e2418] text-[#c2b391] font-bold text-xs py-4 rounded-lg uppercase tracking-widest hover:bg-[#261d12] hover:text-white transition-all active:scale-[0.98] border border-[#4a3f2c]/20"
+              className="w-full bg-[#2e2c29] text-[#c2b391] font-bold text-xs py-4 rounded-lg uppercase tracking-widest hover:bg-[#262422] hover:text-white transition-all active:scale-[0.98] border border-[#4c4843]/20"
             >
               <span className="flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined text-sm">play_arrow</span>

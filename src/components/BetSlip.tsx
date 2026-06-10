@@ -85,9 +85,9 @@ export default function BetSlip() {
 
       {/* Sheet */}
       <div className="fixed inset-x-0 bottom-0 z-[60] transform transition-transform duration-300">
-        <div className="bg-[#1c1610] rounded-t-2xl shadow-[0_-12px_40px_rgba(0,0,0,0.6)] border-t border-[#2e2418]">
+        <div className="bg-[#1f1e1c] rounded-t-2xl shadow-[0_-12px_40px_rgba(0,0,0,0.6)] border-t border-[#2e2c29]">
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
 
           <div className="p-4 space-y-4">
@@ -106,7 +106,7 @@ export default function BetSlip() {
             </div>
 
             {/* Selection */}
-            <div className="bg-[#140f0a] p-4 rounded-xl border-l-4 border-[#e5b85c]">
+            <div className="bg-[#181817] p-4 rounded-xl border-l-4 border-[#e5b85c]">
               <div className="flex justify-between items-start mb-1">
                 <div>
                   <span className="text-white font-bold text-sm">{selection.predictionLabel}</span>
@@ -120,7 +120,7 @@ export default function BetSlip() {
                 <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1 relative">
                     <input
-                      className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 pl-4 pr-12 text-white font-bold focus:ring-1 focus:ring-[#e5b85c]/40 focus:border-[#e5b85c]/40 text-lg outline-none tabular-nums"
+                      className="w-full bg-[#1f1e1c] border border-[#4c4843]/30 rounded-lg py-3.5 pl-4 pr-12 text-white font-bold focus:ring-1 focus:ring-[#e5b85c]/40 focus:border-[#e5b85c]/40 text-lg outline-none tabular-nums"
                       placeholder="Monto"
                       type="text"
                       inputMode="numeric"
@@ -132,13 +132,13 @@ export default function BetSlip() {
                   <div className="flex gap-1">
                     <button
                       onClick={() => handleQuickStake('500')}
-                      className="bg-[#2e2418] text-[#b8a98a] px-2 py-3.5 rounded-lg text-[10px] font-bold hover:text-white hover:bg-[#3a2d1c] transition-colors active:scale-95"
+                      className="bg-[#2e2c29] text-[#b8a98a] px-2 py-3.5 rounded-lg text-[10px] font-bold hover:text-white hover:bg-[#393633] transition-colors active:scale-95"
                     >
                       +500
                     </button>
                     <button
                       onClick={() => handleQuickStake('1000')}
-                      className="bg-[#2e2418] text-[#b8a98a] px-2 py-3.5 rounded-lg text-[10px] font-bold hover:text-white hover:bg-[#3a2d1c] transition-colors active:scale-95"
+                      className="bg-[#2e2c29] text-[#b8a98a] px-2 py-3.5 rounded-lg text-[10px] font-bold hover:text-white hover:bg-[#393633] transition-colors active:scale-95"
                     >
                       +1K
                     </button>
@@ -151,7 +151,7 @@ export default function BetSlip() {
                   </div>
                 </div>
               ) : (
-                <div className="mt-4 bg-[#1c1610]/50 border border-[#ffd700]/30 rounded-lg p-3 text-center">
+                <div className="mt-4 bg-[#1f1e1c]/50 border border-[#ffd700]/30 rounded-lg p-3 text-center">
                   <span className="material-symbols-outlined text-[#ffd700] text-3xl mb-1 drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">lock</span>
                   <p className="text-white text-xs font-bold uppercase tracking-widest">Acceso Bloqueado</p>
                   <p className="text-[#b8a98a] text-[9px] mt-1 px-4">Necesitas el Pase Premium para realizar pronósticos.</p>
@@ -187,7 +187,7 @@ export default function BetSlip() {
               <span className="text-[#b8a98a] text-[11px] font-bold uppercase tracking-widest">
                 {(!live || profile?.accountTier === 'PREMIUM') ? 'Beneficio Estimado' : 'Beneficio si fueras Premium'}
               </span>
-              <span className="text-[#e5b85c] font-black text-2xl tracking-tighter tabular-nums drop-shadow-[0_0_8px_rgba(0,230,1,0.2)]">
+              <span className="text-[#e5b85c] font-black text-2xl tracking-tighter tabular-nums drop-shadow-[0_0_8px_rgba(215,42,34,0.2)]">
                 {(!live || profile?.accountTier === 'PREMIUM') ? estimatedReturn : (500 * selection.multiplier).toFixed(2)} 🪙
               </span>
             </div>
@@ -211,10 +211,10 @@ export default function BetSlip() {
                 disabled={!isValid}
                 className={`w-full font-black text-base py-4 rounded-xl uppercase tracking-widest transition-all duration-200 shadow-lg ${
                   !isValid
-                    ? 'bg-[#2e2418] text-[#c2b391]/50 cursor-not-allowed shadow-none'
+                    ? 'bg-[#2e2c29] text-[#c2b391]/50 cursor-not-allowed shadow-none'
                     : confirming
-                    ? 'bg-[#ff9800] text-[#140f0a] active:scale-[0.98] shadow-[0_4px_16px_rgba(255,152,0,0.3)] animate-pulse'
-                    : 'bg-[#e5b85c] text-[#140f0a] active:scale-[0.98] shadow-[0_4px_16px_rgba(0,230,1,0.3)]'
+                    ? 'bg-[#ff9800] text-[#181817] active:scale-[0.98] shadow-[0_4px_16px_rgba(255,152,0,0.3)] animate-pulse'
+                    : 'bg-[#e5b85c] text-[#181817] active:scale-[0.98] shadow-[0_4px_16px_rgba(215,42,34,0.3)]'
                 }`}
               >
                 {loading ? '⏳ Procesando...' : confirming ? '¿Confirmar Pronóstico?' : `Pronosticar ${numAmount > 0 ? numAmount.toLocaleString() : ''} 🪙`}

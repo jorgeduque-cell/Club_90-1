@@ -54,10 +54,10 @@ export default function TopUpModal() {
 
       {/* Modal */}
       <div className="fixed inset-x-0 bottom-0 z-[75] max-h-[90vh] overflow-y-auto">
-        <div className="bg-[#140f0a] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2418]">
+        <div className="bg-[#181817] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2c29]">
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
+            <div className="w-10 h-1 bg-[#4c4843] rounded-full" />
           </div>
 
           <div className="p-5 space-y-5">
@@ -90,7 +90,7 @@ export default function TopUpModal() {
             {step === 'info' && (
               <div className="space-y-4">
                 {/* Fixed Package Card */}
-                <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-xl p-5 border border-[#d72a22]/20 relative overflow-hidden">
+                <div className="bg-gradient-to-br from-[#1f1e1c] to-[#2e2c29] rounded-xl p-5 border border-[#d72a22]/20 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-[#e5b85c]/5 rounded-full blur-2xl" />
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
@@ -106,7 +106,7 @@ export default function TopUpModal() {
                         {RECHARGE_COINS.toLocaleString()} 🪙
                       </p>
                       <p className="text-[#c2b391] text-xs font-bold">PyP Coins</p>
-                      <div className="h-px bg-[#4a3f2c]/20 my-3" />
+                      <div className="h-px bg-[#4c4843]/20 my-3" />
                       <p className="text-white text-xl font-black tabular-nums">
                       {RECHARGE_COP.toLocaleString()} COP
                       </p>
@@ -135,7 +135,7 @@ export default function TopUpModal() {
                       color: '#f0d9a8',
                     },
                   ].map((rule) => (
-                    <div key={rule.icon} className="bg-[#1c1610] rounded-lg p-3 flex items-center gap-3">
+                    <div key={rule.icon} className="bg-[#1f1e1c] rounded-lg p-3 flex items-center gap-3">
                       <span className="material-symbols-outlined text-sm" style={{ color: rule.color }}>{rule.icon}</span>
                       <span className="text-[#efe6d2] text-[11px] font-medium">{rule.text}</span>
                     </div>
@@ -146,7 +146,7 @@ export default function TopUpModal() {
                 {allowed ? (
                   <button
                     onClick={() => setStep('method')}
-                    className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest bg-[#e5b85c] text-[#2a1c00] active:scale-[0.98] shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+                    className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest bg-[#d72a22] text-white active:scale-[0.98] shadow-[0_4px_16px_rgba(215,42,34,0.3)] transition-all"
                   >
                     Comprar Vida Extra
                   </button>
@@ -169,7 +169,7 @@ export default function TopUpModal() {
                   <button
                     key={pm.id}
                     onClick={() => { setSelectedMethod(pm.id); setStep('confirm'); }}
-                    className="w-full bg-[#1c1610] rounded-xl p-4 flex items-center gap-4 transition-all active:scale-[0.98] hover:bg-[#2e2418]"
+                    className="w-full bg-[#1f1e1c] rounded-xl p-4 flex items-center gap-4 transition-all active:scale-[0.98] hover:bg-[#2e2c29]"
                   >
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center"
@@ -183,7 +183,7 @@ export default function TopUpModal() {
                       <p className="text-white font-bold text-sm">{pm.name}</p>
                       <p className="text-[#c2b391] text-[10px]">Recarga instantánea</p>
                     </div>
-                    <span className="material-symbols-outlined text-[#4a3f2c]">chevron_right</span>
+                    <span className="material-symbols-outlined text-[#4c4843]">chevron_right</span>
                   </button>
                 ))}
               </div>
@@ -193,23 +193,23 @@ export default function TopUpModal() {
             {step === 'confirm' && (
               <div className="space-y-5">
                 {/* Summary Card */}
-                <div className="bg-[#1c1610] rounded-xl p-5 space-y-4">
-                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                <div className="bg-[#1f1e1c] rounded-xl p-5 space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4c4843]/20">
                     <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Recibes</span>
                     <span className="text-[#e5b85c] text-2xl font-black tabular-nums">{RECHARGE_COINS.toLocaleString()} 🪙</span>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4c4843]/20">
                     <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Pagas</span>
                     <span className="text-white font-black text-lg tabular-nums">${RECHARGE_COP.toLocaleString()} COP</span>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4c4843]/20">
                     <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Método</span>
                     <div className="flex items-center gap-2">
                       <span className="material-symbols-outlined text-sm" style={{ color: method.color }}>{method.icon}</span>
                       <span className="text-white font-bold text-sm">{method.name}</span>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4c4843]/20">
                     <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">XP Bonus</span>
                     <span className="text-[#f0d9a8] font-bold text-sm">+{Math.floor(RECHARGE_COINS * 0.1).toLocaleString()} XP</span>
                   </div>
@@ -227,7 +227,7 @@ export default function TopUpModal() {
 
                 <button
                   onClick={handleConfirm}
-                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.3)]"
+                  className="w-full bg-[#d72a22] text-white py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(215,42,34,0.3)]"
                 >
                   Confirmar Recarga
                 </button>
