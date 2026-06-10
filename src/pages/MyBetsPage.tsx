@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — MyBetsPage (Fully Functional)
+// CLUB PYP — MyBetsPage (Fully Functional)
 // ============================================
 
 import { useMemo } from 'react';
@@ -66,27 +66,27 @@ export default function MyBetsPage() {
   }), [bets]);
 
   return (
-    <main className="pb-24 min-h-screen bg-[#0f212e]">
+    <main className="pb-24 min-h-screen bg-[#140f0a]">
       {/* Stats Summary */}
-      <div className="bg-[#1a2c39] px-4 py-4">
+      <div className="bg-[#1c1610] px-4 py-4">
         <div className="grid grid-cols-3 gap-3">
           <div className="text-center">
-            <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
+            <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
             <p className="text-white font-black text-xl tabular-nums">{stats.total}</p>
           </div>
           <div className="text-center">
-            <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Arriesgado</p>
+            <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">En juego</p>
             <p className="text-white font-black text-xl tabular-nums">{stats.totalStaked.toLocaleString()}</p>
           </div>
           <div className="text-center">
-            <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Ganado</p>
-            <p className="text-[#77ff61] font-black text-xl tabular-nums">{stats.totalWon.toLocaleString()}</p>
+            <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Ganado</p>
+            <p className="text-[#f2d27a] font-black text-xl tabular-nums">{stats.totalWon.toLocaleString()}</p>
           </div>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <div className="sticky top-16 z-40 bg-[#0f212e]/95 backdrop-blur-md px-4 py-3">
+      <div className="sticky top-16 z-40 bg-[#140f0a]/95 backdrop-blur-md px-4 py-3">
         <div className="flex gap-2 overflow-x-auto scrollbar-hide">
           {FILTERS.map((f) => {
             const count = f === 'All' ? bets.length : bets.filter((b) => b.status === f.toUpperCase()).length;
@@ -96,14 +96,14 @@ export default function MyBetsPage() {
                 onClick={() => setPredictionFilter(f)}
                 className={`px-4 py-2 rounded-lg font-bold text-xs whitespace-nowrap transition-all active:scale-95 flex items-center gap-1.5 ${
                   predictionFilter === f
-                    ? 'bg-[#1475e1] text-white'
-                    : 'bg-[#253744] text-[#c1c6d5] hover:bg-[#2a3b49]'
+                    ? 'bg-[#d72a22] text-white'
+                    : 'bg-[#2e2418] text-[#c2b391] hover:bg-[#261d12]'
                 }`}
               >
                 {f === 'All' ? 'Todas' : f === 'Pending' ? 'Pendientes' : f === 'Won' ? 'Ganadas' : 'Perdidas'}
                 {count > 0 && (
                   <span className={`text-[8px] font-black rounded-full w-4 h-4 flex items-center justify-center ${
-                    predictionFilter === f ? 'bg-white/20' : 'bg-[#414753]'
+                    predictionFilter === f ? 'bg-white/20' : 'bg-[#4a3f2c]'
                   }`}>
                     {count}
                   </span>
@@ -117,14 +117,14 @@ export default function MyBetsPage() {
       {/* Empty State */}
       {bets.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 px-8">
-          <span className="material-symbols-outlined text-5xl text-[#414753] mb-4">receipt_long</span>
+          <span className="material-symbols-outlined text-5xl text-[#4a3f2c] mb-4">receipt_long</span>
           <h3 className="text-white font-bold text-lg mb-2">Sin pronósticos aún</h3>
-          <p className="text-[#c1c6d5] text-sm text-center mb-6">
+          <p className="text-[#c2b391] text-sm text-center mb-6">
             ¡Selecciona un partido y haz tu primer pronóstico para empezar!
           </p>
           <button
             onClick={() => navigate('/')}
-            className="bg-[#00e601] text-[#013a00] px-8 py-3 rounded-xl font-black uppercase text-sm tracking-wider active:scale-95 transition-all"
+            className="bg-[#e5b85c] text-[#2a1c00] px-8 py-3 rounded-xl font-black uppercase text-sm tracking-wider active:scale-95 transition-all"
           >
             Ver Partidos
           </button>
@@ -133,8 +133,8 @@ export default function MyBetsPage() {
 
       {filtered.length === 0 && bets.length > 0 && (
         <div className="flex flex-col items-center justify-center py-16 px-8">
-          <span className="material-symbols-outlined text-3xl text-[#414753] mb-3">filter_list</span>
-          <p className="text-[#c1c6d5] text-sm">No hay pronósticos con este filtro</p>
+          <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-3">filter_list</span>
+          <p className="text-[#c2b391] text-sm">No hay pronósticos con este filtro</p>
         </div>
       )}
 
@@ -143,7 +143,7 @@ export default function MyBetsPage() {
         {filtered.map((bet) => (
           <div
             key={bet.id}
-            className={`bg-[#1a2c39] rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${
+            className={`bg-[#1c1610] rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${
               bet.status === 'LOST' ? 'opacity-70' : ''
             }`}
           >
@@ -152,23 +152,23 @@ export default function MyBetsPage() {
               <div className="flex justify-between items-start">
                 <div className="space-y-0.5 flex-1 min-w-0">
                   <h3
-                    className="text-sm font-extrabold text-white tracking-tight leading-tight truncate cursor-pointer hover:text-[#aac7ff]"
+                    className="text-sm font-extrabold text-white tracking-tight leading-tight truncate cursor-pointer hover:text-[#f0d9a8]"
                     onClick={() => navigate(`/match/${bet.matchId}`)}
                   >
                     {bet.match}
                   </h3>
-                  <p className="text-[10px] text-[#c1c6d5] font-medium">{bet.league}</p>
+                  <p className="text-[10px] text-[#c2b391] font-medium">{bet.league}</p>
                 </div>
                 <div className="flex items-center gap-1.5 ml-2 flex-shrink-0">
                   {bet.isLive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#77ff61] shadow-[0_0_8px_rgba(119,255,97,0.5)] animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f2d27a] shadow-[0_0_8px_rgba(119,255,97,0.5)] animate-pulse" />
                   )}
                   <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider ${
                     bet.status === 'WON'
-                      ? 'bg-[#00e601]/10 text-[#77ff61]'
+                      ? 'bg-[#e5b85c]/10 text-[#f2d27a]'
                       : bet.status === 'LOST'
                       ? 'bg-[#93000a]/20 text-[#ffb4ab]'
-                      : 'bg-[#1475e1]/10 text-[#aac7ff]'
+                      : 'bg-[#d72a22]/10 text-[#f0d9a8]'
                   }`}>
                     {bet.status === 'WON' ? 'Ganada' : bet.status === 'LOST' ? 'Perdida' : 'Pendiente'}
                   </span>
@@ -176,51 +176,51 @@ export default function MyBetsPage() {
               </div>
 
               {/* Prediction */}
-              <div className="bg-[#0f212e] rounded-lg px-3 py-2 flex items-center justify-between">
-                <span className="text-[#aac7ff] text-xs font-bold">{bet.predictionLabel}</span>
+              <div className="bg-[#140f0a] rounded-lg px-3 py-2 flex items-center justify-between">
+                <span className="text-[#f0d9a8] text-xs font-bold">{bet.predictionLabel}</span>
                 <span className="text-white font-black tabular-nums">@ {bet.multiplier.toFixed(2)}</span>
               </div>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <span className="text-[9px] uppercase font-bold text-[#c1c6d5] tracking-widest">Monto</span>
-                  <p className="text-sm font-bold text-white tabular-nums">{bet.amount.toLocaleString()} CL</p>
+                  <span className="text-[9px] uppercase font-bold text-[#c2b391] tracking-widest">Monto</span>
+                  <p className="text-sm font-bold text-white tabular-nums">{bet.amount.toLocaleString()} PyP</p>
                 </div>
                 <div>
-                  <span className="text-[9px] uppercase font-bold text-[#c1c6d5] tracking-widest">Factor</span>
-                  <p className="text-sm font-bold text-[#aac7ff] tabular-nums">{bet.multiplier.toFixed(2)}</p>
+                  <span className="text-[9px] uppercase font-bold text-[#c2b391] tracking-widest">Factor</span>
+                  <p className="text-sm font-bold text-[#f0d9a8] tabular-nums">{bet.multiplier.toFixed(2)}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[9px] uppercase font-bold text-[#c1c6d5] tracking-widest">
+                  <span className="text-[9px] uppercase font-bold text-[#c2b391] tracking-widest">
                     {bet.status === 'PENDING' ? 'Est. Pago' : 'Pago'}
                   </span>
                   <p className={`text-sm font-bold tabular-nums ${
-                    bet.status === 'WON' ? 'text-[#77ff61]' : bet.status === 'LOST' ? 'text-[#ffb4ab]' : 'text-white'
+                    bet.status === 'WON' ? 'text-[#f2d27a]' : bet.status === 'LOST' ? 'text-[#ffb4ab]' : 'text-white'
                   }`}>
-                    {bet.status === 'LOST' ? '0' : bet.estimatedReturn.toLocaleString()} CL
+                    {bet.status === 'LOST' ? '0' : bet.estimatedReturn.toLocaleString()} PyP
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="bg-[#253744]/30 px-4 py-2.5 flex justify-between items-center">
-              <span className="text-[10px] text-[#c1c6d5] flex items-center gap-1">
+            <div className="bg-[#2e2418]/30 px-4 py-2.5 flex justify-between items-center">
+              <span className="text-[10px] text-[#c2b391] flex items-center gap-1">
                 <span className="material-symbols-outlined text-xs">confirmation_number</span>
                 {bet.id.slice(0, 12)}
               </span>
               {bet.earlyReturn ? (
                 <button
                   onClick={() => earlyReturn(bet.id)}
-                  className="bg-[#1475e1] text-white px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all shadow-md hover:bg-[#1a8af7]"
+                  className="bg-[#d72a22] text-white px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all shadow-md hover:bg-[#1a8af7]"
                 >
-                  Retiro Anticipado {bet.earlyReturn.toLocaleString()} CL
+                  Retiro Anticipado {bet.earlyReturn.toLocaleString()} PyP
                 </button>
               ) : (
                 <button
                   onClick={() => navigate(`/match/${bet.matchId}`)}
-                  className="text-[#aac7ff] text-[10px] font-bold uppercase tracking-widest hover:underline flex items-center gap-1"
+                  className="text-[#f0d9a8] text-[10px] font-bold uppercase tracking-widest hover:underline flex items-center gap-1"
                 >
                   Detalles
                   <span className="material-symbols-outlined text-xs">chevron_right</span>

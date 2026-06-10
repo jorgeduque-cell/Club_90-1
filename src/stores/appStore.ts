@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — App Store (Zustand - Local State)
+// CLUB PYP — App Store (Zustand - Local State)
 // ============================================
 // Manages ALL app state for Demo Mode.
 // When Supabase is configured, hooks will use
@@ -421,7 +421,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
       label: `Pronóstico: ${predictionLabels[prediction]}`,
       date: dateStr,
       amount: -amount,
-      amountLabel: `-${amount.toLocaleString()} CL`,
+      amountLabel: `-${amount.toLocaleString()} PyP`,
       icon: 'sports_soccer',
       category: 'prediction_submit',
     };
@@ -435,7 +435,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
       predictionSlipSelection: null,
     });
 
-    state.addToast('success', `Pronóstico de ${amount.toLocaleString()} CL registrado exitosamente`);
+    state.addToast('success', `Pronóstico de ${amount.toLocaleString()} PyP registrado exitosamente`);
     return true;
   },
 
@@ -458,7 +458,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
       label: `Retiro Anticipado: ${pred.match}`,
       date: dateStr,
       amount: returnAmount,
-      amountLabel: `+${returnAmount.toLocaleString()} CL`,
+      amountLabel: `+${returnAmount.toLocaleString()} PyP`,
       icon: 'account_balance_wallet',
       category: 'early_return',
     };
@@ -471,15 +471,15 @@ export const useAppStore = create<AppStore>((set, get) => ({
       transactions: [tx, ...state.transactions],
     });
 
-    state.addToast('success', `Retiro Anticipado exitoso: +${returnAmount.toLocaleString()} CL`);
+    state.addToast('success', `Retiro Anticipado exitoso: +${returnAmount.toLocaleString()} PyP`);
     return true;
   },
 
   // ─ Transactions ─
   transactions: [
-    { id: 'tx-1', type: 'credit', label: 'Bono de Bienvenida', date: 'Mar 30 • 14:20', amount: 10000, amountLabel: '+10,000 CL', icon: 'redeem', category: 'bonus' },
-    { id: 'tx-2', type: 'credit', label: 'Racha Diaria de Inicio', date: 'Mar 29 • 00:05', amount: 100, amountLabel: '+100 CL', icon: 'celebration', category: 'bonus' },
-    { id: 'tx-3', type: 'credit', label: 'Racha de 3 Aciertos', date: 'Mar 28 • 22:45', amount: 500, amountLabel: '+500 CL', icon: 'emoji_events', category: 'bonus' },
+    { id: 'tx-1', type: 'credit', label: 'Bono de Bienvenida', date: 'Mar 30 • 14:20', amount: 10000, amountLabel: '+10,000 PyP', icon: 'redeem', category: 'bonus' },
+    { id: 'tx-2', type: 'credit', label: 'Racha Diaria de Inicio', date: 'Mar 29 • 00:05', amount: 100, amountLabel: '+100 PyP', icon: 'celebration', category: 'bonus' },
+    { id: 'tx-3', type: 'credit', label: 'Racha de 3 Aciertos', date: 'Mar 28 • 22:45', amount: 500, amountLabel: '+500 PyP', icon: 'emoji_events', category: 'bonus' },
   ],
 
   // ─ Leaderboard ─
@@ -574,7 +574,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
       label: `Recarga vía ${method}`,
       date: dateStr,
       amount: RECHARGE_COINS,
-      amountLabel: `+${RECHARGE_COINS.toLocaleString()} CL`,
+      amountLabel: `+${RECHARGE_COINS.toLocaleString()} PyP`,
       icon: 'account_balance_wallet',
       category: 'topup',
     };
@@ -590,7 +590,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
       lastRechargeWeek: currentWeek,
     });
 
-    state.addToast('success', `+${RECHARGE_COINS.toLocaleString()} 🪙 CL COINS recargados exitosamente`);
+    state.addToast('success', `+${RECHARGE_COINS.toLocaleString()} 🪙 PyP Coins recargados exitosamente`);
     return true;
   },
 

@@ -28,29 +28,29 @@ function ReceiptModal({ receipt, onClose }: { receipt: RedeemReceipt; onClose: (
     >
       <div 
         className="w-full max-w-sm rounded-2xl overflow-hidden"
-        style={{ backgroundColor: '#0f1c28', border: '1px solid rgba(0,230,1,0.3)' }}
+        style={{ backgroundColor: '#130e09', border: '1px solid rgba(0,230,1,0.3)' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
         <div 
           className="text-center py-5 px-6"
-          style={{ background: 'linear-gradient(135deg, #00e601 0%, #00b301 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #e5b85c 0%, #c79a3e 100%)' }}
         >
           <div className="text-4xl mb-2">✅</div>
-          <h2 className="text-xl font-black uppercase tracking-tight" style={{ color: '#013a00' }}>
+          <h2 className="text-xl font-black uppercase tracking-tight" style={{ color: '#2a1c00' }}>
             ¡Canje Exitoso!
           </h2>
           <p className="text-xs mt-1 font-semibold" style={{ color: '#015600' }}>
-            Comprobante de Canje — Club 90+1
+            Comprobante de Canje — Club PyP
           </p>
         </div>
 
         {/* Receipt Body */}
         <div className="p-5 space-y-4">
           {/* Item */}
-          <div className="flex justify-between items-center py-3 px-4 rounded-xl" style={{ backgroundColor: '#1a2c39' }}>
+          <div className="flex justify-between items-center py-3 px-4 rounded-xl" style={{ backgroundColor: '#1c1610' }}>
             <div>
-              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#6a8fa8' }}>Producto</p>
+              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#a98a5a' }}>Producto</p>
               <p className="text-white text-sm font-bold mt-0.5">{receipt.itemName}</p>
             </div>
             <span className="text-2xl">🎁</span>
@@ -58,12 +58,12 @@ function ReceiptModal({ receipt, onClose }: { receipt: RedeemReceipt; onClose: (
 
           {/* Details Grid */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="py-3 px-4 rounded-xl" style={{ backgroundColor: '#1a2c39' }}>
-              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#6a8fa8' }}>Costo</p>
-              <p className="text-white text-sm font-bold mt-0.5">{receipt.cost.toLocaleString()} CL</p>
+            <div className="py-3 px-4 rounded-xl" style={{ backgroundColor: '#1c1610' }}>
+              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#a98a5a' }}>Costo</p>
+              <p className="text-white text-sm font-bold mt-0.5">{receipt.cost.toLocaleString()} PyP</p>
             </div>
-            <div className="py-3 px-4 rounded-xl" style={{ backgroundColor: '#1a2c39' }}>
-              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#6a8fa8' }}>Fecha</p>
+            <div className="py-3 px-4 rounded-xl" style={{ backgroundColor: '#1c1610' }}>
+              <p className="text-[10px] uppercase tracking-wider" style={{ color: '#a98a5a' }}>Fecha</p>
               <p className="text-white text-sm font-bold mt-0.5">{receipt.date}</p>
             </div>
           </div>
@@ -72,27 +72,27 @@ function ReceiptModal({ receipt, onClose }: { receipt: RedeemReceipt; onClose: (
           <div 
             className="text-center py-4 px-4 rounded-xl"
             style={{ 
-              backgroundColor: '#1a2c39', 
+              backgroundColor: '#1c1610', 
               border: '2px dashed rgba(0,230,1,0.4)' 
             }}
           >
-            <p className="text-[10px] uppercase tracking-wider mb-2" style={{ color: '#6a8fa8' }}>
+            <p className="text-[10px] uppercase tracking-wider mb-2" style={{ color: '#a98a5a' }}>
               Código de Canje
             </p>
             <p 
               className="text-2xl font-black tracking-widest"
-              style={{ color: '#00e601', fontFamily: 'monospace' }}
+              style={{ color: '#e5b85c', fontFamily: 'monospace' }}
             >
               {receipt.code}
             </p>
-            <p className="text-[10px] mt-2" style={{ color: '#6a8fa8' }}>
+            <p className="text-[10px] mt-2" style={{ color: '#a98a5a' }}>
               Muestra este código en la tienda
             </p>
           </div>
 
           {/* User Info */}
           <div className="text-center py-2">
-            <p className="text-[10px] uppercase tracking-wider" style={{ color: '#6a8fa8' }}>
+            <p className="text-[10px] uppercase tracking-wider" style={{ color: '#a98a5a' }}>
               Canjeado por
             </p>
             <p className="text-white text-sm font-semibold mt-0.5">{receipt.userName}</p>
@@ -105,19 +105,19 @@ function ReceiptModal({ receipt, onClose }: { receipt: RedeemReceipt; onClose: (
             onClick={() => {
               if (navigator.share) {
                 navigator.share({
-                  title: 'Comprobante Club 90+1',
+                  title: 'Comprobante Club PyP',
                   text: `🎁 Canje: ${receipt.itemName}\n📋 Código: ${receipt.code}\n📅 ${receipt.date}\n👤 ${receipt.userName}`
                 }).catch(() => {});
               } else {
                 navigator.clipboard.writeText(
-                  `Comprobante Club 90+1\nProducto: ${receipt.itemName}\nCódigo: ${receipt.code}\nFecha: ${receipt.date}\nUsuario: ${receipt.userName}`
+                  `Comprobante Club PyP\nProducto: ${receipt.itemName}\nCódigo: ${receipt.code}\nFecha: ${receipt.date}\nUsuario: ${receipt.userName}`
                 );
               }
             }}
             className="w-full py-3 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-95"
             style={{ 
-              backgroundColor: '#1a2c39', 
-              color: '#aac7ff',
+              backgroundColor: '#1c1610', 
+              color: '#f0d9a8',
               border: '1px solid rgba(170,199,255,0.2)'
             }}
           >
@@ -129,8 +129,8 @@ function ReceiptModal({ receipt, onClose }: { receipt: RedeemReceipt; onClose: (
             onClick={onClose}
             className="w-full py-3 rounded-xl font-black text-sm uppercase tracking-wider transition-all active:scale-95"
             style={{ 
-              background: 'linear-gradient(135deg, #00e601 0%, #00b301 100%)',
-              color: '#013a00'
+              background: 'linear-gradient(135deg, #e5b85c 0%, #c79a3e 100%)',
+              color: '#2a1c00'
             }}
           >
             Aceptar
@@ -151,7 +151,7 @@ function ConfirmModal({ item, onConfirm, onCancel }: { item: StoreItem; onConfir
     >
       <div 
         className="w-full max-w-sm rounded-2xl overflow-hidden p-6"
-        style={{ backgroundColor: '#0f1c28', border: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ backgroundColor: '#130e09', border: '1px solid rgba(255,255,255,0.1)' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="text-center mb-5">
@@ -159,22 +159,22 @@ function ConfirmModal({ item, onConfirm, onCancel }: { item: StoreItem; onConfir
           <h2 className="text-white text-lg font-black uppercase">Confirmar Canje</h2>
         </div>
         
-        <div className="py-4 px-5 rounded-xl mb-5" style={{ backgroundColor: '#1a2c39' }}>
+        <div className="py-4 px-5 rounded-xl mb-5" style={{ backgroundColor: '#1c1610' }}>
           <p className="text-white font-bold text-sm">{item.name}</p>
-          <p className="text-sm mt-1" style={{ color: '#00e601' }}>
-            {item.costInCoins.toLocaleString()} CL COINS
+          <p className="text-sm mt-1" style={{ color: '#e5b85c' }}>
+            {item.costInCoins.toLocaleString()} PyP Coins
           </p>
         </div>
 
-        <p className="text-center text-xs mb-5" style={{ color: '#6a8fa8' }}>
-          Esta acción descontará {item.costInCoins.toLocaleString()} CL COINS de tu saldo.
+        <p className="text-center text-xs mb-5" style={{ color: '#a98a5a' }}>
+          Esta acción descontará {item.costInCoins.toLocaleString()} PyP Coins de tu saldo.
         </p>
 
         <div className="flex gap-3">
           <button
             onClick={onCancel}
             className="flex-1 py-3 rounded-xl font-bold text-sm uppercase"
-            style={{ backgroundColor: '#1a2c39', color: '#c1c6d5' }}
+            style={{ backgroundColor: '#1c1610', color: '#c2b391' }}
           >
             Cancelar
           </button>
@@ -182,8 +182,8 @@ function ConfirmModal({ item, onConfirm, onCancel }: { item: StoreItem; onConfir
             onClick={onConfirm}
             className="flex-1 py-3 rounded-xl font-black text-sm uppercase active:scale-95 transition-transform"
             style={{ 
-              background: 'linear-gradient(135deg, #00e601 0%, #00b301 100%)',
-              color: '#013a00'
+              background: 'linear-gradient(135deg, #e5b85c 0%, #c79a3e 100%)',
+              color: '#2a1c00'
             }}
           >
             Canjear
@@ -204,16 +204,16 @@ function ErrorModal({ message, onClose }: { message: string; onClose: () => void
     >
       <div 
         className="w-full max-w-sm rounded-2xl overflow-hidden p-6 text-center"
-        style={{ backgroundColor: '#0f1c28', border: '1px solid rgba(255,70,70,0.3)' }}
+        style={{ backgroundColor: '#130e09', border: '1px solid rgba(255,70,70,0.3)' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="text-5xl mb-3">❌</div>
         <h2 className="text-white text-lg font-black uppercase mb-2">Error</h2>
-        <p className="text-sm mb-5" style={{ color: '#c1c6d5' }}>{message}</p>
+        <p className="text-sm mb-5" style={{ color: '#c2b391' }}>{message}</p>
         <button
           onClick={onClose}
           className="w-full py-3 rounded-xl font-bold text-sm uppercase"
-          style={{ backgroundColor: '#1a2c39', color: '#c1c6d5' }}
+          style={{ backgroundColor: '#1c1610', color: '#c2b391' }}
         >
           Cerrar
         </button>
@@ -266,7 +266,7 @@ export default function StorePage() {
   const handleRedeem = async (item: StoreItem) => {
     if (!profile || profile.accountTier !== 'PREMIUM') return;
     if (profile.clCoins < item.costInCoins) {
-      setErrorMsg('No tienes suficientes CL COINS para canjear este premio.');
+      setErrorMsg('No tienes suficientes PyP Coins para canjear este premio.');
       return;
     }
     setConfirmItem(item);
@@ -320,7 +320,7 @@ export default function StorePage() {
       <div className="p-4 text-center mt-12">
         <span className="material-symbols-outlined text-6xl text-[#ffd700] mb-4">lock</span>
         <h2 className="text-white text-2xl font-black mb-2 uppercase tracking-tight">Kiosco Bloqueado</h2>
-        <p className="text-[#c1c6d5] text-sm mb-8 leading-relaxed max-w-sm mx-auto">
+        <p className="text-[#c2b391] text-sm mb-8 leading-relaxed max-w-sm mx-auto">
           El Kiosco de Recompensas Físicas es un beneficio exclusivo para miembros PREMIUM.
         </p>
         <button 
@@ -338,24 +338,24 @@ export default function StorePage() {
       <div className="p-4 pb-24">
         <header className="mb-6">
           <h1 className="text-white text-2xl font-black uppercase tracking-tight">Kiosco VIP</h1>
-          <p className="text-[#aac7ff] text-xs">Canjea tus aciertos por recompensas reales</p>
+          <p className="text-[#f0d9a8] text-xs">Canjea tus aciertos por recompensas reales</p>
         </header>
 
         {items.length === 0 ? (
-          <div className="bg-[#1a2c39] rounded-xl p-6 text-center text-[#c1c6d5] mt-8">
+          <div className="bg-[#1c1610] rounded-xl p-6 text-center text-[#c2b391] mt-8">
             Aún no hay recompensas físicas activas en este momento. Vuelve más tarde.
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-4">
             {items.map(item => (
-              <div key={item.id} className="bg-[#1a2c39] rounded-xl p-4 flex flex-col relative overflow-hidden border border-[rgba(255,255,255,0.05)]">
+              <div key={item.id} className="bg-[#1c1610] rounded-xl p-4 flex flex-col relative overflow-hidden border border-[rgba(255,255,255,0.05)]">
                 {item.sponsorName && (
-                  <div className="absolute top-0 right-0 bg-[#00e601] text-[#013a00] text-[8px] font-black px-2 py-0.5 rounded-bl-lg uppercase tracking-wider">
+                  <div className="absolute top-0 right-0 bg-[#e5b85c] text-[#2a1c00] text-[8px] font-black px-2 py-0.5 rounded-bl-lg uppercase tracking-wider">
                     {item.sponsorName}
                   </div>
                 )}
                 
-                <div className="w-full aspect-square bg-[#0c1622] rounded-lg mb-3 flex items-center justify-center text-4xl">
+                <div className="w-full aspect-square bg-[#120d08] rounded-lg mb-3 flex items-center justify-center text-4xl">
                   {item.iconUrl ? (
                     <img src={item.iconUrl} alt={item.name} className="w-full h-full object-cover rounded-lg" />
                   ) : (
@@ -370,8 +370,8 @@ export default function StorePage() {
                   disabled={redeeming === item.id || (profile?.clCoins ?? 0) < item.costInCoins}
                   className={`w-full py-2 rounded-lg font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-all ${
                     (profile?.clCoins ?? 0) >= item.costInCoins
-                      ? 'bg-[#00e601] text-[#013a00] active:scale-95'
-                      : 'bg-[#2a3c49] text-[#6a7c89] opacity-70'
+                      ? 'bg-[#e5b85c] text-[#2a1c00] active:scale-95'
+                      : 'bg-[#2a3c49] text-[#7a6a4d] opacity-70'
                   }`}
                 >
                   {redeeming === item.id ? (

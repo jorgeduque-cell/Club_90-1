@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90+1 — Supabase Data Hooks
+// CLUB PYP — Supabase Data Hooks
 // ============================================
 // Smart hooks that use Supabase when connected,
 // or fall back to Zustand demo store.

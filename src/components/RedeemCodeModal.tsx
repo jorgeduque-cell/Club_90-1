@@ -1,9 +1,9 @@
 // ============================================
-// CLUB 90+1 — Modal de Canje de Código (Cliente)
+// CLUB PYP — Modal de Canje de Código (Cliente)
 // ============================================
 // Reemplaza el flujo predatorio de "comprar monedas" (PLAN_MUNDIAL §0 líneas rojas).
 // El cliente consumió producto real → el cajero le dio un código de 6 dígitos →
-// aquí lo canjea y RECIBE sus CL COINS (cashback gamificado, nunca compra).
+// aquí lo canjea y RECIBE sus PyP Coins (cashback gamificado, nunca compra).
 
 import { useState } from 'react';
 import { useAppStore } from '../stores/appStore';
@@ -60,7 +60,7 @@ export default function RedeemCodeModal() {
       }
 
       setSuccess({ coins: result.coinsAdded, balance: result.newBalance });
-      addToast('success', `🪙 +${Number(result.coinsAdded).toLocaleString()} CL COINS`);
+      addToast('success', `🪙 +${Number(result.coinsAdded).toLocaleString()} PyP Coins`);
       await refreshProfile();
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Error al canjear el código';
@@ -77,10 +77,10 @@ export default function RedeemCodeModal() {
 
       {/* Modal */}
       <div className="fixed inset-x-0 bottom-0 z-[75] max-h-[90vh] overflow-y-auto">
-        <div className="bg-[#0f212e] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#253744]">
+        <div className="bg-[#140f0a] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2418]">
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#414753] rounded-full" />
+            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
           </div>
 
           <div className="p-5 space-y-5">
@@ -88,11 +88,11 @@ export default function RedeemCodeModal() {
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-white font-black text-lg uppercase tracking-tight">Canjear Código</h3>
-                <p className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest">
-                  Tus CL COINS por tu consumo
+                <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest">
+                  Tus PyP Coins por tu consumo
                 </p>
               </div>
-              <button onClick={handleClose} className="text-[#b1bad3] hover:text-white transition-colors p-1" aria-label="Cerrar">
+              <button onClick={handleClose} className="text-[#b8a98a] hover:text-white transition-colors p-1" aria-label="Cerrar">
                 <span className="material-symbols-outlined">close</span>
               </button>
             </div>
@@ -100,22 +100,22 @@ export default function RedeemCodeModal() {
             {success ? (
               /* ── Éxito ── */
               <div className="space-y-5 text-center py-2">
-                <div className="mx-auto w-16 h-16 rounded-full bg-[#00e601]/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[#00e601] text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <div className="mx-auto w-16 h-16 rounded-full bg-[#e5b85c]/15 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[#e5b85c] text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                     check_circle
                   </span>
                 </div>
                 <div>
-                  <p className="text-[#00e601] text-4xl font-black tabular-nums">+{success.coins.toLocaleString()} 🪙</p>
-                  <p className="text-[#c1c6d5] text-xs font-bold mt-1">CL COINS acreditadas</p>
+                  <p className="text-[#e5b85c] text-4xl font-black tabular-nums">+{success.coins.toLocaleString()} 🪙</p>
+                  <p className="text-[#c2b391] text-xs font-bold mt-1">PyP Coins acreditadas</p>
                 </div>
-                <div className="bg-[#1a2c39] rounded-xl p-4 flex justify-between items-center">
-                  <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">Nuevo balance</span>
+                <div className="bg-[#1c1610] rounded-xl p-4 flex justify-between items-center">
+                  <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Nuevo balance</span>
                   <span className="text-white font-black text-lg tabular-nums">{success.balance.toLocaleString()} 🪙</span>
                 </div>
                 <button
                   onClick={handleClose}
-                  className="w-full bg-[#00e601] text-[#013a00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all"
+                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all"
                 >
                   Listo
                 </button>
@@ -123,9 +123,9 @@ export default function RedeemCodeModal() {
             ) : (
               /* ── Entrada de código ── */
               <div className="space-y-4">
-                <div className="bg-gradient-to-br from-[#1a2c39] to-[#253744] rounded-xl p-5 border border-[#1475e1]/20 text-center space-y-3">
-                  <span className="material-symbols-outlined text-[#aac7ff] text-3xl">confirmation_number</span>
-                  <p className="text-[#d2e5f7] text-xs leading-relaxed">
+                <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-xl p-5 border border-[#d72a22]/20 text-center space-y-3">
+                  <span className="material-symbols-outlined text-[#f0d9a8] text-3xl">confirmation_number</span>
+                  <p className="text-[#efe6d2] text-xs leading-relaxed">
                     Pídele al cajero el código de 6 dígitos por tu consumo y digítalo aquí.
                     Vence a los 10 minutos de generado.
                   </p>
@@ -139,7 +139,7 @@ export default function RedeemCodeModal() {
                   onChange={(e) => { setCode(e.target.value.replace(/\D/g, '').slice(0, 6)); setError(null); }}
                   onKeyDown={(e) => { if (e.key === 'Enter') handleRedeem(); }}
                   placeholder="000000"
-                  className="w-full bg-[#1a2c39] border border-[#253744] rounded-xl py-4 text-center text-white text-3xl font-black tracking-[0.4em] tabular-nums placeholder:text-[#414753] focus:outline-none focus:border-[#1475e1]"
+                  className="w-full bg-[#1c1610] border border-[#2e2418] rounded-xl py-4 text-center text-white text-3xl font-black tracking-[0.4em] tabular-nums placeholder:text-[#4a3f2c] focus:outline-none focus:border-[#d72a22]"
                 />
 
                 {error && (
@@ -151,9 +151,9 @@ export default function RedeemCodeModal() {
                 <button
                   onClick={handleRedeem}
                   disabled={loading || code.length !== 6}
-                  className="w-full bg-[#00e601] text-[#013a00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
                 >
-                  {loading ? 'Canjeando…' : 'Canjear CL COINS'}
+                  {loading ? 'Canjeando…' : 'Canjear PyP Coins'}
                 </button>
               </div>
             )}

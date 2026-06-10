@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — Premios Modal
+// CLUB PYP — Premios Modal
 // ============================================
 // §3 §4: Todos los premios del torneo
 // (temporada + semanales)
@@ -40,7 +40,7 @@ const WEEKLY_PRIZES = [
   },
   {
     title: 'Racha Perfecta',
-    prize: '1.000 🪙 CL COINS',
+    prize: '1.000 🪙 PyP Coins',
     description: 'Acierta todas las predicciones de una jornada completa.',
     icon: 'whatshot',
     color: '#ff5722',
@@ -54,7 +54,7 @@ const WEEKLY_PRIZES = [
   },
   {
     title: 'Recluta Estrella',
-    prize: '500 🪙 CL COINS',
+    prize: '500 🪙 PyP Coins',
     description: 'Invita a un amigo que se inscriba y ambos ganan bonus.',
     icon: 'group_add',
     color: '#00bcd4',
@@ -71,34 +71,34 @@ export default function PrizesModal() {
     <>
       <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeModal} />
       <div className="fixed inset-x-0 bottom-0 z-[95] max-h-[85vh] overflow-y-auto">
-        <div className="bg-[#0f212e] rounded-t-2xl shadow-2xl border-t border-[#253744]">
+        <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#414753] rounded-full" />
+            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
           </div>
           <div className="p-5 space-y-5">
             {/* Header */}
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-white font-black text-lg uppercase tracking-tight">🏆 Premios del Torneo</h3>
-                <p className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest">
+                <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest">
                   Temporada 1 — Marzo a Junio 2026
                 </p>
               </div>
-              <button onClick={closeModal} className="text-[#b1bad3] hover:text-white p-1">
+              <button onClick={closeModal} className="text-[#b8a98a] hover:text-white p-1">
                 <span className="material-symbols-outlined">close</span>
               </button>
             </div>
 
             {/* Season Grand Prizes */}
             <div>
-              <h4 className="text-[#aac7ff] text-[10px] font-black uppercase tracking-[0.2em] mb-3 px-1">
+              <h4 className="text-[#f0d9a8] text-[10px] font-black uppercase tracking-[0.2em] mb-3 px-1">
                 Premios de Final de Temporada (Top 3 Ranking)
               </h4>
               <div className="space-y-3">
                 {SEASON_PRIZES.map((prize) => (
                   <div
                     key={prize.rank}
-                    className="bg-[#1a2c39] rounded-xl p-4 flex items-center gap-4 border-l-4"
+                    className="bg-[#1c1610] rounded-xl p-4 flex items-center gap-4 border-l-4"
                     style={{ borderColor: prize.color }}
                   >
                     <div
@@ -111,8 +111,8 @@ export default function PrizesModal() {
                     </div>
                     <div className="flex-1">
                       <p className="text-white font-black text-sm">{prize.rank}</p>
-                      <p className="text-[#d2e5f7] font-bold text-xs mt-0.5">{prize.prize}</p>
-                      <p className="text-[#00e601] font-black text-[10px] mt-1">Valor: {prize.value}</p>
+                      <p className="text-[#efe6d2] font-bold text-xs mt-0.5">{prize.prize}</p>
+                      <p className="text-[#e5b85c] font-black text-[10px] mt-1">Valor: {prize.value}</p>
                     </div>
                   </div>
                 ))}
@@ -121,12 +121,12 @@ export default function PrizesModal() {
 
             {/* Weekly Prizes */}
             <div>
-              <h4 className="text-[#aac7ff] text-[10px] font-black uppercase tracking-[0.2em] mb-3 px-1">
+              <h4 className="text-[#f0d9a8] text-[10px] font-black uppercase tracking-[0.2em] mb-3 px-1">
                 Premios Semanales (Cada Jornada)
               </h4>
               <div className="grid grid-cols-2 gap-2">
                 {WEEKLY_PRIZES.map((prize) => (
-                  <div key={prize.title} className="bg-[#1a2c39] rounded-xl p-3.5">
+                  <div key={prize.title} className="bg-[#1c1610] rounded-xl p-3.5">
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center mb-2"
                       style={{ backgroundColor: `${prize.color}15` }}
@@ -136,19 +136,19 @@ export default function PrizesModal() {
                       </span>
                     </div>
                     <h5 className="text-white font-bold text-[11px] mb-0.5">{prize.title}</h5>
-                    <p className="text-[#00e601] font-black text-[10px] mb-1">{prize.prize}</p>
-                    <p className="text-[#c1c6d5] text-[9px] leading-relaxed">{prize.description}</p>
+                    <p className="text-[#e5b85c] font-black text-[10px] mb-1">{prize.prize}</p>
+                    <p className="text-[#c2b391] text-[9px] leading-relaxed">{prize.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Legal Note */}
-            <div className="bg-[#1a2c39] rounded-lg p-3 flex items-start gap-2">
-              <span className="material-symbols-outlined text-[#c1c6d5] text-sm mt-0.5">info</span>
-              <p className="text-[#c1c6d5] text-[9px] leading-relaxed">
-                Los premios son financiados con las inscripciones al torneo. Las 🪙 CL COINS son moneda virtual
-                no canjeable por dinero real. Club 90 opera como un Juego de Fantasía de destreza.
+            <div className="bg-[#1c1610] rounded-lg p-3 flex items-start gap-2">
+              <span className="material-symbols-outlined text-[#c2b391] text-sm mt-0.5">info</span>
+              <p className="text-[#c2b391] text-[9px] leading-relaxed">
+                Los premios son financiados con las inscripciones al torneo. Las 🪙 PyP Coins son moneda virtual
+                no canjeable por dinero real. Club PyP opera como un Juego de Fantasía de destreza.
               </p>
             </div>
           </div>

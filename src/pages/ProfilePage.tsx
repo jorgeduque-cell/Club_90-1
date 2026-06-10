@@ -107,29 +107,29 @@ export default function ProfilePage() {
   };
 
   const categoryColors: Record<string, string> = {
-    prediction_win: '#77ff61',
-    prediction_submit: '#aac7ff',
+    prediction_win: '#f2d27a',
+    prediction_submit: '#f0d9a8',
     bonus: '#ffc107',
-    early_return: '#1475e1',
+    early_return: '#d72a22',
     redeem: '#9c27b0',
-    topup: '#00e601',
+    topup: '#e5b85c',
   };
 
   return (
     <main className="pt-4 pb-24 px-4 max-w-md mx-auto space-y-4">
       {/* Balance Hero */}
-      <section className="bg-[#1a2c39] rounded-xl p-5 relative overflow-hidden">
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#77ff61]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="bg-[#1c1610] rounded-xl p-5 relative overflow-hidden">
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#f2d27a]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="flex justify-between items-start mb-6">
           <div>
-            <p className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest mb-1">Total Balance</p>
-            <h2 className="text-[#00e601] text-4xl font-extrabold tracking-tighter neon-glow tabular-nums">
+            <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest mb-1">Total Balance</p>
+            <h2 className="text-[#e5b85c] text-4xl font-extrabold tracking-tighter neon-glow tabular-nums">
               {balance.toLocaleString()}{' '}
               <span className="text-lg">🪙</span>
             </h2>
-            <p className="text-[#c1c6d5] text-[11px] mt-1 font-medium">{userName}</p>
+            <p className="text-[#c2b391] text-[11px] mt-1 font-medium">{userName}</p>
           </div>
-          <div className={`${live ? 'bg-[#00e601]/20 text-[#77ff61] border-[#77ff61]/20' : 'bg-[#1475e1]/20 text-[#aac7ff] border-[#aac7ff]/20'} border px-3 py-1 rounded-full flex items-center gap-1.5`}>
+          <div className={`${live ? 'bg-[#e5b85c]/20 text-[#f2d27a] border-[#f2d27a]/20' : 'bg-[#d72a22]/20 text-[#f0d9a8] border-[#f0d9a8]/20'} border px-3 py-1 rounded-full flex items-center gap-1.5`}>
             <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
               {live ? 'verified' : 'workspace_premium'}
             </span>
@@ -142,7 +142,7 @@ export default function ProfilePage() {
         {/* Canjear código de consumo */}
         <button
           onClick={openRedeemModal}
-          className="w-full bg-[#00e601] text-[#013a00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.25)] mb-4"
+          className="w-full bg-[#e5b85c] text-[#2a1c00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.25)] mb-4"
         >
           <span className="material-symbols-outlined text-lg">confirmation_number</span>
           Canjear código de consumo
@@ -152,35 +152,35 @@ export default function ProfilePage() {
         {!live && (
           <div className="space-y-2">
             <div className="flex justify-between items-end text-[10px] font-bold uppercase tracking-wider">
-              <span className="text-[#c1c6d5]">Progreso a Platinum</span>
+              <span className="text-[#c2b391]">Progreso a Platinum</span>
               <span className="text-white tabular-nums">{xp.toLocaleString()} / {xpToNext.toLocaleString()} XP</span>
             </div>
-            <div className="h-2.5 w-full bg-[#253744] rounded-full overflow-hidden">
+            <div className="h-2.5 w-full bg-[#2e2418] rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#1475e1] to-[#aac7ff] rounded-full transition-all duration-700 relative"
+                className="h-full bg-gradient-to-r from-[#d72a22] to-[#f0d9a8] rounded-full transition-all duration-700 relative"
                 style={{ width: `${xpPercent}%` }}
               >
                 <div className="absolute inset-0 bg-white/20 animate-pulse" />
               </div>
             </div>
-            <p className="text-[#c1c6d5] text-[10px] italic">{(xpToNext - xp).toLocaleString()} puntos hasta tu próxima recompensa</p>
+            <p className="text-[#c2b391] text-[10px] italic">{(xpToNext - xp).toLocaleString()} puntos hasta tu próxima recompensa</p>
           </div>
         )}
       </section>
 
       {/* Quick Stats */}
       <section className="grid grid-cols-3 gap-2">
-        <div className="bg-[#1a2c39] rounded-xl p-3 text-center">
-          <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
+        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+          <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Pronósticos</p>
           <p className="text-white font-black text-xl tabular-nums">{totalBets}</p>
         </div>
-        <div className="bg-[#1a2c39] rounded-xl p-3 text-center">
-          <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Ganadas</p>
-          <p className="text-[#77ff61] font-black text-xl tabular-nums">{wonBets}</p>
+        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+          <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Ganadas</p>
+          <p className="text-[#f2d27a] font-black text-xl tabular-nums">{wonBets}</p>
         </div>
-        <div className="bg-[#1a2c39] rounded-xl p-3 text-center">
-          <p className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">Win Rate</p>
-          <p className="text-[#aac7ff] font-black text-xl tabular-nums">{winRate}%</p>
+        <div className="bg-[#1c1610] rounded-xl p-3 text-center">
+          <p className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">Win Rate</p>
+          <p className="text-[#f0d9a8] font-black text-xl tabular-nums">{winRate}%</p>
         </div>
       </section>
 
@@ -188,31 +188,31 @@ export default function ProfilePage() {
       <section className="grid grid-cols-1 gap-2">
         <button
           onClick={openRewardsModal}
-          className="bg-[#1a2c39] text-[#d2e5f7] h-16 rounded-xl flex items-center justify-between px-4 hover:bg-[#253744] transition-all active:scale-[0.98] group border border-[#253744]"
+          className="bg-[#1c1610] text-[#efe6d2] h-16 rounded-xl flex items-center justify-between px-4 hover:bg-[#2e2418] transition-all active:scale-[0.98] group border border-[#2e2418]"
         >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#00e601]/10 flex items-center justify-center">
-              <span className="material-symbols-outlined text-[#00e601]">redeem</span>
+            <div className="w-10 h-10 rounded-xl bg-[#e5b85c]/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-[#e5b85c]">redeem</span>
             </div>
             <div className="text-left">
               <span className="font-bold text-sm text-white">Recompensas Semanales</span>
-              <p className="text-[9px] text-[#c1c6d5] font-bold">Reclama tus premios de esta jornada</p>
+              <p className="text-[9px] text-[#c2b391] font-bold">Reclama tus premios de esta jornada</p>
             </div>
           </div>
-          <span className="material-symbols-outlined text-[#414753] group-hover:text-[#c1c6d5] transition-colors">chevron_right</span>
+          <span className="material-symbols-outlined text-[#4a3f2c] group-hover:text-[#c2b391] transition-colors">chevron_right</span>
         </button>
 
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={openRulesModal}
-            className="bg-[#1a2c39] text-[#d2e5f7] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#253744] transition-colors active:scale-[0.98] border border-[#253744]"
+            className="bg-[#1c1610] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2418] transition-colors active:scale-[0.98] border border-[#2e2418]"
           >
-            <span className="material-symbols-outlined text-[#aac7ff]">menu_book</span>
+            <span className="material-symbols-outlined text-[#f0d9a8]">menu_book</span>
             <span className="font-bold uppercase tracking-widest text-[10px]">Reglas</span>
           </button>
           <button
             onClick={openPrizesModal}
-            className="bg-[#1a2c39] text-[#d2e5f7] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#253744] transition-colors active:scale-[0.98] border border-[#253744]"
+            className="bg-[#1c1610] text-[#efe6d2] h-14 rounded-xl flex items-center justify-center gap-2 hover:bg-[#2e2418] transition-colors active:scale-[0.98] border border-[#2e2418]"
           >
             <span className="material-symbols-outlined text-[#ffd700]">emoji_events</span>
             <span className="font-bold uppercase tracking-widest text-[10px]">Premios</span>
@@ -223,39 +223,39 @@ export default function ProfilePage() {
       {/* Transaction History */}
       <section className="space-y-3">
         <div className="flex items-center justify-between px-1">
-          <h3 className="text-[#d2e5f7] font-extrabold text-sm uppercase tracking-widest">Historial</h3>
-          <span className="text-[#b1bad3] text-[10px] font-bold tabular-nums">{transactions.length} transacciones</span>
+          <h3 className="text-[#efe6d2] font-extrabold text-sm uppercase tracking-widest">Historial</h3>
+          <span className="text-[#b8a98a] text-[10px] font-bold tabular-nums">{transactions.length} transacciones</span>
         </div>
 
         {transactions.length === 0 ? (
-          <div className="bg-[#0f212e] rounded-xl p-8 text-center">
-            <span className="material-symbols-outlined text-3xl text-[#414753] mb-2">receipt_long</span>
-            <p className="text-[#c1c6d5] text-sm">Sin transacciones aún</p>
+          <div className="bg-[#140f0a] rounded-xl p-8 text-center">
+            <span className="material-symbols-outlined text-3xl text-[#4a3f2c] mb-2">receipt_long</span>
+            <p className="text-[#c2b391] text-sm">Sin transacciones aún</p>
           </div>
         ) : (
-          <div className="bg-[#0f212e] rounded-xl overflow-hidden">
+          <div className="bg-[#140f0a] rounded-xl overflow-hidden">
             {transactions.slice(0, 15).map((tx) => (
               <button
                 key={tx.id}
                 onClick={() => openTransactionDetail(tx.id)}
-                className="w-full flex items-center justify-between p-4 border-b border-[#414753]/15 last:border-0 hover:bg-[#1a2c39] transition-colors active:bg-[#253744] text-left"
+                className="w-full flex items-center justify-between p-4 border-b border-[#4a3f2c]/15 last:border-0 hover:bg-[#1c1610] transition-colors active:bg-[#2e2418] text-left"
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                    tx.type === 'credit' ? 'bg-[#77ff61]/10 text-[#77ff61]' : 'bg-[#1475e1]/10 text-[#aac7ff]'
+                    tx.type === 'credit' ? 'bg-[#f2d27a]/10 text-[#f2d27a]' : 'bg-[#d72a22]/10 text-[#f0d9a8]'
                   }`}>
                     <span className="material-symbols-outlined">{tx.icon}</span>
                   </div>
                   <div>
                     <p className="text-white text-xs font-bold">{tx.label}</p>
-                    <p className="text-[#c1c6d5] text-[10px]">{tx.date}</p>
+                    <p className="text-[#c2b391] text-[10px]">{tx.date}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <p className={`font-extrabold text-sm tabular-nums ${tx.type === 'credit' ? 'text-[#77ff61]' : 'text-white'}`}>
+                  <p className={`font-extrabold text-sm tabular-nums ${tx.type === 'credit' ? 'text-[#f2d27a]' : 'text-white'}`}>
                     {tx.amountLabel}
                   </p>
-                  <span className="material-symbols-outlined text-[#414753] text-sm">chevron_right</span>
+                  <span className="material-symbols-outlined text-[#4a3f2c] text-sm">chevron_right</span>
                 </div>
               </button>
             ))}
@@ -266,17 +266,17 @@ export default function ProfilePage() {
       {/* Promo Card */}
       <button
         onClick={openPrizesModal}
-        className="w-full relative bg-[#1a2c39] rounded-xl p-4 border-l-4 border-[#1475e1] overflow-hidden text-left hover:bg-[#253744] transition-colors active:scale-[0.99] group"
+        className="w-full relative bg-[#1c1610] rounded-xl p-4 border-l-4 border-[#d72a22] overflow-hidden text-left hover:bg-[#2e2418] transition-colors active:scale-[0.99] group"
       >
         <div className="relative z-10 flex gap-4 items-center">
           <div className="flex-1">
             <h4 className="text-white font-bold text-xs mb-1">¡Premios de Fin de Temporada!</h4>
-            <p className="text-[#c1c6d5] text-[10px] leading-relaxed">
+            <p className="text-[#c2b391] text-[10px] leading-relaxed">
               Top 3 del ranking ganan premios reales. Toca para ver los detalles.
             </p>
           </div>
-          <div className="bg-[#aac7ff]/20 p-2.5 rounded-xl group-hover:scale-110 transition-transform">
-            <span className="material-symbols-outlined text-[#aac7ff]">emoji_events</span>
+          <div className="bg-[#f0d9a8]/20 p-2.5 rounded-xl group-hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-[#f0d9a8]">emoji_events</span>
           </div>
         </div>
       </button>
@@ -295,29 +295,29 @@ export default function ProfilePage() {
         <>
           <div className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onClick={closeTransactionDetail} />
           <div className="fixed inset-x-0 bottom-0 z-[95]">
-            <div className="bg-[#0f212e] rounded-t-2xl shadow-2xl border-t border-[#253744]">
+            <div className="bg-[#140f0a] rounded-t-2xl shadow-2xl border-t border-[#2e2418]">
               <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 bg-[#414753] rounded-full" />
+                <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
               </div>
               <div className="p-5 space-y-5">
                 {/* Header */}
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      activeTx.type === 'credit' ? 'bg-[#77ff61]/15 text-[#77ff61]' : 'bg-[#1475e1]/15 text-[#aac7ff]'
+                      activeTx.type === 'credit' ? 'bg-[#f2d27a]/15 text-[#f2d27a]' : 'bg-[#d72a22]/15 text-[#f0d9a8]'
                     }`}>
                       <span className="material-symbols-outlined text-2xl">{activeTx.icon}</span>
                     </div>
                     <div>
                       <h3 className="text-white font-black text-base">{activeTx.label}</h3>
                       <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${
-                        activeTx.type === 'credit' ? 'bg-[#77ff61]/10 text-[#77ff61]' : 'bg-[#aac7ff]/10 text-[#aac7ff]'
+                        activeTx.type === 'credit' ? 'bg-[#f2d27a]/10 text-[#f2d27a]' : 'bg-[#f0d9a8]/10 text-[#f0d9a8]'
                       }`}>
                         {activeTx.type === 'credit' ? 'Ingreso' : 'Egreso'}
                       </span>
                     </div>
                   </div>
-                  <button onClick={closeTransactionDetail} className="text-[#b1bad3] hover:text-white p-1">
+                  <button onClick={closeTransactionDetail} className="text-[#b8a98a] hover:text-white p-1">
                     <span className="material-symbols-outlined">close</span>
                   </button>
                 </div>
@@ -325,39 +325,39 @@ export default function ProfilePage() {
                 {/* Amount Hero */}
                 <div className="text-center py-3">
                   <p className={`text-4xl font-black tabular-nums tracking-tighter ${
-                    activeTx.type === 'credit' ? 'text-[#00e601]' : 'text-white'
+                    activeTx.type === 'credit' ? 'text-[#e5b85c]' : 'text-white'
                   }`}>
                     {activeTx.amountLabel}
                   </p>
-                  <p className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest mt-1">🪙 CL COINS</p>
+                  <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest mt-1">🪙 PyP Coins</p>
                 </div>
 
                 {/* Details Grid */}
-                <div className="bg-[#1a2c39] rounded-xl divide-y divide-[#414753]/15">
+                <div className="bg-[#1c1610] rounded-xl divide-y divide-[#4a3f2c]/15">
                   <div className="flex justify-between items-center p-4">
-                    <span className="text-[#c1c6d5] text-xs font-bold">Tipo</span>
+                    <span className="text-[#c2b391] text-xs font-bold">Tipo</span>
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryColors[activeTx.category] || '#c1c6d5' }} />
+                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: categoryColors[activeTx.category] || '#c2b391' }} />
                       <span className="text-white text-xs font-bold">{categoryLabels[activeTx.category] || activeTx.category}</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center p-4">
-                    <span className="text-[#c1c6d5] text-xs font-bold">Fecha</span>
+                    <span className="text-[#c2b391] text-xs font-bold">Fecha</span>
                     <span className="text-white text-xs font-bold">{activeTx.date}</span>
                   </div>
                   <div className="flex justify-between items-center p-4">
-                    <span className="text-[#c1c6d5] text-xs font-bold">Monto</span>
-                    <span className={`text-xs font-black tabular-nums ${activeTx.type === 'credit' ? 'text-[#77ff61]' : 'text-[#ffb4ab]'}`}>
+                    <span className="text-[#c2b391] text-xs font-bold">Monto</span>
+                    <span className={`text-xs font-black tabular-nums ${activeTx.type === 'credit' ? 'text-[#f2d27a]' : 'text-[#ffb4ab]'}`}>
                       {activeTx.type === 'credit' ? '+' : ''}{Math.abs(activeTx.amount).toLocaleString()} 🪙
                     </span>
                   </div>
                   <div className="flex justify-between items-center p-4">
-                    <span className="text-[#c1c6d5] text-xs font-bold">ID Transacción</span>
-                    <span className="text-[#aac7ff] text-xs font-mono font-bold">{activeTx.id.toUpperCase()}</span>
+                    <span className="text-[#c2b391] text-xs font-bold">ID Transacción</span>
+                    <span className="text-[#f0d9a8] text-xs font-mono font-bold">{activeTx.id.toUpperCase()}</span>
                   </div>
                   <div className="flex justify-between items-center p-4">
-                    <span className="text-[#c1c6d5] text-xs font-bold">Estado</span>
-                    <span className="bg-[#77ff61]/10 text-[#77ff61] text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    <span className="text-[#c2b391] text-xs font-bold">Estado</span>
+                    <span className="bg-[#f2d27a]/10 text-[#f2d27a] text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                       Completada
                     </span>
                   </div>
@@ -365,44 +365,44 @@ export default function ProfilePage() {
 
                 {/* Category-specific info */}
                 {activeTx.category === 'prediction_submit' && (
-                  <div className="bg-[#1a2c39] rounded-xl p-4 flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#aac7ff] mt-0.5">info</span>
+                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                    <span className="material-symbols-outlined text-[#f0d9a8] mt-0.5">info</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Pronóstico en curso</p>
-                      <p className="text-[#c1c6d5] text-[10px] leading-relaxed">
+                      <p className="text-[#c2b391] text-[10px] leading-relaxed">
                         Si tu predicción es correcta, recibirás el beneficio estimado. Los multiplicadores se congelaron al momento de este pronóstico.
                       </p>
                     </div>
                   </div>
                 )}
                 {activeTx.category === 'topup' && (
-                  <div className="bg-[#1a2c39] rounded-xl p-4 flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#00e601] mt-0.5">verified</span>
+                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                    <span className="material-symbols-outlined text-[#e5b85c] mt-0.5">verified</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Recarga verificada</p>
-                      <p className="text-[#c1c6d5] text-[10px] leading-relaxed">
-                        Tu recarga fue procesada exitosamente. Los 🪙 CL COINS ya están disponibles en tu balance.
+                      <p className="text-[#c2b391] text-[10px] leading-relaxed">
+                        Tu recarga fue procesada exitosamente. Los 🪙 PyP Coins ya están disponibles en tu balance.
                       </p>
                     </div>
                   </div>
                 )}
                 {activeTx.category === 'bonus' && (
-                  <div className="bg-[#1a2c39] rounded-xl p-4 flex items-start gap-3">
+                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
                     <span className="material-symbols-outlined text-[#ffc107] mt-0.5">celebration</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Bonificación otorgada</p>
-                      <p className="text-[#c1c6d5] text-[10px] leading-relaxed">
+                      <p className="text-[#c2b391] text-[10px] leading-relaxed">
                         Este bonus fue acreditado automáticamente por cumplir con los requisitos de la promoción.
                       </p>
                     </div>
                   </div>
                 )}
                 {activeTx.category === 'early_return' && (
-                  <div className="bg-[#1a2c39] rounded-xl p-4 flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#1475e1] mt-0.5">account_balance_wallet</span>
+                  <div className="bg-[#1c1610] rounded-xl p-4 flex items-start gap-3">
+                    <span className="material-symbols-outlined text-[#d72a22] mt-0.5">account_balance_wallet</span>
                     <div>
                       <p className="text-white text-xs font-bold mb-0.5">Retiro Anticipado procesado</p>
-                      <p className="text-[#c1c6d5] text-[10px] leading-relaxed">
+                      <p className="text-[#c2b391] text-[10px] leading-relaxed">
                         Retiraste tu pronóstico anticipadamente. El monto fue acreditado a tu balance.
                       </p>
                     </div>

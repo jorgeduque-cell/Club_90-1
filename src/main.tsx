@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — App Entry Point
+// CLUB PYP — App Entry Point
 // ============================================
 
 import React from 'react';

@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — BottomNavBar (Stitch Design)
+// CLUB PYP — BottomNavBar (Stitch Design)
 // ============================================
 
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ export default function BottomNavBar() {
   const currentPath = location.pathname;
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-[#1a2c39] border-t border-[#253744]/30 shadow-[0_-4px_12px_rgba(0,0,0,0.4)]">
+    <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-[#1c1610] border-t border-[#2e2418]/30 shadow-[0_-4px_12px_rgba(0,0,0,0.4)]">
       {tabs.map((tab) => {
         const isActive = tab.path === '/'
           ? currentPath === '/' || currentPath.startsWith('/match/')
@@ -31,8 +31,8 @@ export default function BottomNavBar() {
             onClick={() => navigate(tab.path)}
             className={`flex flex-col items-center justify-center pt-1 w-full h-full transition-all active:opacity-80 ${
               isActive
-                ? 'text-[#00e601] border-t-2 border-[#00e601]'
-                : 'text-[#b1bad3] pt-1.5 hover:text-white'
+                ? 'text-[#e5b85c] border-t-2 border-[#e5b85c]'
+                : 'text-[#b8a98a] pt-1.5 hover:text-white'
             }`}
           >
             <span

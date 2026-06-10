@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — Auth Context (State Logic)
+// CLUB PYP — Auth Context (State Logic)
 // ============================================
 // Manages authentication state, session persistence,
 // and user profile data. Exposes auth actions and
@@ -19,7 +19,7 @@ export interface AuthState {
   session: Session | null;
   /** Supabase Auth user (null if not authenticated) */
   authUser: User | null;
-  /** Club 90 user profile from public.users (null if not loaded) */
+  /** Club PyP user profile from public.users (null if not loaded) */
   profile: UserProfile | null;
   /** True while checking initial session */
   loading: boolean;

@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — LoginPage (Login + Register)
+// CLUB PYP — LoginPage (Login + Register)
 // ============================================
 
 import { useState, useEffect } from 'react';
@@ -24,6 +24,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [localError, setLocalError] = useState('');
   const [success, setSuccess] = useState('');
+  const [logoOk, setLogoOk] = useState(true);
 
   const displayError = localError || authError;
 
@@ -102,30 +103,35 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#031522] flex flex-col items-center justify-center px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0b0805] flex flex-col items-center justify-center px-6 relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#1475e1]/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[#00e601]/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#d72a22]/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[#e5b85c]/5 blur-[100px] rounded-full pointer-events-none" />
 
       {/* Logo */}
       <div className="relative z-10 text-center mb-10">
-        <h1 className="text-5xl font-black text-white uppercase tracking-tighter italic">
-          CLUB 90+1
-        </h1>
-        <p className="text-[#c1c6d5] text-xs font-bold uppercase tracking-[0.3em] mt-2">
+        {logoOk ? (
+          <img src="/logo.png" alt="Club PyP" onError={() => setLogoOk(false)}
+               className="h-24 mx-auto object-contain mb-1" />
+        ) : (
+          <h1 className="text-5xl font-black text-[#e5b85c] uppercase tracking-tighter italic">
+            CLUB PyP
+          </h1>
+        )}
+        <p className="text-[#c2b391] text-xs font-bold uppercase tracking-[0.3em] mt-2">
           Pronósticos entre amigos
         </p>
       </div>
 
       {/* Tab Switcher */}
       <div className="relative z-10 w-full max-w-sm mb-6">
-        <div className="flex bg-[#1a2c39] rounded-lg p-1">
+        <div className="flex bg-[#1c1610] rounded-lg p-1">
           <button
             onClick={() => switchMode('login')}
             className={`flex-1 py-2.5 rounded-md text-xs font-black uppercase tracking-widest transition-all ${
               mode === 'login'
-                ? 'bg-[#00e601] text-[#013a00] shadow-md'
-                : 'text-[#c1c6d5] hover:text-white'
+                ? 'bg-[#e5b85c] text-[#2a1c00] shadow-md'
+                : 'text-[#c2b391] hover:text-white'
             }`}
           >
             Ingresar
@@ -134,8 +140,8 @@ export default function LoginPage() {
             onClick={() => switchMode('register')}
             className={`flex-1 py-2.5 rounded-md text-xs font-black uppercase tracking-widest transition-all ${
               mode === 'register'
-                ? 'bg-[#1475e1] text-white shadow-md'
-                : 'text-[#c1c6d5] hover:text-white'
+                ? 'bg-[#d72a22] text-white shadow-md'
+                : 'text-[#c2b391] hover:text-white'
             }`}
           >
             Registrarse
@@ -147,17 +153,17 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-sm space-y-4">
         {/* Phone */}
         <div className="space-y-1.5">
-          <label className="text-[10px] font-bold text-[#c1c6d5] uppercase tracking-widest">
+          <label className="text-[10px] font-bold text-[#c2b391] uppercase tracking-widest">
             Número de Teléfono
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c1c6d5] text-sm font-bold">+57</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c2b391] text-sm font-bold">+57</span>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
               placeholder="300 123 4567"
-              className="w-full bg-[#1a2c39] border border-[#414753]/30 rounded-lg py-3.5 pl-12 pr-4 text-white font-bold text-lg focus:ring-1 focus:ring-[#1475e1]/40 focus:border-[#1475e1]/40 outline-none placeholder:text-[#c1c6d5]/30"
+              className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 pl-12 pr-4 text-white font-bold text-lg focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
             />
           </div>
         </div>
@@ -165,7 +171,7 @@ export default function LoginPage() {
         {/* Name (register only) */}
         {mode === 'register' && (
           <div className="space-y-1.5">
-            <label className="text-[10px] font-bold text-[#c1c6d5] uppercase tracking-widest">
+            <label className="text-[10px] font-bold text-[#c2b391] uppercase tracking-widest">
               Tu Nombre
             </label>
             <input
@@ -174,14 +180,14 @@ export default function LoginPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Ej: Juan, La Máquina, El Preciso..."
               maxLength={30}
-              className="w-full bg-[#1a2c39] border border-[#414753]/30 rounded-lg py-3.5 px-4 text-white font-bold focus:ring-1 focus:ring-[#1475e1]/40 focus:border-[#1475e1]/40 outline-none placeholder:text-[#c1c6d5]/30"
+              className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 px-4 text-white font-bold focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
             />
           </div>
         )}
 
         {/* PIN */}
         <div className="space-y-1.5">
-          <label className="text-[10px] font-bold text-[#c1c6d5] uppercase tracking-widest">
+          <label className="text-[10px] font-bold text-[#c2b391] uppercase tracking-widest">
             {mode === 'register' ? 'Crea tu PIN' : 'PIN de Acceso'}
           </label>
           <input
@@ -191,9 +197,9 @@ export default function LoginPage() {
             placeholder="••••"
             maxLength={20}
             onKeyDown={(e) => e.key === 'Enter' && (mode === 'login' ? handleLogin() : handleRegister())}
-            className="w-full bg-[#1a2c39] border border-[#414753]/30 rounded-lg py-3.5 px-4 text-white font-black text-2xl text-center tracking-[0.5em] focus:ring-1 focus:ring-[#1475e1]/40 focus:border-[#1475e1]/40 outline-none placeholder:text-[#c1c6d5]/30"
+            className="w-full bg-[#1c1610] border border-[#4a3f2c]/30 rounded-lg py-3.5 px-4 text-white font-black text-2xl text-center tracking-[0.5em] focus:ring-1 focus:ring-[#d72a22]/40 focus:border-[#d72a22]/40 outline-none placeholder:text-[#c2b391]/30"
           />
-          <p className="text-[#c1c6d5] text-[10px] text-center">
+          <p className="text-[#c2b391] text-[10px] text-center">
             {mode === 'register' ? 'Mínimo 4 caracteres. No lo olvides.' : 'El PIN que creaste al registrarte'}
           </p>
         </div>
@@ -204,8 +210,8 @@ export default function LoginPage() {
           disabled={loading}
           className={`w-full font-black text-sm py-4 rounded-lg uppercase tracking-widest active:scale-[0.98] transition-all disabled:opacity-50 shadow-lg ${
             mode === 'login'
-              ? 'bg-[#00e601] text-[#0f212e] shadow-[0_4px_16px_rgba(0,230,1,0.3)]'
-              : 'bg-[#1475e1] text-white shadow-[0_4px_16px_rgba(20,117,225,0.3)]'
+              ? 'bg-[#e5b85c] text-[#140f0a] shadow-[0_4px_16px_rgba(0,230,1,0.3)]'
+              : 'bg-[#d72a22] text-white shadow-[0_4px_16px_rgba(20,117,225,0.3)]'
           }`}
         >
           {loading ? '⏳ Procesando...' : mode === 'login' ? 'Ingresar' : 'Crear Cuenta'}
@@ -213,8 +219,8 @@ export default function LoginPage() {
 
         {/* Success */}
         {success && (
-          <div className="bg-[#00e601]/10 border border-[#00e601]/20 rounded-lg px-4 py-3 text-center">
-            <span className="text-[#77ff61] text-xs font-bold">{success}</span>
+          <div className="bg-[#e5b85c]/10 border border-[#e5b85c]/20 rounded-lg px-4 py-3 text-center">
+            <span className="text-[#f2d27a] text-xs font-bold">{success}</span>
           </div>
         )}
 
@@ -229,13 +235,13 @@ export default function LoginPage() {
         {import.meta.env.DEV && (
           <>
             <div className="flex items-center gap-4 py-2">
-              <div className="flex-1 h-px bg-[#414753]/30" />
-              <span className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest">o</span>
-              <div className="flex-1 h-px bg-[#414753]/30" />
+              <div className="flex-1 h-px bg-[#4a3f2c]/30" />
+              <span className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest">o</span>
+              <div className="flex-1 h-px bg-[#4a3f2c]/30" />
             </div>
             <button
               onClick={() => enterDemoMode()}
-              className="w-full bg-[#253744] text-[#c1c6d5] font-bold text-xs py-4 rounded-lg uppercase tracking-widest hover:bg-[#2a3b49] hover:text-white transition-all active:scale-[0.98] border border-[#414753]/20"
+              className="w-full bg-[#2e2418] text-[#c2b391] font-bold text-xs py-4 rounded-lg uppercase tracking-widest hover:bg-[#261d12] hover:text-white transition-all active:scale-[0.98] border border-[#4a3f2c]/20"
             >
               <span className="flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined text-sm">play_arrow</span>
@@ -247,7 +253,7 @@ export default function LoginPage() {
       </div>
 
       {/* Footer */}
-      <p className="absolute bottom-8 text-[#c1c6d5]/40 text-[9px] font-medium text-center">
+      <p className="absolute bottom-8 text-[#c2b391]/40 text-[9px] font-medium text-center">
         Al continuar, aceptas nuestros Términos de Servicio
       </p>
     </div>

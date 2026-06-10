@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90+1 — Pantalla de Cajero (Emisión de CL COINS)
+// CLUB PYP — Pantalla de Cajero (Emisión de PyP Coins)
 // ============================================
 // PLAN_MUNDIAL §2 "SE RECABLEA": reemplaza el OCR. El cajero (rol CASHIER) digita
 // el monto de venta real → el sistema genera un código de 6 dígitos (vence 10 min)
@@ -109,7 +109,7 @@ export default function CashierPage() {
     return (
       <div className="p-6 text-center space-y-3 mt-10">
         <span className="material-symbols-outlined text-[#ffb4ab] text-4xl">cloud_off</span>
-        <p className="text-[#d2e5f7] text-sm font-bold">El módulo de cajero requiere conexión.</p>
+        <p className="text-[#efe6d2] text-sm font-bold">El módulo de cajero requiere conexión.</p>
       </div>
     );
   }
@@ -117,8 +117,8 @@ export default function CashierPage() {
     return (
       <div className="p-6 text-center space-y-3 mt-10">
         <span className="material-symbols-outlined text-[#ffb4ab] text-4xl">lock</span>
-        <p className="text-[#d2e5f7] text-sm font-bold">No autorizado.</p>
-        <p className="text-[#c1c6d5] text-xs">Esta pantalla es solo para cajeros.</p>
+        <p className="text-[#efe6d2] text-sm font-bold">No autorizado.</p>
+        <p className="text-[#c2b391] text-xs">Esta pantalla es solo para cajeros.</p>
       </div>
     );
   }
@@ -129,28 +129,28 @@ export default function CashierPage() {
   return (
     <div className="p-4 space-y-5 max-w-md mx-auto">
       <div>
-        <h2 className="text-white font-black text-xl uppercase tracking-tight">Caja — Emitir CL COINS</h2>
-        <p className="text-[#c1c6d5] text-xs">Digita el monto de la venta del cliente.</p>
+        <h2 className="text-white font-black text-xl uppercase tracking-tight">Caja — Emitir PyP Coins</h2>
+        <p className="text-[#c2b391] text-xs">Digita el monto de la venta del cliente.</p>
       </div>
 
       {active ? (
         /* ── Código activo ── */
-        <div className="bg-gradient-to-br from-[#1a2c39] to-[#253744] rounded-2xl p-6 border border-[#00e601]/30 text-center space-y-4">
-          <p className="text-[9px] font-black text-[#c1c6d5] uppercase tracking-[0.2em]">Código para el cliente</p>
-          <p className="text-[#00e601] text-5xl font-black tracking-[0.2em] tabular-nums">{active.code}</p>
+        <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-2xl p-6 border border-[#e5b85c]/30 text-center space-y-4">
+          <p className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em]">Código para el cliente</p>
+          <p className="text-[#e5b85c] text-5xl font-black tracking-[0.2em] tabular-nums">{active.code}</p>
           <div className="flex justify-center gap-6 text-sm">
             <div>
-              <p className="text-[#c1c6d5] text-[10px] uppercase tracking-widest font-bold">Vale</p>
+              <p className="text-[#c2b391] text-[10px] uppercase tracking-widest font-bold">Vale</p>
               <p className="text-white font-black tabular-nums">{active.coinsValue.toLocaleString()} 🪙</p>
             </div>
             <div>
-              <p className="text-[#c1c6d5] text-[10px] uppercase tracking-widest font-bold">Vence en</p>
+              <p className="text-[#c2b391] text-[10px] uppercase tracking-widest font-bold">Vence en</p>
               <p className={`font-black tabular-nums ${secondsLeft < 60 ? 'text-[#ffb4ab]' : 'text-white'}`}>{mm}:{ss}</p>
             </div>
           </div>
           <button
             onClick={() => setActive(null)}
-            className="w-full bg-[#00e601] text-[#013a00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] transition-all"
+            className="w-full bg-[#e5b85c] text-[#2a1c00] py-3.5 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] transition-all"
           >
             Emitir otro código
           </button>
@@ -159,9 +159,9 @@ export default function CashierPage() {
         /* ── Formulario de emisión ── */
         <div className="space-y-4">
           <div>
-            <label className="text-[9px] font-black text-[#c1c6d5] uppercase tracking-[0.2em] px-1">Monto de venta (COP)</label>
+            <label className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em] px-1">Monto de venta (COP)</label>
             <div className="relative mt-1.5">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c1c6d5] font-black text-xl">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c2b391] font-black text-xl">$</span>
               <input
                 inputMode="numeric"
                 autoFocus
@@ -169,14 +169,14 @@ export default function CashierPage() {
                 onChange={(e) => { setAmount(e.target.value); setError(null); }}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleGenerate(); }}
                 placeholder="0"
-                className="w-full bg-[#1a2c39] border border-[#253744] rounded-xl py-4 pl-9 pr-4 text-white text-2xl font-black tabular-nums placeholder:text-[#414753] focus:outline-none focus:border-[#1475e1]"
+                className="w-full bg-[#1c1610] border border-[#2e2418] rounded-xl py-4 pl-9 pr-4 text-white text-2xl font-black tabular-nums placeholder:text-[#4a3f2c] focus:outline-none focus:border-[#d72a22]"
               />
             </div>
           </div>
 
-          <div className="bg-[#1a2c39] rounded-xl p-4 flex justify-between items-center">
-            <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">El cliente recibe</span>
-            <span className="text-[#00e601] font-black text-xl tabular-nums">{coinsPreview.toLocaleString()} 🪙</span>
+          <div className="bg-[#1c1610] rounded-xl p-4 flex justify-between items-center">
+            <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">El cliente recibe</span>
+            <span className="text-[#e5b85c] font-black text-xl tabular-nums">{coinsPreview.toLocaleString()} 🪙</span>
           </div>
 
           {error && (
@@ -188,7 +188,7 @@ export default function CashierPage() {
           <button
             onClick={handleGenerate}
             disabled={generating || coinsPreview < 1}
-            className="w-full bg-[#00e601] text-[#013a00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+            className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-sm uppercase tracking-widest active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100 shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
           >
             {generating ? 'Generando…' : 'Generar código'}
           </button>
@@ -198,14 +198,14 @@ export default function CashierPage() {
       {/* ── Recientes ── */}
       {recent.length > 0 && (
         <div className="space-y-2">
-          <p className="text-[9px] font-black text-[#c1c6d5] uppercase tracking-[0.2em] px-1">Últimos códigos</p>
+          <p className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em] px-1">Últimos códigos</p>
           {recent.map((c) => (
-            <div key={c.id} className="bg-[#1a2c39] rounded-lg p-3 flex items-center justify-between">
-              <span className="text-[#d2e5f7] font-black tabular-nums tracking-widest">{c.code}</span>
-              <span className="text-[#c1c6d5] text-xs tabular-nums">{c.coinsValue.toLocaleString()} 🪙</span>
+            <div key={c.id} className="bg-[#1c1610] rounded-lg p-3 flex items-center justify-between">
+              <span className="text-[#efe6d2] font-black tabular-nums tracking-widest">{c.code}</span>
+              <span className="text-[#c2b391] text-xs tabular-nums">{c.coinsValue.toLocaleString()} 🪙</span>
               <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                c.status === 'REDEEMED' ? 'bg-[#00e601]/15 text-[#77ff61]'
-                : c.status === 'PENDING' ? 'bg-[#1475e1]/15 text-[#aac7ff]'
+                c.status === 'REDEEMED' ? 'bg-[#e5b85c]/15 text-[#f2d27a]'
+                : c.status === 'PENDING' ? 'bg-[#d72a22]/15 text-[#f0d9a8]'
                 : 'bg-[#ffb4ab]/10 text-[#ffb4ab]'
               }`}>
                 {c.status === 'REDEEMED' ? 'Canjeado' : c.status === 'PENDING' ? 'Activo' : 'Vencido'}

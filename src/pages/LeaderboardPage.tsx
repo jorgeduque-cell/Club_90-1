@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90+1 — Leaderboard Dual & Wall of Shame
+// CLUB PYP — Leaderboard Dual & Wall of Shame
 // ============================================
 
 import { useMemo, useState } from 'react';
@@ -89,25 +89,25 @@ export default function LeaderboardPage() {
       <div className="mb-6 flex flex-col gap-4">
         <div>
           <h1 className="text-3xl font-black italic tracking-tighter text-white uppercase leading-none">Ranking VIP</h1>
-          <p className="text-[#c1c6d5] text-sm font-medium">Compite en la cima del Club 90+1</p>
+          <p className="text-[#c2b391] text-sm font-medium">Compite en la cima del Club PyP</p>
         </div>
 
-        <div className="flex bg-[#1a2c39] rounded-xl p-1 shadow-inner relative">
+        <div className="flex bg-[#1c1610] rounded-xl p-1 shadow-inner relative">
           <button 
             onClick={() => setActiveTab('SEMANAL')}
-            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'SEMANAL' ? 'text-[#013a00] shadow-md' : 'text-[#6a7c89] hover:text-white'}`}
+            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'SEMANAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7a6a4d] hover:text-white'}`}
           >
             Semanal 🔥
           </button>
           <button 
             onClick={() => setActiveTab('GLOBAL')}
-            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'GLOBAL' ? 'text-[#013a00] shadow-md' : 'text-[#6a7c89] hover:text-white'}`}
+            className={`flex-1 py-2 font-black text-xs uppercase tracking-widest rounded-lg transition-all z-10 ${activeTab === 'GLOBAL' ? 'text-[#2a1c00] shadow-md' : 'text-[#7a6a4d] hover:text-white'}`}
           >
             Global 🌎
           </button>
           
           <div 
-            className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#00e601] rounded-lg transition-transform duration-300 ease-in-out shadow-[0_0_10px_rgba(0,230,1,0.5)]"
+            className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#e5b85c] rounded-lg transition-transform duration-300 ease-in-out shadow-[0_0_10px_rgba(0,230,1,0.5)]"
             style={{ 
               transform: activeTab === 'SEMANAL' ? 'translateX(0)' : 'translateX(calc(100% + 4px))'
             }}
@@ -125,27 +125,27 @@ export default function LeaderboardPage() {
 
       {/* Profiler Propio */}
       <div className="mb-8 relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00e601] to-[#ffd700] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000" />
-        <div className="relative bg-[#1a2c39] rounded-xl p-5 flex items-center justify-between border border-[#00e601]/20 shadow-xl">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#e5b85c] to-[#ffd700] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000" />
+        <div className="relative bg-[#1c1610] rounded-xl p-5 flex items-center justify-between border border-[#e5b85c]/20 shadow-xl">
           <div className="flex items-center gap-4">
             <div className="flex flex-col items-center">
-              <span className="text-[10px] font-bold text-[#00e601] uppercase tracking-widest">Posición</span>
+              <span className="text-[10px] font-bold text-[#e5b85c] uppercase tracking-widest">Posición</span>
               <span className="text-3xl font-black text-white italic tracking-tighter tabular-nums">#{myRank}</span>
             </div>
-            <div className="h-10 w-px bg-[#414753]/20 mx-1" />
+            <div className="h-10 w-px bg-[#4a3f2c]/20 mx-1" />
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full border-2 border-[#00e601] bg-[#253744] flex items-center justify-center text-lg font-black">
+              <div className="w-12 h-12 rounded-full border-2 border-[#e5b85c] bg-[#2e2418] flex items-center justify-center text-lg font-black">
                 {userName.charAt(0).toUpperCase()}
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-bold text-base leading-tight">{userName}</span>
-                <span className="text-[#c1c6d5] text-[10px] font-semibold uppercase tracking-wider">{profile?.accountTier || 'GUEST'}</span>
+                <span className="text-[#c2b391] text-[10px] font-semibold uppercase tracking-wider">{profile?.accountTier || 'GUEST'}</span>
               </div>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-[#00e601] font-black text-xl tracking-tighter leading-none tabular-nums">{balance.toLocaleString()}</div>
-            <div className="text-[#c1c6d5] text-[9px] font-bold uppercase tracking-widest">CL COINS</div>
+            <div className="text-[#e5b85c] font-black text-xl tracking-tighter leading-none tabular-nums">{balance.toLocaleString()}</div>
+            <div className="text-[#c2b391] text-[9px] font-bold uppercase tracking-widest">PyP Coins</div>
           </div>
         </div>
       </div>
@@ -161,8 +161,8 @@ export default function LeaderboardPage() {
               onClick={() => openPlayerProfile(player.name)}
               className={`flex flex-col items-center relative active:scale-95 transition-transform ${
                 isFirst
-                  ? 'bg-[#1a2c39] p-4 rounded-xl pb-6 border-t border-[#00e601]/30 shadow-2xl'
-                  : 'bg-[#0f212e] p-3 rounded-xl pb-5'
+                  ? 'bg-[#1c1610] p-4 rounded-xl pb-6 border-t border-[#e5b85c]/30 shadow-2xl'
+                  : 'bg-[#140f0a] p-3 rounded-xl pb-5'
               }`}
             >
               <div
@@ -187,7 +187,7 @@ export default function LeaderboardPage() {
               <span className={`text-white font-bold w-full text-center truncate ${isFirst ? 'text-xs font-black' : 'text-[10px]'}`}>
                 {player.name}
               </span>
-              <span className={`text-[#00e601] font-black tabular-nums mt-1 ${isFirst ? 'text-sm' : 'text-xs'}`}>
+              <span className={`text-[#e5b85c] font-black tabular-nums mt-1 ${isFirst ? 'text-sm' : 'text-xs'}`}>
                 {activeTab === 'SEMANAL' ? `🔥 ${player.streak || 0}` : `${player.points.toLocaleString()}`}
               </span>
             </button>
@@ -196,34 +196,34 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Leaderboard List */}
-      <div className="bg-[#0f212e] rounded-xl overflow-hidden mb-8 shadow-inner">
-        <div className="px-4 py-3 bg-[#1a2c39]/80 flex justify-between text-[10px] font-black uppercase tracking-[0.15em] text-[#c1c6d5] border-b border-[#253744]">
+      <div className="bg-[#140f0a] rounded-xl overflow-hidden mb-8 shadow-inner">
+        <div className="px-4 py-3 bg-[#1c1610]/80 flex justify-between text-[10px] font-black uppercase tracking-[0.15em] text-[#c2b391] border-b border-[#2e2418]">
           <span>Rank & Jugador</span>
-          <span>{activeTab === 'SEMANAL' ? '🔥 Racha' : '🪙 CL COINS'}</span>
+          <span>{activeTab === 'SEMANAL' ? '🔥 Racha' : '🪙 PyP Coins'}</span>
         </div>
-        <div className="divide-y divide-[#414753]/20">
+        <div className="divide-y divide-[#4a3f2c]/20">
           {list.map((player) => (
             <button
               key={player.rank}
               onClick={() => openPlayerProfile(player.name)}
-              className="w-full flex items-center justify-between p-4 hover:bg-[#1a2c39] transition-colors"
+              className="w-full flex items-center justify-between p-4 hover:bg-[#1c1610] transition-colors"
             >
               <div className="flex items-center gap-4">
-                <span className="w-6 text-[#6a7c89] font-black italic tracking-tighter text-sm tabular-nums">#{player.rank}</span>
+                <span className="w-6 text-[#7a6a4d] font-black italic tracking-tighter text-sm tabular-nums">#{player.rank}</span>
                 <div className="flex items-center gap-3">
-                  <img alt={player.name} className="w-9 h-9 rounded-lg object-cover bg-[#0c1622]" src={player.avatar} />
+                  <img alt={player.name} className="w-9 h-9 rounded-lg object-cover bg-[#120d08]" src={player.avatar} />
                   <span className="text-white font-bold text-sm">{player.name}</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#00e601] font-black tracking-tight tabular-nums">
+                <span className="text-[#e5b85c] font-black tracking-tight tabular-nums">
                   {activeTab === 'SEMANAL' ? player.streak : player.points.toLocaleString()}
                 </span>
               </div>
             </button>
           ))}
           {list.length === 0 && (
-            <div className="text-center p-6 text-[#6a7c89] text-xs font-bold uppercase tracking-wider">
+            <div className="text-center p-6 text-[#7a6a4d] text-xs font-bold uppercase tracking-wider">
               No hay más jugadores activos.
             </div>
           )}
@@ -246,11 +246,11 @@ export default function LeaderboardPage() {
                 <span className="w-6 text-[#550000] font-black italic tracking-tighter text-sm line-through">#{bp.rank}</span>
                 <div className="flex items-center gap-3 opacity-60 grayscale">
                   <img alt={bp.name} className="w-9 h-9 rounded-lg object-cover" src={bp.avatar} />
-                  <span className="text-[#cc4444] font-bold text-sm line-through decoration-[#ff0000]">{bp.name}</span>
+                  <span className="text-[#cc4444] font-bold text-sm line-through decoration-[#d72a22]">{bp.name}</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#ff0000] font-black tracking-tight tabular-nums">0 CL</span>
+                <span className="text-[#d72a22] font-black tracking-tight tabular-nums">0 PyP</span>
               </div>
             </div>
           ))}
@@ -265,38 +265,38 @@ export default function LeaderboardPage() {
       {/* Profiler Modal */}
       {selectedPlayer && (
         <>
-          <div className="fixed inset-0 bg-[#0c1622]/90 z-[90] backdrop-blur-md" onClick={closePlayerProfile} />
+          <div className="fixed inset-0 bg-[#120d08]/90 z-[90] backdrop-blur-md" onClick={closePlayerProfile} />
           <div className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-[95] max-w-sm mx-auto">
-            <div className="bg-gradient-to-b from-[#1a2c39] to-[#0c1622] rounded-3xl p-6 shadow-2xl border border-[rgba(255,255,255,0.05)]">
-              <button onClick={closePlayerProfile} className="absolute top-4 right-4 text-[#6a7c89] hover:text-white bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
+            <div className="bg-gradient-to-b from-[#1c1610] to-[#120d08] rounded-3xl p-6 shadow-2xl border border-[rgba(255,255,255,0.05)]">
+              <button onClick={closePlayerProfile} className="absolute top-4 right-4 text-[#7a6a4d] hover:text-white bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
                 <span className="material-symbols-outlined text-sm">close</span>
               </button>
 
               <div className="flex flex-col items-center text-center mt-2">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#00e601] mb-4 shadow-[0_0_20px_rgba(0,230,1,0.2)]">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#e5b85c] mb-4 shadow-[0_0_20px_rgba(0,230,1,0.2)]">
                   <img alt={selectedPlayer.name} className="w-full h-full object-cover" src={selectedPlayer.avatar} />
                 </div>
                 <h3 className="text-white font-black text-2xl uppercase tracking-tighter mb-1">{selectedPlayer.name}</h3>
                 
                 {selectedPlayer.isBankrupt ? (
-                  <span className="bg-[#ff0000] text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded shadow-lg mt-1 rounded-full">
+                  <span className="bg-[#d72a22] text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded shadow-lg mt-1 rounded-full">
                     ESTADO: BANCARROTA
                   </span>
                 ) : (
-                  <span className="text-[#00e601] text-[10px] font-bold uppercase tracking-widest bg-[#00e601]/10 px-3 py-1 rounded-full border border-[#00e601]/20">
+                  <span className="text-[#e5b85c] text-[10px] font-bold uppercase tracking-widest bg-[#e5b85c]/10 px-3 py-1 rounded-full border border-[#e5b85c]/20">
                     Rango #{selectedPlayer.rank} Global
                   </span>
                 )}
 
                 <div className="w-full grid grid-cols-2 gap-3 mt-6">
-                  <div className="bg-[#0f212e] rounded-xl p-3 text-center border border-[#1a2c39]">
-                    <p className="text-[9px] text-[#6a7c89] font-black uppercase tracking-widest mb-1">Caja Fuerte</p>
-                    <p className={`font-black text-xl tabular-nums ${selectedPlayer.isBankrupt ? 'text-[#ff0000]' : 'text-[#00e601]'}`}>
+                  <div className="bg-[#140f0a] rounded-xl p-3 text-center border border-[#1c1610]">
+                    <p className="text-[9px] text-[#7a6a4d] font-black uppercase tracking-widest mb-1">Caja Fuerte</p>
+                    <p className={`font-black text-xl tabular-nums ${selectedPlayer.isBankrupt ? 'text-[#d72a22]' : 'text-[#e5b85c]'}`}>
                       {selectedPlayer.points.toLocaleString()}
                     </p>
                   </div>
-                  <div className="bg-[#0f212e] rounded-xl p-3 text-center border border-[#1a2c39]">
-                    <p className="text-[9px] text-[#6a7c89] font-black uppercase tracking-widest mb-1">Racha Actual</p>
+                  <div className="bg-[#140f0a] rounded-xl p-3 text-center border border-[#1c1610]">
+                    <p className="text-[9px] text-[#7a6a4d] font-black uppercase tracking-widest mb-1">Racha Actual</p>
                     <p className="text-[#ffd700] font-black text-xl tabular-nums">🔥 {selectedPlayer.streak || 0}</p>
                   </div>
                 </div>

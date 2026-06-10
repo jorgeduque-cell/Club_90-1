@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — Teams & Players API (Supabase)
+// CLUB PYP — Teams & Players API (Supabase)
 // ============================================
 
 import { supabase } from './supabase';
@@ -74,7 +74,7 @@ export async function createTeam(input: CreateTeamInput): Promise<Team> {
       short_name: input.short_name,
       logo_url: input.logo_url || null,
       league: input.league || 'Torneo Local',
-      color: input.color || '#1475e1',
+      color: input.color || '#d72a22',
     })
     .select()
     .single();

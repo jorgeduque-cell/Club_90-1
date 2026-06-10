@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 /* ══════════════════════════════════════════
-   CLUB 90 — Custom Utilities (Stitch)
+   CLUB PYP — Custom Utilities (Stitch)
    ══════════════════════════════════════════ */
 
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #031522;
-    color: #d2e5f7;
+    background-color: #0b0805;
+    color: #efe6d2;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
@@ -58,15 +58,15 @@
     width: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #0f212e;
+    background: #140f0a;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #253744;
+    background: #2e2418;
     border-radius: 10px;
   }
 
   .dot-pattern {
-    background-image: radial-gradient(#414753 0.5px, transparent 0.5px);
+    background-image: radial-gradient(#4a3f2c 0.5px, transparent 0.5px);
     background-size: 12px 12px;
     opacity: 0.15;
   }
@@ -87,8 +87,8 @@
 .spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #253744;
-  border-top-color: #00e601;
+  border: 3px solid #2e2418;
+  border-top-color: #e5b85c;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

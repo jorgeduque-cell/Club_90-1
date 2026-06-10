@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — Supabase Client (Frontend)
+// CLUB PYP — Supabase Client (Frontend)
 // ============================================
 
 import { createClient } from '@supabase/supabase-js';
@@ -11,7 +11,7 @@ export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 if (!isSupabaseConfigured) {
   console.warn(
-    '⚠️ CLUB 90: Faltan VITE_SUPABASE_URL o VITE_SUPABASE_ANON_KEY en .env. ' +
+    '⚠️ CLUB PYP: Faltan VITE_SUPABASE_URL o VITE_SUPABASE_ANON_KEY en .env. ' +
     'La app funcionará en modo demo sin conexión a Supabase.'
   );
 }

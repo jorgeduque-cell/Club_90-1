@@ -1,5 +1,5 @@
 // ============================================
-// CLUB 90 — Client-Side Multiplier Calculator
+// CLUB PYP — Client-Side Multiplier Calculator
 // ============================================
 // ⚠️ DEMO-ONLY MODULE — Not used in production.
 // In production, multipliers are calculated server-side
@@ -20,7 +20,7 @@
 export const HOUSE_MARGIN = 0.20;
 
 /**
- * Seed liquidity per pool option (CL COINS).
+ * Seed liquidity per pool option (PyP Coins).
  */
 export const SEED_LIQUIDITY = 10_000;
 
@@ -39,9 +39,9 @@ export interface LiveOdds {
  * Calculates live Pari-Mutuel decimal odds.
  * Mirror of the PL/pgSQL calculate_live_odds() function.
  *
- * @param homePool - Real CL COINS in home pool
- * @param drawPool - Real CL COINS in draw pool
- * @param awayPool - Real CL COINS in away pool
+ * @param homePool - Real PyP Coins in home pool
+ * @param drawPool - Real PyP Coins in draw pool
+ * @param awayPool - Real PyP Coins in away pool
  * @returns Decimal odds for each outcome
  */
 export function calculateLiveOdds(
@@ -66,9 +66,9 @@ export function calculateLiveOdds(
 /**
  * Calculates the estimated return for a bet.
  *
- * @param amount - CL COINS bet amount
+ * @param amount - PyP Coins bet amount
  * @param odd - Decimal odd for the selected prediction
- * @returns Estimated return in CL COINS
+ * @returns Estimated return in PyP Coins
  */
 export function calculateEstimatedReturn(amount: number, odd: number): number {
   return Math.round(amount * odd * 100) / 100;

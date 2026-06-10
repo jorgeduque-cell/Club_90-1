@@ -1,11 +1,11 @@
 {
-  "name": "Club 90",
-  "short_name": "Club 90",
-  "description": "Apuestas deportivas entre amigos — Fantasy League con CL COINS",
+  "name": "Club PyP",
+  "short_name": "Club PyP",
+  "description": "Apuestas deportivas entre amigos — Fantasy League con PyP Coins",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#031522",
-  "theme_color": "#031522",
+  "background_color": "#0b0805",
+  "theme_color": "#0b0805",
   "orientation": "portrait",
   "icons": [
     {

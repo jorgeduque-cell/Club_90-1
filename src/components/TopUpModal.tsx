@@ -1,7 +1,7 @@
 // ============================================
-// CLUB 90 — TopUp Modal (CONTEXTO §6 Compliant)
+// CLUB PYP — TopUp Modal (CONTEXTO §6 Compliant)
 // ============================================
-// Fixed Package: $20,000 COP → 5,000 CL COINS
+// Fixed Package: $20,000 COP → 5,000 PyP Coins
 // Bankruptcy Rule: balance < 2,000
 // Weekly Cap: Max 2 recharges/week
 
@@ -54,10 +54,10 @@ export default function TopUpModal() {
 
       {/* Modal */}
       <div className="fixed inset-x-0 bottom-0 z-[75] max-h-[90vh] overflow-y-auto">
-        <div className="bg-[#0f212e] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#253744]">
+        <div className="bg-[#140f0a] rounded-t-2xl shadow-[0_-20px_60px_rgba(0,0,0,0.8)] border-t border-[#2e2418]">
           {/* Handle */}
           <div className="flex justify-center pt-3 pb-1">
-            <div className="w-10 h-1 bg-[#414753] rounded-full" />
+            <div className="w-10 h-1 bg-[#4a3f2c] rounded-full" />
           </div>
 
           <div className="p-5 space-y-5">
@@ -67,7 +67,7 @@ export default function TopUpModal() {
                 {step !== 'info' && (
                   <button
                     onClick={() => setStep(step === 'confirm' ? 'method' : 'info')}
-                    className="text-[#aac7ff] hover:text-white transition-colors"
+                    className="text-[#f0d9a8] hover:text-white transition-colors"
                   >
                     <span className="material-symbols-outlined">arrow_back</span>
                   </button>
@@ -76,12 +76,12 @@ export default function TopUpModal() {
                   <h3 className="text-white font-black text-lg uppercase tracking-tight">
                     {step === 'info' ? 'Vida Extra' : step === 'method' ? 'Método de Pago' : 'Confirmar Recarga'}
                   </h3>
-                  <p className="text-[#c1c6d5] text-[10px] font-bold uppercase tracking-widest">
+                  <p className="text-[#c2b391] text-[10px] font-bold uppercase tracking-widest">
                     Balance: {balance.toLocaleString()} 🪙
                   </p>
                 </div>
               </div>
-              <button onClick={handleClose} className="text-[#b1bad3] hover:text-white transition-colors p-1">
+              <button onClick={handleClose} className="text-[#b8a98a] hover:text-white transition-colors p-1">
                 <span className="material-symbols-outlined">close</span>
               </button>
             </div>
@@ -90,39 +90,39 @@ export default function TopUpModal() {
             {step === 'info' && (
               <div className="space-y-4">
                 {/* Fixed Package Card */}
-                <div className="bg-gradient-to-br from-[#1a2c39] to-[#253744] rounded-xl p-5 border border-[#1475e1]/20 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-[#00e601]/5 rounded-full blur-2xl" />
+                <div className="bg-gradient-to-br from-[#1c1610] to-[#2e2418] rounded-xl p-5 border border-[#d72a22]/20 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-[#e5b85c]/5 rounded-full blur-2xl" />
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="bg-[#1475e1]/20 text-[#aac7ff] text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                      <span className="bg-[#d72a22]/20 text-[#f0d9a8] text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                         Paquete Único
                       </span>
-                      <span className="text-[#c1c6d5] text-[10px] font-bold">
+                      <span className="text-[#c2b391] text-[10px] font-bold">
                         {weeklyRecharges}/{ RECHARGE_WEEKLY_CAP} esta semana
                       </span>
                     </div>
                     <div className="text-center space-y-2">
-                      <p className="text-[#00e601] text-5xl font-black tabular-nums tracking-tighter">
+                      <p className="text-[#e5b85c] text-5xl font-black tabular-nums tracking-tighter">
                         {RECHARGE_COINS.toLocaleString()} 🪙
                       </p>
-                      <p className="text-[#c1c6d5] text-xs font-bold">CL COINS</p>
-                      <div className="h-px bg-[#414753]/20 my-3" />
+                      <p className="text-[#c2b391] text-xs font-bold">PyP Coins</p>
+                      <div className="h-px bg-[#4a3f2c]/20 my-3" />
                       <p className="text-white text-xl font-black tabular-nums">
                       {RECHARGE_COP.toLocaleString()} COP
                       </p>
-                      <p className="text-[#c1c6d5] text-[10px]">Transferencia vía Nequi / Daviplata</p>
+                      <p className="text-[#c2b391] text-[10px]">Transferencia vía Nequi / Daviplata</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Rules */}
                 <div className="space-y-2">
-                  <p className="text-[9px] font-black text-[#c1c6d5] uppercase tracking-[0.2em] px-1">Reglas de Recarga</p>
+                  <p className="text-[9px] font-black text-[#c2b391] uppercase tracking-[0.2em] px-1">Reglas de Recarga</p>
                   {[
                     {
                       icon: 'inventory_2',
                       text: `Paquete fijo: $${RECHARGE_COP.toLocaleString()} COP = ${RECHARGE_COINS.toLocaleString()} 🪙`,
-                      color: '#00e601',
+                      color: '#e5b85c',
                     },
                     {
                       icon: 'battery_low',
@@ -132,12 +132,12 @@ export default function TopUpModal() {
                     {
                       icon: 'event_repeat',
                       text: `Máximo ${RECHARGE_WEEKLY_CAP} recargas por semana (Lunes a Domingo)`,
-                      color: '#aac7ff',
+                      color: '#f0d9a8',
                     },
                   ].map((rule) => (
-                    <div key={rule.icon} className="bg-[#1a2c39] rounded-lg p-3 flex items-center gap-3">
+                    <div key={rule.icon} className="bg-[#1c1610] rounded-lg p-3 flex items-center gap-3">
                       <span className="material-symbols-outlined text-sm" style={{ color: rule.color }}>{rule.icon}</span>
-                      <span className="text-[#d2e5f7] text-[11px] font-medium">{rule.text}</span>
+                      <span className="text-[#efe6d2] text-[11px] font-medium">{rule.text}</span>
                     </div>
                   ))}
                 </div>
@@ -146,7 +146,7 @@ export default function TopUpModal() {
                 {allowed ? (
                   <button
                     onClick={() => setStep('method')}
-                    className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest bg-[#00e601] text-[#013a00] active:scale-[0.98] shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
+                    className="w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest bg-[#e5b85c] text-[#2a1c00] active:scale-[0.98] shadow-[0_4px_16px_rgba(0,230,1,0.3)] transition-all"
                   >
                     Comprar Vida Extra
                   </button>
@@ -162,14 +162,14 @@ export default function TopUpModal() {
             {/* STEP 2: Payment Method */}
             {step === 'method' && (
               <div className="space-y-3">
-                <p className="text-[#c1c6d5] text-xs">
+                <p className="text-[#c2b391] text-xs">
                   Selecciona cómo harás la transferencia de <span className="text-white font-bold">${RECHARGE_COP.toLocaleString()} COP</span>
                 </p>
                 {PAYMENT_METHODS.map((pm) => (
                   <button
                     key={pm.id}
                     onClick={() => { setSelectedMethod(pm.id); setStep('confirm'); }}
-                    className="w-full bg-[#1a2c39] rounded-xl p-4 flex items-center gap-4 transition-all active:scale-[0.98] hover:bg-[#253744]"
+                    className="w-full bg-[#1c1610] rounded-xl p-4 flex items-center gap-4 transition-all active:scale-[0.98] hover:bg-[#2e2418]"
                   >
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center"
@@ -181,9 +181,9 @@ export default function TopUpModal() {
                     </div>
                     <div className="flex-1 text-left">
                       <p className="text-white font-bold text-sm">{pm.name}</p>
-                      <p className="text-[#c1c6d5] text-[10px]">Recarga instantánea</p>
+                      <p className="text-[#c2b391] text-[10px]">Recarga instantánea</p>
                     </div>
-                    <span className="material-symbols-outlined text-[#414753]">chevron_right</span>
+                    <span className="material-symbols-outlined text-[#4a3f2c]">chevron_right</span>
                   </button>
                 ))}
               </div>
@@ -193,41 +193,41 @@ export default function TopUpModal() {
             {step === 'confirm' && (
               <div className="space-y-5">
                 {/* Summary Card */}
-                <div className="bg-[#1a2c39] rounded-xl p-5 space-y-4">
-                  <div className="flex justify-between items-center pb-3 border-b border-[#414753]/20">
-                    <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">Recibes</span>
-                    <span className="text-[#00e601] text-2xl font-black tabular-nums">{RECHARGE_COINS.toLocaleString()} 🪙</span>
+                <div className="bg-[#1c1610] rounded-xl p-5 space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                    <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Recibes</span>
+                    <span className="text-[#e5b85c] text-2xl font-black tabular-nums">{RECHARGE_COINS.toLocaleString()} 🪙</span>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#414753]/20">
-                    <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">Pagas</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                    <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Pagas</span>
                     <span className="text-white font-black text-lg tabular-nums">${RECHARGE_COP.toLocaleString()} COP</span>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#414753]/20">
-                    <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">Método</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                    <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Método</span>
                     <div className="flex items-center gap-2">
                       <span className="material-symbols-outlined text-sm" style={{ color: method.color }}>{method.icon}</span>
                       <span className="text-white font-bold text-sm">{method.name}</span>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center pb-3 border-b border-[#414753]/20">
-                    <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">XP Bonus</span>
-                    <span className="text-[#aac7ff] font-bold text-sm">+{Math.floor(RECHARGE_COINS * 0.1).toLocaleString()} XP</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-[#4a3f2c]/20">
+                    <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">XP Bonus</span>
+                    <span className="text-[#f0d9a8] font-bold text-sm">+{Math.floor(RECHARGE_COINS * 0.1).toLocaleString()} XP</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#c1c6d5] text-xs font-bold uppercase tracking-widest">Nuevo Balance</span>
+                    <span className="text-[#c2b391] text-xs font-bold uppercase tracking-widest">Nuevo Balance</span>
                     <span className="text-white font-black text-lg tabular-nums">{(balance + RECHARGE_COINS).toLocaleString()} 🪙</span>
                   </div>
                 </div>
 
-                <p className="text-[#c1c6d5] text-[9px] leading-relaxed opacity-60 text-center">
+                <p className="text-[#c2b391] text-[9px] leading-relaxed opacity-60 text-center">
                   {live
-                    ? 'Contacta al administrador para verificar tu pago y acreditar los CL COINS.'
+                    ? 'Contacta al administrador para verificar tu pago y acreditar los PyP Coins.'
                     : 'En modo demo, la recarga es instantánea.'}
                 </p>
 
                 <button
                   onClick={handleConfirm}
-                  className="w-full bg-[#00e601] text-[#013a00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.3)]"
+                  className="w-full bg-[#e5b85c] text-[#2a1c00] py-4 rounded-xl font-black text-base uppercase tracking-widest active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(0,230,1,0.3)]"
                 >
                   Confirmar Recarga
                 </button>
