@@ -4,6 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { useAppStore, Transaction } from '../stores/appStore';
 import { useIsLive, useMyTickets, useTransactions } from '../hooks/useSupabaseData';
 import { useMonthlyStatus } from '../lib/status';
+import PushToggle from '../components/PushToggle';
+import { useMonthlyStatus } from '../lib/status';
 
 export default function ProfilePage() {
   const { signOut, profile } = useAuth();
@@ -212,6 +214,9 @@ export default function ProfilePage() {
           </p>
         )}
       </section>
+
+      {/* Notificaciones push */}
+      <PushToggle />
 
       {/* Quick Stats */}
       <section className="grid grid-cols-3 gap-2">
