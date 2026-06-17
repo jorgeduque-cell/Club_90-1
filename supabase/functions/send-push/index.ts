@@ -1,20 +1,26 @@
 // ============================================
-// CLUB PYP — Edge Function: send-push
+// CLUB PYP — Edge Function: send-push  (AUTOCONTENIDA, pegar en el dashboard)
 // ============================================
 // Envía una notificación web push a TODOS los dispositivos de un usuario.
-// Pensada para llamarse desde dentro (cron de expiración, aviso de partido, etc.),
-// no desde el cliente: se protege con el header x-push-secret == PUSH_INTERNAL_SECRET.
+// Para llamarse desde dentro (cron de expiración, aviso de partido, etc.), NO desde
+// el cliente: se protege con el header x-push-secret == PUSH_INTERNAL_SECRET.
 //
 // POST /functions/v1/send-push
 // Headers: x-push-secret: <PUSH_INTERNAL_SECRET>
 // Body: { "userId": "...", "title": "...", "body": "...", "url": "/" }
 //
-// Secrets que requiere (Supabase → Edge Functions → Secrets):
+// Secrets requeridos (Supabase → Edge Functions → Manage secrets):
 //   VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT (mailto:...), PUSH_INTERNAL_SECRET
+// (SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY ya los inyecta Supabase automáticamente.)
 
 import webpush from 'npm:web-push@3.6.7';
-import { createAdminClient } from '../_shared/supabase-admin.ts';
-import { corsHeaders } from '../_shared/cors.ts';
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
+const cors = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-push-secret',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+};
 
 const VAPID_PUBLIC = Deno.env.get('VAPID_PUBLIC_KEY') ?? '';
 const VAPID_PRIVATE = Deno.env.get('VAPID_PRIVATE_KEY') ?? '';
@@ -28,18 +34,16 @@ if (VAPID_PUBLIC && VAPID_PRIVATE) {
 function json(status: number, obj: unknown): Response {
   return new Response(JSON.stringify(obj), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { ...cors, 'Content-Type': 'application/json' },
   });
 }
 
 Deno.serve(async (req: Request) => {
-  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: cors });
 
   if (!VAPID_PUBLIC || !VAPID_PRIVATE) {
     return json(500, { error: 'Faltan los secrets VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY' });
   }
-
-  // Protección interna: solo quien tenga el secreto puede disparar envíos.
   if (!INTERNAL_SECRET || req.headers.get('x-push-secret') !== INTERNAL_SECRET) {
     return json(401, { error: 'No autorizado' });
   }
@@ -54,7 +58,11 @@ Deno.serve(async (req: Request) => {
   const { userId, title, body, url } = payload;
   if (!userId || !title) return json(400, { error: 'userId y title son requeridos' });
 
-  const admin = createAdminClient();
+  const admin = createClient(
+    Deno.env.get('SUPABASE_URL')!,
+    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
+  );
+
   const { data: subs, error } = await admin
     .from('push_subscriptions')
     .select('endpoint, p256dh, auth')
@@ -74,7 +82,6 @@ Deno.serve(async (req: Request) => {
       );
       sent++;
     } catch (err) {
-      // 404/410 → suscripción muerta: la borramos
       const code = (err as { statusCode?: number }).statusCode;
       if (code === 404 || code === 410) {
         await admin.from('push_subscriptions').delete().eq('endpoint', s.endpoint);
